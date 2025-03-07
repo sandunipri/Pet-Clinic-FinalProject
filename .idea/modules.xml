@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Back_End/Back_End.iml" filepath="$PROJECT_DIR$/Back_End/Back_End.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pet-Clinic-FinalProject.iml" filepath="$PROJECT_DIR$/Pet-Clinic-FinalProject.iml" />
     </modules>
   </component>
