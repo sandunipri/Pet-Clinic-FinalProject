@@ -27,42 +27,13 @@
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button id="loginBtn" class="btn btn-outline-success" type="button">LOGIN</button>
-            <button class="btn btn-outline-primary" type="button">REGISTER</button>
+            <button class="btn btn-outline-primary" type="button"><a href="registerForm.html">REGISTER</a></button>
         </div>
     </form>
 </main>
 <footer></footer>
 <script src="../js/bootstrap.min.css"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
-<script>
-    $(document).ready(function (){
-        $('#loginBtn').click(function (){
-            let Email = $('#exampleInputEmail1').val();
-            let Password = $('#exampleInputPassword1').val();
-
-            $.ajax({
-                url :"http://localhost:8082/api/v1/auth/authenticate",
-                type : "POST",
-                contentType : "application/json",
-                data : JSON.stringify({
-                    "email" : Email,
-                    "password" : Password,
-                    "name" :"USER",
-                    "role" : "USER"
-
-                }),
-                success: function (res){
-                    console.log(res);
-                    alert('Login Success');
-                    window.localStorage.setItem('token',res.data.token);
-                },
-                error: function (res){
-                    console.log(res);
-                    alert('Login Failed');
-                }
-            });
-        });
-    });
-</script>
+<script src="../assets/js/login.js"></script>
 </body>
 </html>

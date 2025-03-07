@@ -4,3 +4,7 @@ body {
 form{
     border-radius: 25px;
 }
+a{
+    color: darkseagreen;
+    text-decoration: none;
+}
