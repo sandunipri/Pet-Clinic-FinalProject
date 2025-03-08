@@ -12,27 +12,6 @@ $(document).ready(function () {
                 "password": Password,
 
             }),
-
-                /*console.log(res);
-
-                let user = res.data.user;
-                console.log(user);
-
-                if (res.data && res.data.user) {
-                    let user = res.data.user;
-                    if (user.role === "USER") {
-                        alert('Successfully login User');
-                        window.location.href = 'client.html';
-                        window.localStorage.setItem("token", res.data.token);
-
-                    } else if (user.role === "ADMIN") {
-                        alert('Successfully login Admin');
-                        window.localStorage.setItem("token", res.data.token);
-                        window.location.href = 'admin.html';
-                    }
-                }
-*/
-
             success: function (res) {
                 console.log("Response:", res); // Logs the entire response
 
@@ -50,9 +29,10 @@ $(document).ready(function () {
                         window.location.href = 'client.html';
                     } else if (user.role === "ADMIN") {
                         window.location.href = 'admin.html';
-                    } else {
-                        alert("Unknown role. Please contact support.");
+                    } else if(user.role === "VET"){
+                        window.location.href = 'vet.html';
                     }
+
                 } else {
                     alert("Invalid login response. Please check the console for details.");
                     console.error("Unexpected API response structure:", res);
