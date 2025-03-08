@@ -3,6 +3,7 @@ body {
 }
 form{
     border-radius: 25px;
+    background-color: black;
 }
 a{
     color: darkseagreen;

@@ -9,74 +9,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
     <style>
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+        /* Hide popups and overlays by default */
+        .popup, .popup-overlay {
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
 
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            background-color: rgba(158, 234, 249, 0.3);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Show the popup and overlay when active */
+        .popup-active, .popup-overlay-active {
+            display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
-        #topic {
-            font-family: 'Roboto Condensed', sans-serif;
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin: 0;
-            padding: 0.5rem;
-            text-align: center;
-        }
-
-        /* Video container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .video-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-        }
 
     </style>
 </head>
+
 <body>
 <header>
     <h1 id="topic">WELCOME TO THE INDEX PAGE</h1>
@@ -84,21 +39,164 @@
 <main>
     <section class="video">
         <div class="video-container">
-            <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/6450ceffeba5aab3179b030a/6450eee4000ac132f945f05d_video-poster-00001.jpg">
+            <video autoplay loop muted playsinline
+                   poster="https://cdn.prod.website-files.com/6450ceffeba5aab3179b030a/6450eee4000ac132f945f05d_video-poster-00001.jpg">
                 <source src="../assets/video/6450eee4000ac132f945f05d_video-transcode.mp4" type="video/mp4">
-               BackGround Video
+                BackGround Video
             </video>
             <div class="video-overlay"></div>
-            <div class="video-content">
-                <h1 class="display-4">Welcome to Our Website</h1>
-                <p class="lead">Experience the best with our services</p>
-                <a href="#" class="btn btn-primary">Get Started</a>
+            <div class="video-content mb-5 mt-5">
+                <p class="lead">Purpose of a Veterinary Clinic</p>
+                <h1 class="display-2 fw-medium">Comprehensive care and diagnostics for your pet’s health</h1>
+                <hr>
+                <p class="lead">Receive a comprehensive and detailed diagnostic assessment of your pet's health,
+                    ensuring a thorough understanding of their overall well-being</p>
+                <button type="button" class="btn btn-outline-dark mt-4 btnVideo" id="loginOpenPopup">
+                    <a href="#popup">LOGIN OR REGISTER</a>
+                </button>
+
+            </div>
+
+            <!--login popup window-->
+            <div class="popup-overlay" id="loginPopupOverlay"></div>
+            <div class="popup" id="popup">
+                <form
+                        class="w-25 h-75 border border-info p-3 position-absolute top-50 start-50 translate-middle"
+                >
+                    <h3 class="text-center m-0">LOGIN FORM</h3>
+                    <div class="mb-3 p-2">
+                        <label for="loginInputEmail1" class="form-label"
+                        >Email address :</label
+                        >
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="loginInputEmail1"
+                                aria-describedby="emailHelp"
+                        />
+                    </div>
+                    <div class="mb-3 p-2">
+                        <label for="loginInputPassword1" class="form-label"
+                        >Password :</label
+                        >
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="loginInputPassword1"
+                        />
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="loginBtn" class="btn btn-outline-success" type="button">
+                            LOGIN
+                        </button>
+                        <button
+                                class="btn btn-outline-primary"
+                                type="button"
+                                id="registerPopup"
+                        >
+                            <a href="#regPopup">REGISTER</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="popup-overlay" id="regPopupOverlay"></div>
+            <div class="popup" id="regPopup">
+                <form
+                        class="w-25 h-75 border border-info p-3 position-absolute top-50 start-50 translate-middle"
+                >
+                    <h3 class="text-center m-0">REGISTER FORM</h3>
+                    <div class="mb-3 p-2">
+                        <label for="registerInputEmail1" class="form-label"
+                        >Email address :</label
+                        >
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="registerInputEmail1"
+                                aria-describedby="emailHelp"
+                        />
+                    </div>
+                    <div class="mb-3 p-2">
+                        <label for="registerPassword1" class="form-label"
+                        >Password :</label
+                        >
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="registerPassword1"
+                        />
+                    </div>
+                    <div class="mb-3 p-2">
+                        <label for="UserName" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="UserName"/>
+                    </div>
+                    <div class="mb-3 p-2">
+                        <label for="UserRole" class="form-label">Role:</label>
+                        <input type="text" class="form-control" id="UserRole"/>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="regBtn" class="btn btn-outline-primary" type="button">
+                            REGISTER
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 </main>
 <footer></footer>
+
 <script src="../js/bootstrap.min.css"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
+
+<script src="../assets/js/login.js"></script>
+<script src="../assets/js/register.js"></script>
+<script>
+    function openPopup(popupId, overlayId) {
+        document.getElementById(popupId).classList.add("popup-active");
+        document.getElementById(overlayId).classList.add("popup-overlay-active");
+    }
+
+    function closePopup(popupId, overlayId) {
+        document.getElementById(popupId).classList.remove("popup-active");
+        document.getElementById(overlayId).classList.remove("popup-overlay-active");
+    }
+
+    document.getElementById("loginOpenPopup").addEventListener("click", function () {
+        openPopup("popup", "loginPopupOverlay");
+    });
+
+    document.getElementById("registerPopup").addEventListener("click", function () {
+        closePopup("popup", "loginPopupOverlay");
+        openPopup("regPopup", "regPopupOverlay");
+    });
+
+    // Close popups when clicking outside the popup (on the overlay)
+    document.querySelectorAll(".popup-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", function () {
+            closePopup("popup", "loginPopupOverlay");
+            closePopup("regPopup", "regPopupOverlay");
+        });
+    });
+
+    // Close popups when clicking outside the popup (on the body)
+    document.addEventListener("click", function (event) {
+        let popup = document.querySelector(".popup-active");
+        if (popup && !popup.contains(event.target) && !event.target.closest(".btnVideo")) {
+            closePopup("popup", "loginPopupOverlay");
+            closePopup("regPopup", "regPopupOverlay");
+        }
+    });
+
+    // Optional: Close popups when pressing the "Escape" key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closePopup("popup", "loginPopupOverlay");
+            closePopup("regPopup", "regPopupOverlay");
+        }
+    });
+</script>
+
+
 </body>
 </html>

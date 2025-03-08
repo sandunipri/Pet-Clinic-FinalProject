@@ -1,7 +1,7 @@
 $(document).ready(function (){
     $('#regBtn').click(function (){
-        let Email = $('#exampleInputEmail1').val();
-        let Password = $('#exampleInputPassword1').val();
+        let Email = $('#registerInputEmail1').val();
+        let Password = $('#registerPassword1').val();
         let name = $('#UserName').val();
         let role = $('#UserRole').val();
 
@@ -18,7 +18,7 @@ $(document).ready(function (){
             }),
             success : function (data){
                 alert("Register Success");
-                window.location.href = "loginForm.html";
+                window.location.href = "index.html";
             },
             error : function (data){
                 alert("Register Failed");

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#loginBtn').click(function () {
-        let Email = $('#exampleInputEmail1').val();
-        let Password = $('#exampleInputPassword1').val();
+        let Email = $('#loginInputEmail1').val();
+        let Password = $('#loginInputPassword1').val();
 
         $.ajax({
             url: "http://localhost:8080/api/v1/auth/authenticate",
