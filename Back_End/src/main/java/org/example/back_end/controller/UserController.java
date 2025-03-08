@@ -32,7 +32,7 @@ public class UserController {
                 case VarList.Created -> {
                     String token = jwtUtil.generateToken(userDTO);
                     AuthDTO authDTO = new AuthDTO();
-                    authDTO.setEmail(userDTO.getEmail());
+                    authDTO.setUserDTO(userDTO);
                     authDTO.setToken(token);
                     return ResponseEntity.status(HttpStatus.CREATED)
                             .body(new ResponseDTO(VarList.Created, "Success", authDTO));
