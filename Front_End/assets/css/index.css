@@ -82,4 +82,16 @@ a {
     color: white;
 
 }
+.popup, .popup-overlay {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.popup-active, .popup-overlay-active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
 

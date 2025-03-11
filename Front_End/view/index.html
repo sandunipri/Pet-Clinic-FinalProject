@@ -13,22 +13,6 @@
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/register.css">
     <style>
-        /* Hide popups and overlays by default */
-        .popup, .popup-overlay {
-            display: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        }
-
-        /* Show the popup and overlay when active */
-        .popup-active, .popup-overlay-active {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-        }
-
-
     </style>
 </head>
 
@@ -96,6 +80,9 @@
                         >
                             <a href="#regPopup">REGISTER</a>
                         </button>
+                        <button id="backBtn" class="btn btn-outline-primary" type="button">
+                            <a href="index.html">CLOSE</a>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -137,6 +124,9 @@
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button id="regBtn" class="btn btn-outline-primary" type="button">
                             REGISTER
+                        </button>
+                        <button id="closeBtn" class="btn btn-outline-primary" type="button">
+                            <a href="index.html">CLOSE</a>
                         </button>
                     </div>
                 </form>
