@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#loginBtn').click(function () {
-        let Email = $('#loginInputEmail1').val();
-        let Password = $('#loginInputPassword1').val();
+        let Email = $('#exampleInputEmail1').val();
+        let Password = $('#exampleInputPassword1').val();
 
         $.ajax({
             url: "http://localhost:8080/api/v1/auth/authenticate",
@@ -10,6 +10,8 @@ $(document).ready(function () {
             data: JSON.stringify({
                 "email": Email,
                 "password": Password,
+                "name": "USER",
+                "role": "USER"
 
             }),
             success: function (res) {
@@ -19,7 +21,7 @@ $(document).ready(function () {
                 let token = res.token || res.data?.token;
 
                 console.log("User Object:", user); // Logs user object
-                console.log("User Role:",res.data.userDTO.role); // Logs user role
+                console.log("User Role:", res.data.userDTO.role); // Logs user role
 
                 if (user && token) {
                     alert(`Successfully logged in as ${user.role || "Unknown"}`);
@@ -29,7 +31,7 @@ $(document).ready(function () {
                         window.location.href = 'client.html';
                     } else if (user.role === "ADMIN") {
                         window.location.href = 'admin.html';
-                    } else if(user.role === "VET"){
+                    } else if (user.role === "VET") {
                         window.location.href = 'vet.html';
                     }
 

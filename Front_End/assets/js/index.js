@@ -1,3 +1,4 @@
+/*
 function openPopup(popupId, overlayId) {
     document.getElementById(popupId).classList.add("popup-active");
     document.getElementById(overlayId).classList.add("popup-overlay-active");
@@ -23,5 +24,6 @@ document.querySelectorAll('.popup-overlay').forEach(overlay => {
         closePopup('regPopup', 'regPopupOverlay');
     });
 });
+*/
 
 

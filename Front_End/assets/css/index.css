@@ -11,14 +11,15 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 90%;
-    margin: 2% 5%;
+    width: 100%;
+    margin: 2% 0;
+    padding: 0 100px;
     height: 90px;
-    background-color: rgba(10, 59, 151, 0.3);
+    /*background-color: rgba(10, 59, 151, 0.3);*/
     z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 40px;
 }
 
@@ -82,7 +83,7 @@ a {
     color: white;
 
 }
-.popup, .popup-overlay {
+/*.popup, .popup-overlay {
     display: none;
     opacity: 0;
     visibility: hidden;
@@ -93,5 +94,5 @@ a {
     display: block;
     opacity: 1;
     visibility: visible;
-}
+}*/
 
