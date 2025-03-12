@@ -40,7 +40,8 @@ public class JwtFilter extends OncePerRequestFilter {
 
             token = authorization.substring(7);
             email = jwtUtil.getUsernameFromToken(token);
-            Claims claims=jwtUtil.getUserRoleCodeFromToken(token);
+            /*Claims claims=jwtUtil.getUserRoleCodeFromToken(token);*/
+            Claims claims=jwtUtil.getAllClaimsFromToken(token);
             httpServletRequest.setAttribute("email", email);
             httpServletRequest.setAttribute("role", claims.get("role"));
         }

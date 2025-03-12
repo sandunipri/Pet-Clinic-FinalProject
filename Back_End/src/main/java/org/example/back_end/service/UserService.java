@@ -6,4 +6,5 @@ import org.example.back_end.dto.UserDTO;
 public interface UserService {
     int saveUser(UserDTO userDTO);
     UserDTO searchUser(String username);
+    String getUserRoleByToken(String token);
 }

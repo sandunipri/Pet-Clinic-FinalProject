@@ -10,6 +10,7 @@ import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,20 @@ public class UserController {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
     }
+
+    @GetMapping(value = "/logAgain")
+//    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
+        System.out.println("sssss");
+        String token = authorization.substring(7);
+        String role = userService.getUserRoleByToken(token);
+       /* return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseDTO(VarList.OK, "success",role));*/
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseDTO(VarList.OK, "success",role));
+    }
+
+
     @PostMapping(value = "/register")
     public ResponseEntity<ResponseDTO> registerUser(@RequestBody @Valid UserDTO userDTO) {
         try {

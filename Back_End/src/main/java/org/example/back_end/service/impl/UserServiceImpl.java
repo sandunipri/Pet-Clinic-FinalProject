@@ -5,6 +5,7 @@ import org.example.back_end.dto.UserDTO;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.UserRepository;
 import org.example.back_end.service.UserService;
+import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
 
     @Override
@@ -69,4 +73,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             userRepository.save(modelMapper.map(userDTO, User.class));
             return VarList.Created;
         }
-    }}
+    }
+
+    @Override
+    public String getUserRoleByToken(String token) {
+        return jwtUtil.getRoleFromToken(token);
+    }
+}
