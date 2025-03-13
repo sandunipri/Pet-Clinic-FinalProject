@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#loginBtn').click(function () {
+
         let Email = $('#exampleInputEmail1').val();
         let Password = $('#exampleInputPassword1').val();
 
@@ -46,5 +47,6 @@ $(document).ready(function () {
             }
         });
     });
+
 
 });

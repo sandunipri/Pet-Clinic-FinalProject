@@ -26,27 +26,37 @@ document.querySelectorAll('.popup-overlay').forEach(overlay => {
 });
 */
 
-function callAgainToken() {
-    //check if token is present
-    const token = localStorage.getItem('token')
-    console.log(token)
+$(document).ready(function () {
 
-    if (token !== null) {
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/user/logAgain',
-            type: 'GET',
-            headers: {"Authorization": "Bearer " + token},
-            success: function (res) {
-                if (res.data === 'ADMIN') {
-                    window.location.href = "admin.html";
-                }else {
-                    window.location.href = 'client.html';
+    function callAgainToken(token) {
+        if (token !== null) {
+            $.ajax({
+                url: 'http://localhost:8080/api/v1/user/logAgain',
+                type: 'GET',
+                headers: {"Authorization": "Bearer " + token},
+                success: function (res) {
+                    if (res.data === 'ADMIN') {
+                        window.location.href = "admin.html";
+                    }else {
+                        window.location.href = 'client.html';
+                    }
+                },
+                error: function (error) {
+                    alert("session expired please login again");
                 }
-            },
-            error: function (error) {
-              alert("session expired please login again");
-            }
-        })
+            })
+        }
     }
-}
-callAgainToken();
+
+    $('#loginBtn').click(function () {
+        const token = localStorage.getItem('token')
+        console.log("Token:", token);
+        if (token !== null) {
+            callAgainToken(token)
+            return
+        }
+        window.location.href = 'index.html';
+    });
+});
+
+
