@@ -5,6 +5,8 @@ $(document).ready(function (){
         let Password = $('#exampleInputPassword1').val();
         let name = $('#UserName').val();
         let role = $('#UserRole').val();
+        let address = $('#UserAddress').val();
+        let telNo = $('#UserTelNo').val();
 
         $.ajax({
             url :"http://localhost:8080/api/v1/user/register",
@@ -14,7 +16,9 @@ $(document).ready(function (){
                 "email" : Email,
                 "password" : Password,
                 "name" :name,
-                "role" : role
+                "role" : role,
+                "address" : address,
+                "telNo" : telNo
 
             }),
             success : function (data){
