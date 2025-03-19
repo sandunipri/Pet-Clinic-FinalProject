@@ -25,6 +25,15 @@ public class UserController {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
     }
+
+
+    @GetMapping(value = "/get")
+    public ResponseEntity<ResponseDTO> getUser(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseDTO(VarList.OK, "Success", userService.getUsers()));
+    }
+
+
     @GetMapping(value = "/logAgain")
 //    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){

@@ -79,4 +79,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public String getUserRoleByToken(String token) {
         return jwtUtil.getRoleFromToken(token);
     }
+
+    @Override
+    public Object getUsers() {
+        return userRepository.findAll();
+    }
 }
