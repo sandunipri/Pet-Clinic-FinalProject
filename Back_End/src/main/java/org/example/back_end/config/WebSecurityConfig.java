@@ -54,6 +54,7 @@ public class WebSecurityConfig {
                                 "/api/v1/user/logAgain",
                                 "/api/v1/pet/save",
                                 "/api/v1/pet/getAll",
+                                "api/v1/appointment/**",
                                 "/api/v1/auth/refreshToken",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
