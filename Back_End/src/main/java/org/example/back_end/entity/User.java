@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -18,11 +19,14 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uid;
-    @Column(unique = true)
+    @Column(unique = true ,nullable = false)
     private String email;
     private String password;
     private String name;
     private String role;
     private String address;
     private String telNo;
+
+    @OneToMany(mappedBy = "user")
+    private List<Pet> petList;
 }

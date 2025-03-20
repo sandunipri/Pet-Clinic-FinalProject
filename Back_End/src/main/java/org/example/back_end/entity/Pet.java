@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "pet")
 @AllArgsConstructor
@@ -13,13 +15,16 @@ import lombok.NoArgsConstructor;
 @Data
 public class Pet {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petId;
     private String petName;
-    private String Species;
-    private String Breed;
-    private String Age ;
-    private String Gender;
+    private String species;
+    private String breed;
+    private String age ;
+    private String gender;
 
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    private User user;
 
 }
