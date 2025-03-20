@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*@AllArgsConstructor
+@AllArgsConstructor
 @Data
-@NoArgsConstructor*/
+@NoArgsConstructor
 public class PetDTO {
     private int petId;
     private String petName;
@@ -14,8 +14,9 @@ public class PetDTO {
     private String breed;
     private String age ;
     private String gender;
+    private String userEmail;
 
-    public PetDTO() {
+   /* public PetDTO() {
     }
 
     public PetDTO(int petId, String petName, String species, String breed, String age, String gender) {
@@ -85,6 +86,6 @@ public class PetDTO {
                 ", age='" + age + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
-    }
+    }*/
 }
 

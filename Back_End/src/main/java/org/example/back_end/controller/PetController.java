@@ -1,6 +1,6 @@
 package org.example.back_end.controller;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.service.impl.PetServiceImpl;
@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class PetController {
 
-//    @Autowired
-//    private PetServiceImpl petService;
+    @Autowired
+    private PetServiceImpl petService;
 
     @PostMapping("/save")
     public ResponseEntity<ResponseDTO> addPet(@RequestBody PetDTO petDTO) {
         System.out.println(petDTO);
-//        petService.savePet(petDTO);
+        petService.savePet(petDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
     }
+
 }
