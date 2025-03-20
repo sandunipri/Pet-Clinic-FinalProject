@@ -7,8 +7,11 @@ import org.example.back_end.repo.PetRepo;
 import org.example.back_end.repo.UserRepository;
 import org.example.back_end.service.PetService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PetServiceImpl implements PetService {
@@ -31,4 +34,11 @@ public class PetServiceImpl implements PetService {
         petRepo.save(pet);
 
     }
+
+    @Override
+    public List<PetDTO> getAllPets() {
+        return modelMapper.map(petRepo.findAll(),new TypeToken<List<PetDTO>>(){}.getType());
+    }
+
+
 }
