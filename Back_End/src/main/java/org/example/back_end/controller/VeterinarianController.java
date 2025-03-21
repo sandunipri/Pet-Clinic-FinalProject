@@ -28,7 +28,7 @@ public class VeterinarianController {
         return ResponseEntity.ok(new ResponseDTO(201, "Veterinarian is saved", veterinarian));
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<ResponseDTO> getAllVeterinarian() {
         System.out.println("getAllVeterinarian");
 

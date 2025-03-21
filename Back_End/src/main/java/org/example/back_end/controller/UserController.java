@@ -27,14 +27,14 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "/get")
+    @GetMapping( "/get")
     public ResponseEntity<ResponseDTO> getUser(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "Success", userService.getUsers()));
     }
 
 
-    @GetMapping(value = "/logAgain")
+    @GetMapping("/logAgain")
 //    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
         System.out.println("sssss");

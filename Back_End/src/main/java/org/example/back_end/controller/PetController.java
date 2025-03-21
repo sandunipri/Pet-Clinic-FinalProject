@@ -26,7 +26,7 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
     }
 
-    @GetMapping(value = "/getAll")
+    @GetMapping("/getAll")
     public ResponseEntity<ResponseDTO> getAllPets() {
         System.out.println("get all pets");
 
