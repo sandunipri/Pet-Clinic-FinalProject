@@ -15,12 +15,12 @@ public class VeterinarianController {
     @Autowired
     private VeterinarianServiceImpl veterinarianService;
 
-    @PostMapping(value = "/save")
+    @PostMapping( "/save")
     public ResponseEntity<ResponseDTO> saveVeterinarian(@RequestBody VeterinarianDTO veterinarian) {
         System.out.println(veterinarian);
 
         veterinarianService.saveVeterinarian(veterinarian);
-        return ResponseEntity.ok(new ResponseDTO(201, "Veterinarian is saved", null));
+        return ResponseEntity.ok(new ResponseDTO(201, "Veterinarian is saved", veterinarian));
     }
 
 }

@@ -20,10 +20,6 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Override
     public void saveVeterinarian(VeterinarianDTO veterinarian) {
-        if (!veterinarianRepo.existsById(veterinarian.getId())) {
-            veterinarianRepo.save(modelMapper.map(veterinarian, Veterinarian.class));
-        }
-        throw new RuntimeException("Veterinarian already exists");
-
+        veterinarianRepo.save(modelMapper.map(veterinarian, Veterinarian.class));
     }
 }
