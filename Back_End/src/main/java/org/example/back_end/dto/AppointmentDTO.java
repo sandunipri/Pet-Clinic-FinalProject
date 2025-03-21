@@ -14,4 +14,6 @@ public class AppointmentDTO {
     private LocalDateTime appointmentDate;
     private String reason;
     private String status;
+    private int veterinarianId;
+    private int petId;
 }
