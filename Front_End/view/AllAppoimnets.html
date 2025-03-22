@@ -13,57 +13,200 @@
   "
     />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
             href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap"
             rel="stylesheet"
     />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/allappointment.css">
+
 </head>
+
 <body>
+
 <div
-        class="row align-items-center py-3 m-0"
+        class="row align-items-center py-3 px-4 m-0 shadow-sm"
         style="
-    background: linear-gradient(
-      to right,
-      rgba(10, 59, 151, 0.3),
-      rgba(0, 0, 0, 0.3)
-    );
-  "
+        background: linear-gradient(to right, rgba(10, 59, 151, 0.4), rgba(0, 0, 0, 0.4));
+        color: white;
+    "
 >
+    <!-- Logo Section -->
     <div class="col-lg-4 d-flex align-items-center">
-        <a href="" class="navbar-brand d-none d-lg-block">
-            <h1 class="m-0 display-5 text-capitalize">
-                <span style="color: rgb(8, 8, 133)">HAPPY</span>HEARTS
+        <a href="#" class="navbar-brand d-none d-lg-block">
+            <h1 class="m-0 display-5 fw-bold">
+                <span style="color: #080885">HAPPY</span><span style="color: #f8f9fa">HEARTS</span>
             </h1>
         </a>
     </div>
-    <div class="col-lg-8 text-center text-lg-right">
-        <div class="d-inline-flex align-items-center">
-            <div
-                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
-            >
-                <h6>Opening Hours</h6>
-                <p class="m-0">8.00AM - 9.00PM</p>
+
+    <!-- Contact Info Section -->
+    <div class="col-lg-8 text-center text-lg-end">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+            <div class="text-center px-3 border-end border-light">
+                <h6 class="mb-1">🕒 Opening Hours</h6>
+                <p class="m-0">8:00 AM - 9:00 PM</p>
             </div>
-            <div
-                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
-            >
-                <h6>Email Us</h6>
+            <div class="text-center px-3 border-end border-light">
+                <h6 class="mb-1">📧 Email Us</h6>
                 <p class="m-0">happyhearts@gmail.com</p>
             </div>
-            <div class="d-inline-flex flex-column text-center ps-3">
-                <h6>Call Us</h6>
+            <div class="text-center px-3">
+                <h6 class="mb-1">📞 Call Us</h6>
                 <p class="m-0">+94 77 123 456</p>
             </div>
+            <!-- Back Button -->
+            <div class="ps-3 mt-2 mt-lg-0">
+                <a href="admin.html"
+                   class="btn btn-light text-dark px-3 py-1 fw-bold rounded-pill shadow-sm">
+                    ⬅ Back
+                </a>
+            </div>
         </div>
-
-        <!-- Back Button -->
-        <button class="btn btn-outline-light ms-5" onclick="history.back();">
-            ← Back
-        </button>
     </div>
 </div>
+
+<!--table for the view all of appointments-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-sm-3 col-xs-12">
+                            <h4 class="title">Data <span>List</span></h4>
+                        </div>
+                        <div class="col-sm-9 col-xs-12 text-right">
+                            <div class="btn_group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button class="btn btn-default" title="Reload"><i class="fa fa-sync-alt"></i></button>
+                                <button class="btn btn-default" title="Pdf"><i class="fa fa-file-pdf"></i></button>
+                                <button class="btn btn-default" title="Excel"><i class="fas fa-file-excel"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Pet Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Reason</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Vincent Williamson</td>
+                            <td>vincent@example.com</td>
+                            <td>Buddy</td>
+                            <td>2025-03-22</td>
+                            <td>10:00 AM</td>
+                            <td>Check-up</td>
+                            <td>
+                                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Taylor Reyes</td>
+                            <td>taylor@example.com</td>
+                            <td>Max</td>
+                            <td>2025-03-23</td>
+                            <td>2:00 PM</td>
+                            <td>Vaccination</td>
+                            <td>
+                                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Justin Block</td>
+                            <td>justin@example.com</td>
+                            <td>Rocky</td>
+                            <td>2025-03-24</td>
+                            <td>3:30 PM</td>
+                            <td>Consultation</td>
+                            <td>
+                                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Sean Guzman</td>
+                            <td>sean@example.com</td>
+                            <td>Bella</td>
+                            <td>2025-03-25</td>
+                            <td>11:00 AM</td>
+                            <td>Routine check-up</td>
+                            <td>
+                                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Keith Carter</td>
+                            <td>keith@example.com</td>
+                            <td>Lucy</td>
+                            <td>2025-03-26</td>
+                            <td>1:00 PM</td>
+                            <td>Grooming</td>
+                            <td>
+                                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Showing <b>5</b> out of <b>25</b> entries
+                            </p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <ul class="pagination">
+                                <li><a href="#">&#8592;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">&#8594;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="text-center p-3 mt-5" style="background: #2c3e50; color: white;">
+    <p>Powered by <i class="fa-solid fa-paw"></i> Pet Clinic System</p>
+    <p>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </p>
+</footer>
 
 
 </body>
