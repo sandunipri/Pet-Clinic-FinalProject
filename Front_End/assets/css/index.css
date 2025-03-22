@@ -1,3 +1,4 @@
+/*
 
 body, html {
     color: var(rgba(10, 59, 151, 0.3));
@@ -15,7 +16,7 @@ header {
     margin: 2% 0;
     padding: 0 100px;
     height: 90px;
-    /*background-color: rgba(10, 59, 151, 0.3);*/
+    !*background-color: rgba(10, 59, 151, 0.3);*!
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -31,7 +32,7 @@ header {
     text-align: center;
 }
 
-/* Video container */
+ Video container
 .video-container {
     position: relative;
     width: 100%;
@@ -83,16 +84,71 @@ a {
     color: white;
 
 }
-/*.popup, .popup-overlay {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+*/
+
+
+body{
+    font-family: "Roboto Condensed", sans-serif;
+}
+/* Video container */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
-.popup-active, .popup-overlay-active {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-}*/
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.video-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.btnVideo {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 0 15px;
+    }
+
+    .video-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .video-content .lead {
+        font-size: 1rem;
+    }
+}
 

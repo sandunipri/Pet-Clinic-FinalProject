@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+  "
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/appointment.css">
+</head>
+<style>
+
+</style>
+<body>
+<div
+        class="row justify-content-between py-3 m-0"
+        style="
+        background: linear-gradient(
+          to right,
+          rgba(10, 59, 151, 0.3),
+          rgba(0, 0, 0, 0.3)
+        );
+      "
+>
+    <div class="col-lg-4">
+        <a href="" class="navbar-brand d-none d-lg-block">
+            <h1 class="m-0 display-5 text-capitalize">
+                <span style="color: rgb(8, 8, 133)">HAPPY</span>HEARTS
+            </h1>
+        </a>
+    </div>
+    <div class="col-lg-8 text-center text-lg-right">
+        <div class="d-inline-flex align-items-center">
+            <div
+                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
+            >
+                <h6>Opening Hours</h6>
+                <p class="m-0">8.00AM - 9.00PM</p>
+            </div>
+            <div
+                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
+            >
+                <h6>Email Us</h6>
+                <p class="m-0">happyhearts@gmail.com</p>
+            </div>
+            <div class="d-inline-flex flex-column text-center ps-3">
+                <h6>Call Us</h6>
+                <p class="m-0">+94 77 123 456</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navbar Start -->
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
+        <a href="" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white">
+                <span class="text-primary">Safety</span>First
+            </h1>
+        </a>
+        <button
+                type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarCollapse"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+                class="collapse navbar-collapse justify-content-between px-3"
+                id="navbarCollapse"
+        >
+            <div class="navbar-nav mr-auto py-0">
+                <a href="index.html" class="nav-item nav-link fs-5">Home</a>
+                <!-- <a href="about.html" class="nav-item nav-link fs-5">About</a>
+                  <a href="service.html" class="nav-item nav-link fs-5">Service</a>
+                  <a href="price.html" class="nav-item nav-link fs-5">Price</a>
+                  <a href="booking.html" class="nav-item nav-link fs-5">Booking</a> -->
+                <a href="contact.html" class="nav-item nav-link fs-5">Contact</a>
+            </div>
+            <a
+                    href="loginForm.html"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    style="background-color: rgb(8, 8, 133); color: white; border: none"
+            >Sign in</a
+            >
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+
+<!-- Services Start -->
+<div class="container-fluid bg-light pt-2">
+    <div class="container py-2">
+        <div class="d-flex flex-column text-center mb-5">
+            <h1 class="display-4 m-0">GET APPOINTMENT</h1>
+        </div>
+        <div class="row pb-2 m-0">
+            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
+                <div
+                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
+                        style="height: 100%"
+                >
+                    <img
+                            src="./images/img_5.png"
+                            alt="doctor"
+                            class="img-fluid mb-4"
+                            style="
+                  width: 200px;
+                  height: 200px;
+                  object-fit: cover;
+                  margin: 0 auto;
+                  border-radius: 50%;
+                "
+                    />
+                    <h3 class="mb-3">Dr. Jonathan Wells</h3>
+                    <p>A board-certified veterinary surgeon and behaviorist.</p>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                    >
+                        CHANNEL
+                    </button>
+                    <button type="button" class="btn btn-primary mt-2">
+                        VIEW PROFILE
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
+                <div
+                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
+                        style="height: 100%"
+                >
+                    <img
+                            src="./images/img_5.png"
+                            alt="doctor"
+                            class="img-fluid mb-4"
+                            style="
+                  width: 200px;
+                  height: 200px;
+                  object-fit: cover;
+                  margin: 0 auto;
+                  border-radius: 50%;
+                "
+                    />
+                    <h3 class="mb-3">Dr. Jonathan Wells</h3>
+                    <p>A board-certified veterinary surgeon and behaviorist.</p>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                    >
+                        CHANNEL
+                    </button>
+                    <button type="button" class="btn btn-primary mt-2">
+                        VIEW PROFILE
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
+                <div
+                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
+                        style="height: 100%"
+                >
+                    <img
+                            src="./images/istockphoto-148198319-612x612.jpg"
+                            alt="doctor"
+                            class="img-fluid mb-4"
+                            style="
+                  width: 200px;
+                  height: 200px;
+                  object-fit: cover;
+                  margin: 0 auto;
+                  border-radius: 50%;
+                "
+                    />
+                    <h3 class="mb-3">Dr. Furstenberg Carter</h3>
+                    <p>
+                        An experienced veterinarian specializing in pet dermatology.
+                    </p>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                    >
+                        CHANNEL
+                    </button>
+                    <button type="button" class="btn btn-primary mt-2">
+                        VIEW PROFILE
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
+                <div
+                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
+                        style="height: 100%"
+                >
+                    <img
+                            src="./images/istockphoto-148198319-612x612.jpg"
+                            alt="doctor"
+                            class="img-fluid mb-4"
+                            style="
+                  width: 200px;
+                  height: 200px;
+                  object-fit: cover;
+                  margin: 0 auto;
+                  border-radius: 50%;
+                "
+                    />
+                    <h3 class="mb-3">Dr. Furstenberg Carter</h3>
+                    <p>
+                        An experienced veterinarian specializing in pet dermatology.
+                    </p>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                    >
+                        CHANNEL
+                    </button>
+                    <button type="button" class="btn btn-primary mt-2">
+                        VIEW PROFILE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services End -->
+
+<!-- Modal -->
+<div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog custom-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                    Appointment Form
+                </h1>
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <!-- Appointment Form -->
+                <form>
+                    <!-- Title and Name -->
+                    <div class="form-section row p-2">
+                        <div class="col-md-4">
+                            <label for="title" class="form-label">Title</label>
+                            <select id="title" class="form-select">
+                                <option value="mr">Mr</option>
+                                <option value="mrs">Mrs</option>
+                                <option value="miss">Miss</option>
+                                <option value="dr">Dr</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="name" class="form-label"
+                            >Name <span class="text-danger">*</span></label
+                            >
+                            <input
+                                    type="text"
+                                    id="name"
+                                    class="form-control"
+                                    placeholder="Enter your name"
+                                    required
+                            />
+                            <div class="invalid-feedback">Name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-section p-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                placeholder="Enter your email"
+                        />
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-section row p-2">
+                        <div class="col-md-4">
+                            <label for="phone-number" class="form-label">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-text">+94</span>
+                                <input
+                                        type="tel"
+                                        id="phone-number"
+                                        class="form-control"
+                                        placeholder="71XXXXXXX"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pet Name Dropdown -->
+                    <div class="form-section p-2">
+                        <label for="pet-name" class="form-label">Pet Name</label>
+                        <select id="pet-name" class="form-select">
+                            <option value="" disabled selected>
+                                Select your pet's name
+                            </option>
+                            <option value="Buddy">Buddy</option>
+                            <option value="Charlie">Charlie</option>
+                            <option value="Luna">Luna</option>
+                            <option value="Max">Max</option>
+                            <option value="Bella">Bella</option>
+                        </select>
+                    </div>
+
+                    <!-- ID Option -->
+                    <div class="form-section p-2">
+                        <label class="form-label">ID Type</label>
+                        <div class="form-check form-check-inline">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="idType"
+                                    id="nic"
+                                    checked
+                            />
+                            <label class="form-check-label" for="nic">NIC</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="idType"
+                                    id="passport"
+                            />
+                            <label class="form-check-label" for="passport"
+                            >Passport</label
+                            >
+                        </div>
+                    </div>
+
+                    <!-- NIC Number -->
+                    <div class="form-section p-2">
+                        <label for="nic-number" class="form-label"
+                        >NIC Number <span class="text-danger">*</span></label
+                        >
+                        <input
+                                type="text"
+                                id="nic-number"
+                                class="form-control"
+                                placeholder="Enter NIC number"
+                                required
+                        />
+                        <div class="invalid-feedback">NIC number is required.</div>
+                    </div>
+
+                    <!-- Appointment Date -->
+                    <div class="form-section p-2">
+                        <label for="appointment-date" class="form-label"
+                        >Appointment Date</label
+                        >
+                        <input type="date" id="appointment-date" class="form-control" />
+                    </div>
+
+                    <!-- Appointment Time -->
+                    <div class="form-section p-2">
+                        <label for="appointment-time" class="form-label"
+                        >Appointment Time</label
+                        >
+                        <input type="time" id="appointment-time" class="form-control" />
+                    </div>
+
+                    <!-- Reason for Appointment -->
+                    <div class="form-section p-2">
+                        <label for="appointment-reason" class="form-label"
+                        >Reason for Appointment</label
+                        >
+                        <textarea
+                                id="appointment-reason"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Describe the reason for your appointment"
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-section p-2">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Submit Appointment
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button
+                        type="submit"
+                        class="btn btn-primary"
+
+                >
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/bootstrap.min.css"></script>
+<script src="../js/jquery-3.7.1.min.js"></script>
+</body>
+</html>

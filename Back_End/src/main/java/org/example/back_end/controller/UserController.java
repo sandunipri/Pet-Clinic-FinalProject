@@ -47,7 +47,7 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "/register")
+    @PostMapping("/register")
     public ResponseEntity<ResponseDTO> registerUser(@RequestBody @Valid UserDTO userDTO) {
         try {
             int res = userService.saveUser(userDTO);

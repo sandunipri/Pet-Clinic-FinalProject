@@ -34,7 +34,7 @@
             success: function (response) {
                 console.log("Response:", response);
 
-                // let user = response.data.userDTO
+                let user = response.data.userDTO
 
                 let email = response.data.email
                 console.log("email" ,email);
