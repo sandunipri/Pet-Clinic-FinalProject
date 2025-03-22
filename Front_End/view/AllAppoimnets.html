@@ -22,16 +22,16 @@
 </head>
 <body>
 <div
-        class="row justify-content-between py-3 m-0"
+        class="row align-items-center py-3 m-0"
         style="
-        background: linear-gradient(
-          to right,
-          rgba(10, 59, 151, 0.3),
-          rgba(0, 0, 0, 0.3)
-        );
-      "
+    background: linear-gradient(
+      to right,
+      rgba(10, 59, 151, 0.3),
+      rgba(0, 0, 0, 0.3)
+    );
+  "
 >
-    <div class="col-lg-4">
+    <div class="col-lg-4 d-flex align-items-center">
         <a href="" class="navbar-brand d-none d-lg-block">
             <h1 class="m-0 display-5 text-capitalize">
                 <span style="color: rgb(8, 8, 133)">HAPPY</span>HEARTS
@@ -57,43 +57,14 @@
                 <p class="m-0">+94 77 123 456</p>
             </div>
         </div>
+
+        <!-- Back Button -->
+        <button class="btn btn-outline-light ms-5" onclick="history.back();">
+            ← Back
+        </button>
     </div>
 </div>
-<!-- Navbar Start -->
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
-        <a href="" class="navbar-brand d-block d-lg-none">
-            <h1 class="m-0 display-5 text-capitalize font-italic text-white">
-                <span class="text-primary">Safety</span>First
-            </h1>
-        </a>
-        <button
-                type="button"
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbarCollapse"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-                class="collapse navbar-collapse justify-content-between px-3"
-                id="navbarCollapse"
-        >
-            <div class="navbar-nav mr-auto py-0">
-                <a href="index.html" class="nav-item nav-link fs-5">Home</a>
-                <a href="AllClients.html" class="nav-item nav-link fs-5">Users</a>
-                <a href="AllVeterinaires.html" class="nav-item nav-link fs-5">Veterinarians</a>
-                <a href="AllAppoimnets.html" class="nav-item nav-link fs-5">Appointments</a>
-            </div>
-            <a
-                    href=""
-                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    style="background-color: rgb(8, 8, 133); color: white; border: none"
-            >Sign up</a
-            >
-        </div>
-    </nav>
-</div>
-<!-- Navbar End -->
+
+
 </body>
 </html>
