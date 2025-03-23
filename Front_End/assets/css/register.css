@@ -1,59 +1,32 @@
-body {
-    font-family: "Roboto", sans-serif;
-}
-#logoImage {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    padding: 5px;
-}
-
-.logoAndName {
-    display: flex;
-    align-items: center;
-}
-
-header {
-    background: linear-gradient(
-            to right,
-            rgba(2, 2, 2, 0.3),
-            rgba(10, 59, 151, 0.3)
-    );
-    width: 100%;
-    height: 90px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-.container-fluid {
-    width: 100%;
-    height: 90vh;
-}
-.row {
-    height: 100%;
-}
-.image-container {
-    background: url("/assets/images/img_3.png") no-repeat center center;
-    background-size: cover;
-    width: 50%;
-    height: 100%;
-}
 .form-container {
-    background-color: white;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
 }
-.form-container form {
-    width: 80%;
-    height: auto;
-    margin: auto;
+
+.image-container {
+    background: url('assets/images/img_3.png') no-repeat center center/cover;
+    height: 100vh;
 }
 
 .inputType {
-    border: none;
-    border-bottom: 1px solid rgb(72, 71, 71);
-    border-radius: 0;
+    margin-bottom: 1rem;
+}
+
+#regBtn {
+    margin-top: 1rem;
+}
+
+.navbar-brand h3 {
+    margin: 0;
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.loginHeader {
+    background-color: #f8f9fa;
+}
+
+footer {
+    margin-top: 2rem;
 }

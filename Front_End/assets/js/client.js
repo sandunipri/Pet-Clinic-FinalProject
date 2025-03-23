@@ -1,79 +1,69 @@
 
 
-    /*function fetchProfileData() {
-    $.ajax({
-        url: "http://localhost:8080/api/v1/user/get",
-        type: "GET",
-        dataType: "application/json",
-        success: function (response) {
-            console.log("Response:", response);
-
-            let user = response.data.userDTO
-
-            if (!user.error) {
-                document.querySelector(".card-title").innerHTML = `🧑‍💼 ${data.name}`;
-                document.querySelector(".text-muted").textContent = data.role;
-                document.querySelectorAll(".desc p")[0].innerHTML = `<strong>📍 Address:</strong> ${data.address}`;
-                document.querySelectorAll(".desc p")[1].innerHTML = `<strong>📞 Tel:</strong> ${data.telNo}`;
-                document.querySelectorAll(".desc p")[2].innerHTML = `<strong>✉️ Email:</strong> ${data.email}`;
-            } else {
-                document.querySelector(".desc").innerHTML = `<p class="text-danger">User not found.</p>`;
-            }
-        },
-        error: function () {
-            document.querySelector(".desc").innerHTML = `<p class="text-danger">Failed to load data.</p>`;
-        }
-    });
-}*/
-
-    const getAllUsers = () => {
-        console.log("Get All Customers")
-        $.ajax({
-            url: "http://localhost:8080/api/v1/user/get",
-            type: "GET",
-            success: function (response) {
-                console.log("Response:", response);
-
-                let user = response.data.userDTO
-
-                let email = response.data.email
-                console.log("email" ,email);
-
-                // let username = user.name
-                // console.log("User name:", username);
-
-               /* let role = response.data.userDTO.role
-                console.log("User Role:", role);
-
-                let address = response.data.userDTO.address
-                console.log("User Address:", address);
-
-                let telNo = response.data.userDTO.telNo
-                console.log("User Tel:", telNo);*/
-
-
-                if (!user.error) {
-                    document.querySelector(".card-title").innerHTML = `🧑‍💼 ${username}`;
-                    document.querySelector(".text-muted").textContent = role;
-                    document.querySelectorAll(".desc p")[0].innerHTML = `<strong>📍 Address:</strong> ${address}`;
-                    document.querySelectorAll(".desc p")[1].innerHTML = `<strong>📞 Tel:</strong> ${telNo}`;
-                    document.querySelectorAll(".desc p")[2].innerHTML = `<strong>✉️ Email:</strong> ${email}`;
-                } else {
-                    document.querySelector(".desc").innerHTML = `<p class="text-danger">User not found.</p>`;
-                }
-
-            },
-            error: function () {
-                document.querySelector(".desc").innerHTML = `<p class="text-danger">Failed to load data.</p>`;
-            }
-
-        })
-
-    }
-    getAllUsers();
-
-
-        $('#LogOutBtn').click(function () {
+$(document).ready(function () {
+    $('#LogOutBtn').click(function () {
         localStorage.removeItem('token');
         window.location.href = 'index.html';
     });
+
+    // load to data for the profile
+    function loadProfile() {
+        let token = localStorage.getItem('token');
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/getProfile",
+            type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+                // $("#userProfileImage").attr("src", response.data.profileImage);
+                $('#userName').text(response.data.name);
+
+                //set email to input field
+                $('#email').val(response.data.email);
+                $('#name').val(response.data.name);
+                $('#address').val(response.data.address);
+                $('#telNo').val(response.data.telNo);
+            },
+            error: function (response) {
+                alert("Something went wrong");
+                localStorage.removeItem('token');
+                window.location.href = 'index.html';
+            }
+        })
+    }
+
+    $('#updateProfileBtn').click(function () {
+        let  token = localStorage.getItem('token');
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/updateProfile",
+            type: "PUT",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            data: JSON.stringify({
+                "email": $('#email').val(),
+                "password": null,
+                'name': $('#name').val(),
+                "role":null,
+                "address": $('#address').val(),
+                "telNo": $('#telNo').val(),
+                "profileImage":null
+            }),
+            success: function (response) {
+                alert("Profile Updated Successfully");
+                loadProfile();
+            },
+            error: function (response) {
+                alert("Error");
+            }
+        })
+    });
+
+    loadProfile();
+});
+
+
+
+

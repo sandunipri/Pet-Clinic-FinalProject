@@ -36,13 +36,6 @@ public class ClientController {
         this.fileStorageService = fileStorageService;
     }
 
-    @GetMapping("/get")
-    @PreAuthorize("hasAuthority('USER')")
-    public ResponseEntity<ResponseDTO> getUser() {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDTO(VarList.OK, "Success", userService.getUsers()));
-    }
-
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
         //save image
@@ -77,4 +70,5 @@ public class ClientController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
+
 }

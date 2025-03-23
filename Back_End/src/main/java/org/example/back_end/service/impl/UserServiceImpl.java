@@ -54,9 +54,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public UserDTO searchUser(String username) {
-        if (userRepository.existsByEmail(username)) {
-            User user=userRepository.findByEmail(username);
+    public UserDTO searchUser(String email) {
+        if (userRepository.existsByEmail(email)) {
+            User user=userRepository.findByEmail(email);
             return modelMapper.map(user,UserDTO.class);
         } else {
             return null;
@@ -78,13 +78,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public String getUserRoleByToken(String token) {
-        return jwtUtil.getRoleFromToken(token);
+    public int updateUser(UserDTO userDTO) {
+        if (userRepository.existsByEmail(userDTO.getEmail())) {
+            userRepository.save(modelMapper.map(userDTO, User.class));
+            return VarList.OK;
+        } else {
+            return VarList.Not_Acceptable;
+        }
     }
 
     @Override
-    public Object getUsers() {
-        return userRepository.findAll();
+    public String getUserRoleByToken(String token) {
+        return jwtUtil.getRoleFromToken(token);
     }
 
     @Override
@@ -98,5 +103,22 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userDTO.setProfileImage(savedPath);
         return userDTO;
 
+    }
+
+    @Override
+    public UserDTO getUserByToken(String token) {
+        String username = jwtUtil.getUsernameFromToken(token);
+        return searchUser(username);
+    }
+
+    @Override
+    public boolean deleteUser(String token) {
+        String username = jwtUtil.getUsernameFromToken(token);
+        userRepository.deleteByEmail(username);
+
+        if (userRepository.existsByEmail(username)) {
+            return false;
+        }
+        return true;
     }
 }

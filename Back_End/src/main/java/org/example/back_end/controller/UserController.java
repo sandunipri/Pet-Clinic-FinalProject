@@ -26,6 +26,52 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
+
+    @GetMapping( "/getProfile")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
+    public ResponseEntity<ResponseDTO> getUser(@RequestHeader("Authorization") String authorization ){
+        System.out.println(authorization);
+
+        UserDTO userDTO = userService.getUserByToken(authorization.substring(7));
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseDTO(VarList.OK, "Success", userDTO));
+    }
+
+    @PutMapping("/updateProfile")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
+    public ResponseEntity<ResponseDTO> updateUser(@RequestBody UserDTO userDTO) {
+        UserDTO existUser = userService.searchUser(userDTO.getEmail());
+        existUser.setName(userDTO.getName());
+        existUser.setAddress(userDTO.getAddress());
+        existUser.setTelNo(userDTO.getTelNo());
+
+        int res = userService.updateUser(existUser);
+        if (res == VarList.OK) {
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new ResponseDTO(VarList.OK, "Success", existUser));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                .body(new ResponseDTO(VarList.Bad_Gateway, "Error", null));
+
+        /*return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new ResponseDTO(VarList.Created, "Success", null));*/
+    }
+
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
+    public ResponseEntity<ResponseDTO> deleteUser(@RequestHeader("Authorization") String authorization ){
+        boolean isDeleted = userService.deleteUser(authorization.substring(7));
+        if (isDeleted){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDTO(VarList.OK, "Success", null));
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                .body(new ResponseDTO(VarList.Bad_Gateway, "Failed", null));
+    }
+
+
     @GetMapping("/logAgain")
 //    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
