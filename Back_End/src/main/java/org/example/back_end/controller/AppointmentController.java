@@ -20,7 +20,6 @@ public class AppointmentController {
     @PostMapping("/save")
     public ResponseEntity<ResponseDTO> saveAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         System.out.println("saveAppointment");
-
         appointmentService.saveAppointment(appointmentDTO);
         return ResponseEntity.ok(new ResponseDTO(201, "Appointment saved", appointmentDTO));
     }
