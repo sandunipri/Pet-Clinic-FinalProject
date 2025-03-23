@@ -2,6 +2,7 @@ package org.example.back_end.service.impl;
 
 
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.formDTO.RegisterFormDTO;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.UserRepository;
 import org.example.back_end.service.UserService;
@@ -64,6 +65,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public int saveUser(UserDTO userDTO) {
+        userDTO.setRole("USER");
         if (userRepository.existsByEmail(userDTO.getEmail())) {
             return VarList.Not_Acceptable;
         } else {
@@ -83,5 +85,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public Object getUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public UserDTO convertFormToUserDTO(RegisterFormDTO registerFormDTO, String savedPath) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(registerFormDTO.getEmail());
+        userDTO.setName(registerFormDTO.getName());
+        userDTO.setPassword(registerFormDTO.getPassword());
+        userDTO.setAddress(registerFormDTO.getAddress());
+        userDTO.setTelNo(registerFormDTO.getTelNo());
+        userDTO.setProfileImage(savedPath);
+        return userDTO;
+
     }
 }

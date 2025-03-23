@@ -1,60 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/register.css">
-
-
-</head>
-<body>
-<header></header>
-<main>
-    <form class="w-25 h-75 border border-info p-3 position-absolute top-50 start-50 translate-middle">
-        <h3 class="text-center m-0">REGISTER  FORM</h3>
-        <div class="mb-3 p-2">
-            <label for="exampleInputEmail1" class="form-label">Email address :</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3 p-2">
-            <label for="UserName" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="UserName">
-        </div>
-        <div class="mb-3 p-2">
-            <label for="exampleInputPassword1" class="form-label">Password :</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 p-2">
-            <label for="UserRole" class="form-label">Role:</label>
-            <input type="text" class="form-control" id="UserRole">
-        </div>
-        <div class="mb-3 p-2">
-            <label for="UserAddress" class="form-label">Address :</label>
-            <input type="text" class="form-control" id="UserAddress">
-        </div>
-        <div class="mb-3 p-2">
-            <label for="UserTelNo" class="form-label">Tel No :</label>
-            <input type="number" class="form-control" id="UserTelNo">
-        </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button id="regBtn" class="btn btn-outline-primary" type="button">REGISTER</button>
-        </div>
-    </form>
-</main>
-<footer></footer>
-
-<script src="../js/jquery-3.7.1.min.js"></script>
-<script src="../js/bootstrap.min.css"></script>
-<script src="../assets/js/register.js"></script>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +16,6 @@
             href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
     />
-
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
@@ -81,20 +23,49 @@
             rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="../assets/css/register.css" rel="stylesheet" type="text/css">
+<!--    <link href="../assets/css/register.css" rel="stylesheet" type="text/css">-->
 </head>
 <style>
+    .form-container {
+        padding: 2rem;
+    }
 
+    .image-container {
+        background: url('../assets/images/img_3.png') no-repeat center center/cover;
+        height: 100vh;
+    }
+
+    .inputType {
+        margin-bottom: 1rem;
+    }
+
+    #regBtn {
+        margin-top: 1rem;
+    }
+
+    .navbar-brand h3 {
+        margin: 0;
+    }
+
+    .navbar {
+        padding: 1rem 0;
+    }
+
+    .loginHeader {
+        background-color: #f8f9fa;
+    }
+
+    footer {
+        margin-top: 2rem;
+    }
 </style>
 <body>
 <header>
     <nav class="navbar navbar-expand-lg loginHeader">
-        <div
-                class="container d-flex justify-content-between align-items-center"
-        >
+        <div class="container d-flex justify-content-between align-items-center">
             <!-- Logo and Name -->
             <div class="d-flex align-items-center">
-                <img id="logoImage" src="../assets/images/img_4.png"/>
+                <img id="logoImage" src="../assets/images/img_4.png" alt="Logo" style="height: 50px;"/>
                 <a class="navbar-brand ms-2" href="#">
                     <h3 class="m-0">HAPPY HEARTS</h3>
                 </a>
@@ -114,18 +85,9 @@
             </button>
 
             <!-- Navbar Content (Collapsible) -->
-            <div
-                    class="collapse navbar-collapse justify-content-end"
-                    id="navbarNav"
-            >
-                <a
-                        href="loginForm.html"
-                        class="btn btn-outline-danger d-flex align-items-center"
-                >
-                    <i
-                            class="fa-solid fa-right-to-bracket fa-beat"
-                            style="color: #b70606"
-                    ></i>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <a href="loginForm.html" class="btn btn-outline-danger d-flex align-items-center">
+                    <i class="fa-solid fa-right-to-bracket fa-beat" style="color: #b70606"></i>
                     <span class="ms-2">BACK</span>
                 </a>
             </div>
@@ -137,54 +99,41 @@
     <div class="row">
         <!-- Login Form Section (Now on the Left) -->
         <div class="col-md-6 form-container">
-            <form>
-                <!--                <h3 class="text-center m-0">REGISTER FORM</h3>-->
+            <form id="registerForm">
                 <p class="text-center m-0">Create account to access dashboard and more features</p>
                 <p class="text-center"><b>Register here</b></p>
+
+                <!-- Profile Photo -->
+                <div class="mb-3">
+                    <label for="profileImage" class="form-label fw-bold text-start w-100">Photo</label>
+                    <div class="mt-3 d-flex flex-row align-items-center column-gap-2">
+                        <input type="file" class="form-control rounded-pill shadow-sm px-4 w-75" id="profileImage" name="profileImage"
+                               accept="image/*" required style="max-height: 38px;">
+                        <img id="photoPreview" src="../assets/images/img.png" alt="Preview"
+                             class="img-fluid rounded mt-2"
+                             style="width: 100px; height: 100px; object-fit: cover; border: 2px solid #ddd;">
+                    </div>
+                </div>
+
                 <div>
-                    <label for="exampleInputEmail1" class="form-label"
-                    >Email address :</label
-                    >
-                    <input
-                            type="email"
-                            class="form-control inputType"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
-                    />
+                    <label for="email" class="form-label">Email address :</label>
+                    <input type="email" class="form-control inputType" id="email" name="email" aria-describedby="emailHelp" />
                 </div>
                 <div>
-                    <label for="UserName" class="form-label mt-3">Name:</label>
-                    <input type="text" class="form-control inputType" id="UserName"/>
+                    <label for="name" class="form-label mt-3">Name:</label>
+                    <input type="text" class="form-control inputType" id="name" name="name"/>
                 </div>
                 <div>
-                    <label for="exampleInputPassword1" class="form-label mt-3"
-                    >Password :</label
-                    >
-                    <input
-                            type="password"
-                            class="form-control inputType"
-                            id="exampleInputPassword1"
-                    />
+                    <label for="password" class="form-label mt-3">Password :</label>
+                    <input type="password" class="form-control inputType" id="password" name="password"/>
                 </div>
                 <div>
-                    <label for="UserRole" class="form-label mt-3">Role:</label>
-                    <input type="text" class="form-control inputType" id="UserRole"/>
+                    <label for="address" class="form-label mt-3">Address :</label>
+                    <input type="text" class="form-control inputType" id="address" name="address"/>
                 </div>
                 <div>
-                    <label for="UserAddress" class="form-label mt-3">Address :</label>
-                    <input
-                            type="text"
-                            class="form-control inputType"
-                            id="UserAddress"
-                    />
-                </div>
-                <div>
-                    <label for="UserTelNo" class="form-label mt-3">Tel No :</label>
-                    <input
-                            type="text"
-                            class="form-control inputType"
-                            id="UserTelNo"
-                    />
+                    <label for="telNo" class="form-label mt-3">Tel No :</label>
+                    <input type="text" class="form-control inputType" id="telNo" name="telNo"/>
                 </div>
 
                 <div class="d-grid">
@@ -205,13 +154,9 @@
         <p class="mb-0">&copy; 2023 Your Company. All rights reserved.</p>
         <p class="mb-0">
             Follow us:
-            <a href="#" class="text-white mx-2"
-            ><i class="fab fa-facebook"></i
-            ></a>
+            <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
             <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white mx-2"
-            ><i class="fab fa-instagram"></i
-            ></a>
+            <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
         </p>
     </div>
 </footer>

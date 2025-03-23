@@ -1,46 +1,57 @@
 package org.example.back_end.controller;
 
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
-
 import org.example.back_end.dto.AuthDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/user")
+@RequestMapping("api/v1/client")
 @CrossOrigin
-public class UserController {
+@MultipartConfig(fileSizeThreshold = 10 * 1024 * 1024,
+        maxFileSize = 10 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024)
+
+
+public class ClientController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final FileStorageService fileStorageService;
 
-    //constructor injection
-    public UserController(UserService userService, JwtUtil jwtUtil) {
+    public ClientController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
+        this.fileStorageService = fileStorageService;
     }
 
-    @GetMapping("/logAgain")
-//    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-    public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
-        System.out.println("sssss");
-        String token = authorization.substring(7);
-        String role = userService.getUserRoleByToken(token);
-       /* return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDTO(VarList.OK, "success",role));*/
+    @GetMapping("/get")
+    @PreAuthorize("hasAuthority('USER')")
+    public ResponseEntity<ResponseDTO> getUser() {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDTO(VarList.OK, "success",role));
+                .body(new ResponseDTO(VarList.OK, "Success", userService.getUsers()));
     }
 
+    @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
+        //save image
+        String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
 
-    @PostMapping("/register")
-    public ResponseEntity<ResponseDTO> registerUser(@RequestBody @Valid UserDTO userDTO) {
+        //convert form data to userDTO
+        UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, savedPath);
+
+
         try {
             int res = userService.saveUser(userDTO);
             switch (res) {
@@ -66,5 +77,4 @@ public class UserController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
-
 }
