@@ -1,14 +1,14 @@
 .form-container {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .image-container {
-    background: url('assets/images/img_3.png') no-repeat center center/cover;
+    background: url('/assets/images/img_3.png') no-repeat center center/cover;
     height: 100vh;
 }
 
 .inputType {
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }
 
 #regBtn {

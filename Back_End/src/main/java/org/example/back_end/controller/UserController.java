@@ -54,8 +54,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
                 .body(new ResponseDTO(VarList.Bad_Gateway, "Error", null));
 
-        /*return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new ResponseDTO(VarList.Created, "Success", null));*/
+
     }
 
     @DeleteMapping("/delete")
@@ -73,13 +72,11 @@ public class UserController {
 
 
     @GetMapping("/logAgain")
-//    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
         System.out.println("sssss");
         String token = authorization.substring(7);
         String role = userService.getUserRoleByToken(token);
-       /* return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDTO(VarList.OK, "success",role));*/
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDTO(VarList.OK, "success",role));
     }
