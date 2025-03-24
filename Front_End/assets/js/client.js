@@ -17,9 +17,8 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + token
             },
             success: function (response) {
-                // $("#userProfileImage").attr("src", response.data.profileImage);
+                $("#userProfileImage").attr("src", "../assets/images/img.png"+response.data.profileImage);
                 $('#userName').text(response.data.name);
-
                 //set email to input field
                 $('#email').val(response.data.email);
                 $('#name').val(response.data.name);

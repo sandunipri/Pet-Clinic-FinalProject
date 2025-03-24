@@ -6,6 +6,7 @@ import org.example.back_end.dto.formDTO.RegisterFormDTO;
 
 public interface UserService {
     int saveUser(UserDTO userDTO);
+    int saveAdmin(UserDTO userDTO);
     int updateUser(UserDTO userDTO);
     UserDTO searchUser(String email);
     String getUserRoleByToken(String token);

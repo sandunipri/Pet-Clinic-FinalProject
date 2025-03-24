@@ -56,8 +56,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public UserDTO searchUser(String email) {
         if (userRepository.existsByEmail(email)) {
-            User user=userRepository.findByEmail(email);
-            return modelMapper.map(user,UserDTO.class);
+            User user = userRepository.findByEmail(email);
+            return modelMapper.map(user, UserDTO.class);
         } else {
             return null;
         }
@@ -76,6 +76,21 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             return VarList.Created;
         }
     }
+
+    @Override
+    public int saveAdmin(UserDTO userDTO) {
+        userDTO.setRole("ADMIN");
+        if (userRepository.existsByEmail(userDTO.getEmail())) {
+            return VarList.Not_Acceptable;
+        } else {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+//            userDTO.setRole("USER");
+            userRepository.save(modelMapper.map(userDTO, User.class));
+            return VarList.Created;
+        }
+    }
+
 
     @Override
     public int updateUser(UserDTO userDTO) {
