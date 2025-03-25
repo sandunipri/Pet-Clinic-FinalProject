@@ -12,6 +12,5 @@ public interface UserService {
     String getUserRoleByToken(String token);
     UserDTO convertFormToUserDTO(RegisterFormDTO registerFormDTO, String savedPath);
     UserDTO getUserByToken(String substring);
-
     boolean deleteUser(String token);
 }
