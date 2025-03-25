@@ -29,8 +29,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void saveAppointment(AppointmentDTO appointmentDTO) {
-        Pet pet = petRepo.getReferenceById(appointmentDTO.getPetId());
-        Veterinarian veterinarian = veterinarianRepo.getReferenceById(appointmentDTO.getVeterinarianId());
+        Pet pet = petRepo.getReferenceById(appointmentDTO.getPet().getPetId());
+        Veterinarian veterinarian = veterinarianRepo.getReferenceById(appointmentDTO.getVeterinarian().getId());
 
         Appointments appointments = modelMapper.map(appointmentDTO, Appointments.class);
 
