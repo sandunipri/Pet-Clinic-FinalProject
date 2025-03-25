@@ -1,5 +1,6 @@
 package org.example.back_end.service.impl;
 
+import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AddVeterinarianFormDTO;
 import org.example.back_end.entity.Veterinarian;
@@ -43,5 +44,13 @@ public class VeterinarianServiceImpl implements VeterinarianService {
         veterinarianDTO.setProfileImage(savedPath);
 
         return veterinarianDTO;
+    }
+
+    @Override
+    public VeterinarianDTO searchVeterinarian(int id) {
+        return veterinarianRepo.findById(id)
+                .map(veterinarian -> modelMapper.map(veterinarian, VeterinarianDTO.class))
+                .orElse(null);
+
     }
 }

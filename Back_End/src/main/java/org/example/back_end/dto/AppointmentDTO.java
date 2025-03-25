@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class AppointmentDTO {
+    private int id;
     private Date date;
     private String time;
     private String reason;

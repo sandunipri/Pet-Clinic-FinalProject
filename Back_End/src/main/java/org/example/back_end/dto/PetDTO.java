@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class PetDTO {
+    private int petId;
     private String petName;
     private String species;
     private String breed;

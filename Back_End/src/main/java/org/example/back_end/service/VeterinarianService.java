@@ -1,5 +1,6 @@
 package org.example.back_end.service;
 
+import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AddVeterinarianFormDTO;
 
@@ -12,5 +13,5 @@ public interface VeterinarianService {
 
     VeterinarianDTO convertFormToVeterinarianDTO(AddVeterinarianFormDTO addVeterinarianFormDTO, String savedPath);
 
-
+    VeterinarianDTO searchVeterinarian(int id);
 }

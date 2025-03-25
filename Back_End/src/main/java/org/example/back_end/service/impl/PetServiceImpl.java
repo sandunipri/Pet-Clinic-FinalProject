@@ -2,6 +2,7 @@ package org.example.back_end.service.impl;
 
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.PetRepo;
@@ -48,7 +49,15 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public List<PetDTO> getAllPets() {
-        return modelMapper.map(petRepo.findAll(),new TypeToken<List<PetDTO>>(){}.getType());
+        return modelMapper.map(petRepo.findAll(), new TypeToken<List<PetDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public PetDTO searchPet(int petId) {
+        return petRepo.findById(petId)
+                .map(pet -> modelMapper.map(pet, PetDTO.class))
+                .orElse(null);
     }
 
 
