@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "appointments")
@@ -23,6 +24,9 @@ public class Appointments {
     private Date date;
     private String time;
     private String reason;
+
+    @OneToMany(mappedBy = "appointments")
+    private List<Payment> paymentsLists;
 
     @ManyToOne
     private Pet pet;
