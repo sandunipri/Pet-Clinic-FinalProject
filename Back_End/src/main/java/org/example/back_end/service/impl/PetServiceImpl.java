@@ -1,6 +1,7 @@
 package org.example.back_end.service.impl;
 
 import org.example.back_end.dto.PetDTO;
+import org.example.back_end.dto.UserDTO;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.PetRepo;
@@ -26,10 +27,20 @@ public class PetServiceImpl implements PetService {
     private UserRepository userRepo;
 
 
-    @Override
+/*    @Override
     public void savePet(PetDTO petDTO) {
         User user = userRepo.findByEmail(petDTO.getUserEmail());
         Pet pet = modelMapper.map(petDTO, Pet.class);
+        pet.setUser(user);
+        petRepo.save(pet);
+
+    }*/
+
+    @Override
+    public void savePet(PetDTO petDTO, UserDTO userDTO) {
+        //set the user to the pet.
+        Pet pet = modelMapper.map(petDTO, Pet.class);
+        User user = modelMapper.map(userDTO, User.class);
         pet.setUser(user);
         petRepo.save(pet);
 
