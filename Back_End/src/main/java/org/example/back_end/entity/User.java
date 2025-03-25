@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,11 +16,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uid;
-    @Column(unique = true ,nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
     private String password;
     private String name;
@@ -30,4 +32,7 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private List<Pet> petList;
+
+    @OneToMany(mappedBy = "user")
+    private List<Appointments> appointmentsList;
 }

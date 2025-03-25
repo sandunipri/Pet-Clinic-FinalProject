@@ -5,17 +5,20 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.UUID;
+import java.util.List;
 
-@Entity
-@Table(name = "pet")
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
+@Entity
+@Table(name = "pet")
 public class Pet {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petId;
     private String petName;
     private String species;
@@ -23,8 +26,13 @@ public class Pet {
     private String age ;
     private String gender;
 
+    @OneToMany(mappedBy = "pet")
+    private List<MedicalReport> medicalReportList;
+
+    @OneToMany(mappedBy = "pet")
+    private List<Appointments> appointmentsList;
+
     @ManyToOne
-    @JoinColumn(name = "email", referencedColumnName = "email")
     private User user;
 
 }

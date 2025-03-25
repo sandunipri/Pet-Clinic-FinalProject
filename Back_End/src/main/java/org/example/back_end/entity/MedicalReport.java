@@ -6,32 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-@Entity
-@Table(name = "appointments")
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Data
-public class Appointments {
-
+@ToString
+@Entity(name = "medicalReport")
+public class MedicalReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private Date date;
-    private String time;
-    private String reason;
+    private int reportId;
+    private String report;
+    private String date;
 
     @ManyToOne
     private Pet pet;
 
     @ManyToOne
     private Veterinarian veterinarian;
-
-    @ManyToOne
-    private User user;
-
 
 }
