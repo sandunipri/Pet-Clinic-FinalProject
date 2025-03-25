@@ -9,7 +9,6 @@ import org.example.back_end.entity.Appointments;
 @NoArgsConstructor
 @Data
 public class PaymentDTO {
-    private int paymentId;
     private String paymentDate;
     private String paymentMethod;
     private double paymentAmount;

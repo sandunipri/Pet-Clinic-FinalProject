@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
         maxFileSize = 10 * 1024 * 1024,
         maxRequestSize = 10 * 1024 * 1024)
 
-
 public class ClientController {
     private final UserService userService;
     private final JwtUtil jwtUtil;

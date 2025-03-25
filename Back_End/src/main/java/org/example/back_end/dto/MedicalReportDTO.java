@@ -11,7 +11,6 @@ import org.example.back_end.entity.Veterinarian;
 @NoArgsConstructor
 @Data
 public class MedicalReportDTO {
-    private int reportId;
     private String report;
     private String date;
     private Pet pet;

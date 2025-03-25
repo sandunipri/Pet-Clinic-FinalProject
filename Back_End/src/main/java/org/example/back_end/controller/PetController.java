@@ -1,5 +1,6 @@
 package org.example.back_end.controller;
 
+import org.example.back_end.service.PetService;
 import org.springframework.web.bind.annotation.*;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.ResponseDTO;
@@ -17,7 +18,7 @@ import java.util.List;
 public class PetController {
 
     @Autowired
-    private PetServiceImpl petService;
+    private PetService petService;
 
     @PostMapping("/save")
     public ResponseEntity<ResponseDTO> addPet(@RequestBody PetDTO petDTO) {
