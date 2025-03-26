@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>YOUR PROFILE</title>
-</head>
-<body>
-<link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 "
-/>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap"
-        rel="stylesheet"
-/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-      integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
-<link rel="stylesheet" href="../assets/css/profile.css">
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+          integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="../assets/css/profile.css">
+</head>
+
+<body>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
             <!-- Page title -->
-            <div class="my-5">
+            <div class="my-5 text-center">
                 <h3>My Profile</h3>
                 <hr>
             </div>
@@ -39,159 +42,125 @@
                     <div class="col-xxl-8 mb-5 mb-xxl-0">
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                             <div class="row g-3">
-                                <h4 class="mb-4 mt-0">Contact detail</h4>
+                                <h4 class="mb-4 mt-0">Personal detail</h4>
                                 <!-- First Name -->
                                 <div class="col-md-6">
-                                    <label class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="First name"
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder=""
+                                           aria-label="First name"
                                            value="Scaralet">
-                                </div>
-                                <!-- Last name -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Last name"
-                                           value="Doe">
-                                </div>
-                                <!-- Phone number -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Phone number *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Phone number"
-                                           value="(333) 000 555">
-                                </div>
-                                <!-- Mobile number -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Mobile number *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Phone number"
-                                           value="+91 9852 8855 252">
                                 </div>
                                 <!-- Email -->
                                 <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Email *</label>
-                                    <input type="email" class="form-control" id="inputEmail4"
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email"
                                            value="example@homerealty.com">
                                 </div>
-                                <!-- Skype -->
+                                <!-- Last name -->
+                                <!-- <div class="col-md-6">
+                                     <label class="form-label">Email *</label>
+                                     <input type="text" class="form-control" placeholder="" aria-label="Last name"
+                                            value="Doe">
+                                 </div>-->
+                                <!-- Phone number -->
                                 <div class="col-md-6">
-                                    <label class="form-label">Skype *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Phone number"
-                                           value="Scaralet D">
+                                    <label class="form-label">Phone number *</label>
+                                    <input type="text" class="form-control" id="telNo" name="telNo" placeholder=""
+                                           aria-label="Phone number"
+                                           value="(333) 000 555">
+                                </div>
+                                <!-- Address -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Address *</label>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="" aria-label="Phone number"
+                                           value="+91 9852 8855 252">
+                                </div>
+
+                                <!-- password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Password *</label>
+                                    <input type="password" class="form-control" placeholder=""
+                                           aria-label="Change Password"
+                                           value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" placeholder=""
+                                           aria-label="Confirm Password"
+                                           value="">
                                 </div>
                             </div> <!-- Row END -->
                         </div>
                     </div>
                     <!-- Upload profile -->
                     <div class="col-xxl-4">
-                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="bg-secondary-soft px-4 py-4 rounded">
                             <div class="row g-3">
                                 <h4 class="mb-4 mt-0">Upload your profile photo</h4>
                                 <div class="text-center">
-                                    <!-- Image upload -->
-                                    <div class="square position-relative display-2 mb-3">
-                                        <i class="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary"></i>
+                                    <div class="text-center">
+                                        <div class="position-relative mb-3">
+                                            <img id="photoPreview" src="../assets/images/img_4.png" alt="Preview"
+                                                 class="img-fluid rounded"
+                                                 style="width: 200px; height: 200px; object-fit: cover; border: 2px solid #ddd;">
+                                        </div>
+
+                                        <!-- Upload Input -->
+                                        <input type="file" id="profileImage" class="d-none" name="profileImage" accept="image/*">
+                                        <label class="btn btn-success-soft" for="profileImage">Upload</label>
+
+                                        <!-- Remove Button -->
+                                        <button type="button" class="btn btn-danger-soft" id="removeImage">Remove</button>
+
+                                        <!-- Note -->
+                                        <p class="text-muted mt-2"><span class="me-1">Note:</span>Minimum size 200px x 200px</p>
                                     </div>
-                                    <!-- Button -->
-                                    <input type="file" id="customFile" name="file" hidden="">
-                                    <label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
-                                    <button type="button" class="btn btn-danger-soft">Remove</button>
-                                    <!-- Content -->
-                                    <p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Minimum size 300px x
-                                        300px</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- Row END -->
 
-                <!-- Social media detail -->
+                <!-- Update And delete button-->
                 <div class="row mb-5 gx-5">
-                   <!-- <div class="col-xxl-6 mb-5 mb-xxl-0">
-                        <div class="bg-secondary-soft px-4 py-5 rounded">
-                            <div class="row g-3">
-                                <h4 class="mb-4 mt-0">Social media detail</h4>
-                                &lt;!&ndash; Facebook &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i class="fab fa-fw fa-facebook me-2 text-facebook"></i>Facebook
-                                        *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Facebook"
-                                           value="http://www.facebook.com">
-                                </div>
-                                &lt;!&ndash; Twitter &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i class="fab fa-fw fa-twitter text-twitter me-2"></i>Twitter
-                                        *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Twitter"
-                                           value="http://www.twitter.com">
-                                </div>
-                                &lt;!&ndash; Linkedin &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i
-                                            class="fab fa-fw fa-linkedin-in text-linkedin me-2"></i>Linkedin *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Linkedin"
-                                           value="http://www.linkedin.com">
-                                </div>
-                                &lt;!&ndash; Instragram &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i class="fab fa-fw fa-instagram text-instagram me-2"></i>Instagram
-                                        *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Instragram"
-                                           value="http://www.instragram.com">
-                                </div>
-                                &lt;!&ndash; Dribble &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i
-                                            class="fas fa-fw fa-basketball-ball text-dribbble me-2"></i>Dribble
-                                        *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Dribble"
-                                           value="http://www.dribble.com">
-                                </div>
-                                &lt;!&ndash; Pinterest &ndash;&gt;
-                                <div class="col-md-6">
-                                    <label class="form-label"><i class="fab fa-fw fa-pinterest text-pinterest"></i>Pinterest
-                                        *</label>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Pinterest"
-                                           value="http://www.pinterest.com">
-                                </div>
-                            </div> &lt;!&ndash; Row END &ndash;&gt;
-                        </div>
-                    </div>-->
-
-                    <!-- change password -->
-                    <!-- <div class="col-xxl-6">
-                         <div class="bg-secondary-soft px-4 py-5 rounded">
-                             <div class="row g-3">
-                                 <h4 class="my-4">Change Password</h4>
-                                 &lt;!&ndash; Old password &ndash;&gt;
-                                 <div class="col-md-6">
-                                     <label for="exampleInputPassword1" class="form-label">Old password *</label>
-                                     <input type="password" class="form-control" id="exampleInputPassword1">
-                                 </div>
-                                 &lt;!&ndash; New password &ndash;&gt;
-                                 <div class="col-md-6">
-                                     <label for="exampleInputPassword2" class="form-label">New password *</label>
-                                     <input type="password" class="form-control" id="exampleInputPassword2">
-                                 </div>
-                                 &lt;!&ndash; Confirm password &ndash;&gt;
-                                 <div class="col-md-12">
-                                     <label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
-                                     <input type="password" class="form-control" id="exampleInputPassword3">
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div> -->
-                    <!-- Row END -->
-                    <!-- button -->
                     <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                        <button type="button" class="btn btn-danger btn-lg">Delete profile</button>
-                        <button type="button" class="btn btn-primary btn-lg">Update profile</button>
+                        <button type="button" class="btn btn-secondary btn-lg" style="opacity: 0.8"
+                                onclick="history.back()">
+                            <i class="fas fa-arrow-left me-2"></i> Back
+                        </button>
+                        <button type="button" id="deleteBtn" class="btn btn-danger btn-lg" style="opacity: 0.8">
+                            <i class="fas fa-trash-alt me-2"></i> Delete Profile
+                        </button>
+                        <button type="button" id="updateProfileBtn" class="btn btn-primary btn-lg" style="opacity: 0.8">
+                            <i class="fas fa-save me-2"></i> Update Profile
+                        </button>
                     </div>
-
                 </div>
+
             </form><!-- Form END -->
         </div>
     </div>
 </div>
 <script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/client.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script>
+    document.getElementById('profileImage').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('photoPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('removeImage').addEventListener('click', function() {
+        document.getElementById('profileImage').value = "";
+        document.getElementById('photoPreview').src = "../assets/images/img.png";
+    });
+</script>
 </body>
 </html>

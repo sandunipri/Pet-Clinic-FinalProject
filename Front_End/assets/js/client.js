@@ -15,9 +15,7 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + token
             },
             success: function (response) {
-                // $("#userProfileImage").attr("src", "../assets/images/img.png"+response.data.profileImage);
-                $('#userName').text(response.data.name);
-                //set email to input field
+                $("#profileImage").attr("src", "../assets/images/img.png"+response.data.profileImage);
                 $('#email').val(response.data.email);
                 $('#name').val(response.data.name);
                 $('#address').val(response.data.address);
@@ -32,6 +30,9 @@ $(document).ready(function () {
     }
 
     $('#updateProfileBtn').click(function () {
+
+        console.log("updateProfileBtn");
+
         let  token = localStorage.getItem('token');
         $.ajax({
             url: "http://localhost:8080/api/v1/user/updateProfile",
@@ -39,6 +40,7 @@ $(document).ready(function () {
             headers: {
                 'Authorization': 'Bearer ' + token
             },
+            contentType: "application/json",
             data: JSON.stringify({
                 "email": $('#email').val(),
                 "password": null,
@@ -64,6 +66,7 @@ $(document).ready(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/user/delete",
             type: "DELETE",
+            contentType: "application/json",
             headers: {
                 'Authorization': 'Bearer ' + token
             },

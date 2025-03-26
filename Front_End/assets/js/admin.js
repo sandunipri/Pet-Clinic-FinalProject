@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
 
     // load to data for the profile
- /*   function loadProfile() {
+    function loadProfile() {
         let token = localStorage.getItem('token');
 
         $.ajax({
@@ -15,12 +15,10 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + token
             },
             success: function (response) {
-                // $("#userProfileImage").attr("src", "../assets/images/img.png"+response.data.profileImage);
-                $('#adminName').text(response.data.name);
-                //set email to input field
+                $("#profileImage").attr("src", "../assets/images/backendImages/profileImages" + response.data.profileImage);
                 $('#email').val(response.data.email);
                 $('#name').val(response.data.name);
-                $('#adminAddress').val(response.data.address);
+                $('#address').val(response.data.address);
                 $('#telNo').val(response.data.telNo);
             },
             error: function (response) {
@@ -30,6 +28,56 @@ $(document).ready(function () {
             }
         })
     }
+    $('#updateProfileBtn').click(function () {
 
-    loadProfile();*/
+        console.log("updateProfileBtn");
+
+        let  token = localStorage.getItem('token');
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/updateProfile",
+            type: "PUT",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            contentType: "application/json",
+            data: JSON.stringify({
+                "email": $('#email').val(),
+                "password": null,
+                'name': $('#name').val(),
+                "role":null,
+                "address": $('#address').val(),
+                "telNo": $('#telNo').val(),
+                "profileImage":null
+            }),
+            success: function (response) {
+                alert("Profile Updated Successfully");
+                loadProfile();
+            },
+            error: function (response) {
+                alert("Error");
+            }
+        })
+    });
+
+
+    $('#deleteBtn').click(function () {
+        let token = localStorage.getItem('token');
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/delete",
+            type: "DELETE",
+            contentType: "application/json",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+                alert("Profile Deleted Successfully");
+                localStorage.removeItem('token');
+                window.location.href = 'index.html';
+            },
+            error: function (response) {
+                alert("Error");
+            }
+        })
+    });
+    loadProfile();
 });

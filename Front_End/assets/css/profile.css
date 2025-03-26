@@ -2,7 +2,7 @@ body{margin-top:20px;
     color: #9b9ca1;
 }
 .bg-secondary-soft {
-    background-color: rgba(208, 212, 217, 0.1) !important;
+    background-color: rgba(208, 215, 216, 0.5) !important;
 }
 .rounded {
     border-radius: 5px !important;
@@ -26,7 +26,7 @@ body{margin-top:20px;
 }
 .text-secondary {
     --bs-text-opacity: 1;
-    color: rgba(208, 212, 217, 0.7) !important;
+    color: rgba(10, 10, 163, 0.7) !important;
 }
 .btn-success-soft {
     color: #28a745;
