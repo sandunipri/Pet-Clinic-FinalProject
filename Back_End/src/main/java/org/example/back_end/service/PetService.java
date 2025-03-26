@@ -11,4 +11,6 @@ public interface PetService {
     List<PetDTO> getAllPets();
 
     PetDTO searchPet(int petId);
+
+    PetDTO searchPetByUserEmail(String email);
 }

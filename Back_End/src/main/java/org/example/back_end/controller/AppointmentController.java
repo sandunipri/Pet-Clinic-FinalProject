@@ -45,9 +45,14 @@ public class AppointmentController {
         VeterinarianDTO veterinarianDTO = veterinarianService.searchVeterinarian(appointmentDTO.getVeterinarian().getId());
         System.out.println("Veterinarian found: " + veterinarianDTO);
 
-        //Retrieve the pet.
-        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
+        //Retrieve the pet in using userEmail.
+        PetDTO petDTO = petService.searchPetByUserEmail(email);
         System.out.println("Pet found: " + petDTO);
+
+
+
+//        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
+//        System.out.println("Pet found: " + petDTO);
 
         //save the appointment.
         appointmentService.saveAppointment(appointmentDTO, userDTO, petDTO, veterinarianDTO);

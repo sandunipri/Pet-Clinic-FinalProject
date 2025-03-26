@@ -60,5 +60,11 @@ public class PetServiceImpl implements PetService {
                 .orElse(null);
     }
 
+    @Override
+    public PetDTO searchPetByUserEmail(String email) {
+        return modelMapper.map(petRepo.findByUserEmail(email), PetDTO.class);
+
+    }
+
 
 }
