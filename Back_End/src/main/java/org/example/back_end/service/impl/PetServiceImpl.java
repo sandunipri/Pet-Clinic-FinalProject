@@ -63,7 +63,6 @@ public class PetServiceImpl implements PetService {
     @Override
     public PetDTO searchPetByUserEmail(String email) {
         return modelMapper.map(petRepo.findByUserEmail(email), PetDTO.class);
-
     }
 
 
