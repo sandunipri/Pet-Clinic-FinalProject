@@ -5,10 +5,13 @@ import jakarta.validation.Valid;
 import org.example.back_end.dto.AuthDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +22,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final FileStorageService fileStorageService;
 
     //constructor injection
-    public UserController(UserService userService, JwtUtil jwtUtil) {
+    public UserController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
+        this.fileStorageService = fileStorageService;
     }
 
 
@@ -38,13 +43,18 @@ public class UserController {
                 .body(new ResponseDTO(VarList.OK, "Success", userDTO));
     }
 
-    @PutMapping("/updateProfile")
+    @PutMapping(path = "/updateProfile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
-    public ResponseEntity<ResponseDTO> updateUser(@RequestBody UserDTO userDTO) {
-        UserDTO existUser = userService.searchUser(userDTO.getEmail());
-        existUser.setName(userDTO.getName());
-        existUser.setAddress(userDTO.getAddress());
-        existUser.setTelNo(userDTO.getTelNo());
+    public ResponseEntity<ResponseDTO> updateUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
+        UserDTO existUser = userService.searchUser(registerFormDTO.getEmail());
+        existUser.setName(registerFormDTO.getName());
+        existUser.setAddress(registerFormDTO.getAddress());
+        existUser.setTelNo(registerFormDTO.getTelNo());
+
+        if (registerFormDTO.getProfileImage() != null) {
+            String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
+            existUser.setProfileImage(savedPath);
+        }
 
         int res = userService.updateUser(existUser);
         if (res == VarList.OK) {
@@ -53,7 +63,6 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
                 .body(new ResponseDTO(VarList.Bad_Gateway, "Error", null));
-
 
     }
 
@@ -70,7 +79,6 @@ public class UserController {
                 .body(new ResponseDTO(VarList.Bad_Gateway, "Failed", null));
     }
 
-
     @GetMapping("/logAgain")
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<ResponseDTO> logAgain(@RequestHeader("Authorization") String authorization ){
@@ -82,6 +90,7 @@ public class UserController {
     }
 
 
+/*
     @PostMapping("/register")
     public ResponseEntity<ResponseDTO> registerUser(@RequestBody @Valid UserDTO userDTO) {
         try {
@@ -109,5 +118,6 @@ public class UserController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
+*/
 
 }

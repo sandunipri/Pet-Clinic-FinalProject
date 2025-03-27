@@ -37,12 +37,7 @@ public class ClientController {
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
-        //save image
-        String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
-
-        //convert form data to userDTO
-        UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, savedPath);
-
+        UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, null);
 
         try {
             int res = userService.saveUser(userDTO);

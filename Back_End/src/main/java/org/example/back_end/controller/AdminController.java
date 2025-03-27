@@ -33,18 +33,11 @@ public class AdminController {
     }
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ResponseDTO> registerAdmin(@ModelAttribute RegisterFormDTO registerFormDTO) {
-
-
-        //save image
-        String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
-
-        //convert form data to userDTO
-        UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, savedPath);
-        System.out.println(userDTO);
+    public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
+        UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, null);
 
         try {
-            int res = userService.saveAdmin(userDTO);
+            int res = userService.saveUser(userDTO);
             switch (res) {
                 case VarList.Created -> {
                     String token = jwtUtil.generateToken(userDTO);
@@ -68,6 +61,4 @@ public class AdminController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
-
-
 }

@@ -16,16 +16,18 @@ public class FileStorageServiceImpl implements FileStorageService {
     private static final String PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "profileImages\\";
     private static final String VET_PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "vetProfileImages\\";*/
 
-    private static final String DEFAULT_DIRECTORY ="C:\\Users\\priya\\Desktop\\Projects\\Advanced API\\Spring\\Pet-Clinic-FinalProject\\Front_End\\assets\\images\\";
-    private static final String DEFAULT_IMAGE_DIRECTORY = DEFAULT_DIRECTORY + "\\backendImages\\";
-    private static final String PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "profileImages\\";
-    private static final String VET_PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "vetProfileImages\\";
+    private static final String PROFILE_IMAGE_DIRECTORY = "profileImages\\";
+    private static final String VET_PROFILE_IMAGE_DIRECTORY = "vetProfileImages\\";
+
+    private static final String UPLOAD_DIRECTORY = "assets\\images\\backendImages\\";
+
+    private static final String DEFAULT_DIRECTORY ="C:\\Users\\priya\\Desktop\\Projects\\Advanced API\\Spring\\Pet-Clinic-FinalProject\\Front_End\\" + UPLOAD_DIRECTORY;
+    private static final String USER_PROFILE_UPLOAD_DIR = DEFAULT_DIRECTORY + PROFILE_IMAGE_DIRECTORY;
+    private static final String VET_PROFILE_UPLOAD_DIR = DEFAULT_DIRECTORY + VET_PROFILE_IMAGE_DIRECTORY;
 
 
     static {
-        createIfNotExistDirectory(DEFAULT_DIRECTORY);
-        createIfNotExistDirectory(DEFAULT_IMAGE_DIRECTORY);
-        createIfNotExistDirectory(PROFILE_UPLOAD_DIR);
+        createIfNotExistDirectory(USER_PROFILE_UPLOAD_DIR);
         createIfNotExistDirectory(VET_PROFILE_UPLOAD_DIR);
     }
 
@@ -33,7 +35,7 @@ public class FileStorageServiceImpl implements FileStorageService {
     public String saveProfileImage(MultipartFile profileImage) {
         // Generate a unique filename
         String fileName = System.currentTimeMillis() + "_" + profileImage.getOriginalFilename();
-        Path filePath = Paths.get(PROFILE_UPLOAD_DIR + fileName);
+        Path filePath = Paths.get(USER_PROFILE_UPLOAD_DIR + fileName);
 
         try {
             //save the image
@@ -41,7 +43,7 @@ public class FileStorageServiceImpl implements FileStorageService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return filePath.toString();
+        return UPLOAD_DIRECTORY + PROFILE_IMAGE_DIRECTORY + fileName;
     }
 
     @Override
