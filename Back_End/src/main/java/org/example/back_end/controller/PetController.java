@@ -4,6 +4,7 @@ import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.service.PetService;
 import org.example.back_end.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.ResponseDTO;
@@ -34,6 +35,7 @@ public class PetController {
     }*/
 
     @PostMapping("/save")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> addPet(@RequestHeader("Authorization") String Authorization, @RequestBody PetDTO petDTO) {
         //Extract the user’s email from the token.
         String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
@@ -51,6 +53,7 @@ public class PetController {
 
 
     @GetMapping("/getAll")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> getAllPets() {
         System.out.println("get all pets");
 

@@ -11,6 +11,7 @@ import org.example.back_end.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,6 +33,7 @@ public class AppointmentController {
 
 
     @PostMapping("/save")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> saveAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDTO appointmentDTO) {
         //Extract the user’s email from the token.
         String email = userService.getUserByToken(Authorization.substring(7)).getEmail();

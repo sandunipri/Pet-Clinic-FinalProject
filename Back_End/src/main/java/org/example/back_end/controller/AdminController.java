@@ -33,6 +33,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
         UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, null);
 

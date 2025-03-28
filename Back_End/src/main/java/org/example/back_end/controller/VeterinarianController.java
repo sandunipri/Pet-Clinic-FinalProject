@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class VeterinarianController {
     }
 
     @PostMapping( value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> saveVeterinarian(@ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
         System.out.println(addVeterinarianFormDTO);
 
@@ -48,6 +50,7 @@ public class VeterinarianController {
     }
 
     @GetMapping("/getAll")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllVeterinarian() {
         System.out.println("getAllVeterinarian");
 
