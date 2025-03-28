@@ -50,6 +50,11 @@ public class UserController {
         existUser.setName(registerFormDTO.getName());
         existUser.setAddress(registerFormDTO.getAddress());
         existUser.setTelNo(registerFormDTO.getTelNo());
+        existUser.setGender(registerFormDTO.getGender());
+        existUser.setNic(registerFormDTO.getNic());
+        existUser.setEmergencyContact(registerFormDTO.getEmergencyContact());
+        existUser.setEmergencyContactName(registerFormDTO.getEmergencyContactName());
+
 
         if (registerFormDTO.getProfileImage() != null) {
             String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());

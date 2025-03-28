@@ -28,6 +28,10 @@ public class User implements Serializable {
     private String role;
     private String address;
     private String telNo;
+    private String gender;
+    private String nic;
+    private String emergencyContact;
+    private String emergencyContactName;
     private String profileImage;
 
     @OneToMany(mappedBy = "user")

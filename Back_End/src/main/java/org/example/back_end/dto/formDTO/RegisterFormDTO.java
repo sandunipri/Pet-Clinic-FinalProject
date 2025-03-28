@@ -17,4 +17,8 @@ public class RegisterFormDTO {
     private String password;
     private String address;
     private String telNo;
+    private String gender;
+    private String nic;
+    private String emergencyContact;
+    private String emergencyContactName;
 }

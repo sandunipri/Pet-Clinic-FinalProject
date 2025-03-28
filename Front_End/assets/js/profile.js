@@ -15,10 +15,30 @@ function loadProfile() {
         },
         success: function (response) {
             $("#photoPreview").attr("src", "../" + response.data.profileImage);
+            $('#Useremail').text(response.data.email);
+            $('#userName').text(response.data.name);
+            $('#fullname').text(response.data.name);
+            $('#userGender').text(response.data.gender);
+            $('#userNic').text(response.data.nic);
+            $('#userAddress').text(response.data.address);
+            $('#userTelNo').text (response.data.telNo);
+            $('#phoneNo').text(response.data.emergencyContact);
+            $('#userPhoneNo').text(response.data.emergencyContact);
+            $('#userEmergencyContactName').text(response.data.emergencyContactName);
+
+
+            //update profile ajax part save
+            $("#currentProfilePic").attr("src", "../" + response.data.profileImage);
             $('#email').val(response.data.email);
             $('#name').val(response.data.name);
             $('#address').val(response.data.address);
-            $('#telNo').val(response.data.telNo);
+            $('#telNo').val (response.data.telNo);
+            $('#gender').val(response.data.gender);
+            $('#nic').val(response.data.nic);
+            $('#emergencyContact').val(response.data.emergencyContact);
+            $('#emergencyContactName').val(response.data.emergencyContactName);
+            $('#profilePic').val(response.data.profileImage);
+
         },
         error: function (response) {
             alert("Something went wrong");
