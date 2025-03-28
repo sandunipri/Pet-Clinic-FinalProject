@@ -3,445 +3,558 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Appointment</title>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
-  "
-    />
+    <title>Our Veterinary Team | HappyHearts Clinic</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap"
-            rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/appointment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&family=Roboto:wght@100..900&family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <style>
-    /*body {*/
-    /*    background-color: #f9f9f9;*/
-    /*    font-family: "Roboto Condensed", sans-serif;*/
-    /*}*/
-    /*.custom-width {*/
-    /*    max-width: 50%;*/
-    /*}*/
+    :root {
+        --accent-color: #3fbbc0;
+        --accent-dark: #2a9a9f;
+        --accent-light: #d1f2f3;
+        --text-dark: #333333;
+        --text-light: #777777;
+        --bg-light: #f8fbfb;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        color: var(--text-dark);
+        background-color: #ffffff;
+    }
+
+    .light-background {
+        background-color: var(--bg-light);
+    }
+
+    h2, h4 {
+        font-family: 'Roboto Condensed', sans-serif;
+        color: var(--text-dark);
+    }
+
+    /* Section Title */
+    .section-title h2 {
+        position: relative;
+        padding-bottom: 15px;
+    }
+    .section-title h2:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Team Member Cards */
+    .team-member {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(63, 187, 192, 0.2);
+    }
+
+    .member-img {
+        position: relative;
+        overflow: hidden;
+    }
+    .member-img img {
+        transition: transform 0.5s ease;
+    }
+    .team-member:hover .member-img img {
+        transform: scale(1.05);
+    }
+
+    .social {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        background: rgba(63, 187, 192, 0.8);
+        transition: all 0.3s ease;
+    }
+    .team-member:hover .social {
+        bottom: 0;
+    }
+    .social a {
+        color: white;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    .social a:hover {
+        color: var(--accent-light);
+        transform: scale(1.2);
+    }
+
+    .member-info span {
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn-outline-primary {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+    .btn-outline-primary:hover {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+    .btn-primary:hover {
+        background-color: var(--accent-dark);
+        border-color: var(--accent-dark);
+    }
+
+    /* Modal Styling */
+    .modal-header {
+        border-bottom: 2px solid var(--accent-light);
+    }
+    .modal-title {
+        color: var(--accent-color);
+    }
+         /* Header Styles to Match Teal Color Scheme */
+     :root {
+         --accent-color: #3fbbc0;
+         --accent-dark: #2a9a9f;
+         --accent-light: #d1f2f3;
+     }
+
+    .header {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .topbar {
+        font-size: 14px;
+    }
+
+    .navmenu ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navmenu li {
+        position: relative;
+    }
+
+    .navmenu a {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .navmenu a:hover,
+    .navmenu .active {
+        color: var(--accent-color);
+    }
+
+    .dropdown ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 200px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        z-index: 99;
+    }
+
+    .dropdown:hover > ul {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown .dropdown-toggle {
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown .dropdown-menu {
+        border: none;
+    }
+
+    .dropdown .dropdown-item {
+        padding: 8px 15px;
+        color: #333;
+    }
+
+    .dropdown .dropdown-item:hover {
+        background-color: var(--accent-light);
+        color: var(--accent-color);
+    }
+
+    .mobile-nav-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 1200px) {
+        .navmenu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            padding: 40px 20px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .navmenu ul {
+            flex-direction: column;
+        }
+
+        .mobile-nav-toggle {
+            display: block;
+        }
+
+        .navmenu-active {
+            right: 0;
+        }
+    }
+    /* Custom Form Styling */
+    .appointment .form-control,
+    .appointment .form-select {
+        border: 1px solid #dee2e6;
+        padding: 10px 15px;
+        border-radius: 6px;
+    }
+
+    .appointment .form-control:focus,
+    .appointment .form-select:focus {
+        border-color: #3fbbc0;
+        box-shadow: 0 0 0 0.25rem rgba(63, 187, 192, 0.25);
+    }
+
+    .appointment label {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+
+    .appointment .btn-primary:hover {
+        background-color: #2a9a9f !important;
+        border-color: #2a9a9f !important;
+    }
 </style>
 <body>
-<div
-        class="row justify-content-between py-3 m-0"
-        style="
-        background: linear-gradient(
-          to right,
-          rgba(10, 59, 151, 0.3),
-          rgba(0, 0, 0, 0.3)
-        );
-      "
->
-    <div class="col-lg-4">
-        <a href="" class="navbar-brand d-none d-lg-block">
-            <h1 class="m-0 display-5 text-capitalize">
-                <span style="color: rgb(8, 8, 133)">HAPPY</span>HEARTS
-            </h1>
-        </a>
-    </div>
-    <div class="col-lg-8 text-center text-lg-right">
-        <div class="d-inline-flex align-items-center">
-            <div
-                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
-            >
-                <h6>Opening Hours</h6>
-                <p class="m-0">8.00AM - 9.00PM</p>
+<header id="header" class="header sticky-top">
+    <!-- Top Bar -->
+    <div class="topbar d-flex align-items-center" style="background-color: #3FBBC0FF; color: white; height: 40px;">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="d-none d-md-flex align-items-center">
+                <i class="bi bi-clock me-2" style="color: var(--accent-color);"></i> Monday - Saturday, 8AM to 10PM
             </div>
-            <div
-                    class="d-inline-flex flex-column text-center px-3 border-end border-black"
-            >
-                <h6>Email Us</h6>
-                <p class="m-0">happyhearts@gmail.com</p>
-            </div>
-            <div class="d-inline-flex flex-column text-center ps-3">
-                <h6>Call Us</h6>
-                <p class="m-0">+94 77 123 456</p>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone me-2" style="color: var(--accent-color);"></i> Call us now +94 7643 89984
             </div>
         </div>
     </div>
-</div>
-<!-- Navbar Start -->
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
-        <a href="" class="navbar-brand d-block d-lg-none">
-            <h1 class="m-0 display-5 text-capitalize font-italic text-white">
-                <span class="text-primary">Safety</span>First
-            </h1>
-        </a>
-        <button
-                type="button"
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbarCollapse"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-                class="collapse navbar-collapse justify-content-between px-3"
-                id="navbarCollapse"
-        >
-            <div class="navbar-nav mr-auto py-0">
-                <a href="index.html" class="nav-item nav-link fs-5">Home</a>
-                <!-- <a href="about.html" class="nav-item nav-link fs-5">About</a>
-                  <a href="service.html" class="nav-item nav-link fs-5">Service</a>
-                  <a href="price.html" class="nav-item nav-link fs-5">Price</a>
-                  <a href="booking.html" class="nav-item nav-link fs-5">Booking</a> -->
-                <a href="contact.html" class="nav-item nav-link fs-5">Contact</a>
-            </div>
-            <a
-                    href="loginForm.html"
-                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    style="background-color: rgb(8, 8, 133); color: white; border: none"
-            >Sign in</a
-            >
-        </div>
-    </nav>
-</div>
-<!-- Navbar End -->
+    <!-- End Top Bar -->
 
-<!-- Services Start -->
-<div class="container-fluid bg-light pt-2">
-    <div class="container py-2">
-        <div class="d-flex flex-column text-center mb-5">
-            <h1 class="display-4 m-0">GET APPOINTMENT</h1>
-        </div>
-        <div class="row pb-2 m-0">
-            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
-                <div
-                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
-                        style="height: 100%"
-                >
-                    <img
-                            src="../assets/images/img_5.png"
-                            alt="doctor"
-                            class="img-fluid mb-4"
-                            style="
-                  width: 200px;
-                  height: 200px;
-                  object-fit: cover;
-                  margin: 0 auto;
-                  border-radius: 50%;
-                "
-                    />
-                    <h3 class="mb-3">Dr. Jonathan Wells</h3>
-                    <p>A board-certified veterinary surgeon and behaviorist.</p>
-                    <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                    >
-                        CHANNEL
-                    </button>
-                    <button type="button" class="btn btn-primary mt-2">
-                        VIEW PROFILE
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
-                <div
-                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
-                        style="height: 100%"
-                >
-                    <img
-                            src="../assets/images/img_5.png"
-                            alt="doctor"
-                            class="img-fluid mb-4"
-                            style="
-                  width: 200px;
-                  height: 200px;
-                  object-fit: cover;
-                  margin: 0 auto;
-                  border-radius: 50%;
-                "
-                    />
-                    <h3 class="mb-3">Dr. Jonathan Wells</h3>
-                    <p>A board-certified veterinary surgeon and behaviorist.</p>
-                    <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                    >
-                        CHANNEL
-                    </button>
-                    <button type="button" class="btn btn-primary mt-2">
-                        VIEW PROFILE
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
-                <div
-                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
-                        style="height: 100%"
-                >
-                    <img
-                            src="../assets/images/img_5.png"
-                            alt="doctor"
-                            class="img-fluid mb-4"
-                            style="
-                  width: 200px;
-                  height: 200px;
-                  object-fit: cover;
-                  margin: 0 auto;
-                  border-radius: 50%;
-                "
-                    />
-                    <h3 class="mb-3">Dr. Furstenberg Carter</h3>
-                    <p>
-                        An experienced veterinarian specializing in pet dermatology.
-                    </p>
-                    <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                    >
-                        CHANNEL
-                    </button>
-                    <button type="button" class="btn btn-primary mt-2">
-                        VIEW PROFILE
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4" style="width: calc(100% / 4)">
-                <div
-                        class="d-flex flex-column text-center bg-white shadow mb-2 p-2 p-sm-5"
-                        style="height: 100%"
-                >
-                    <img
-                            src="../assets/images/img_5.png"
-                            alt="doctor"
-                            class="img-fluid mb-4"
-                            style="
-                  width: 200px;
-                  height: 200px;
-                  object-fit: cover;
-                  margin: 0 auto;
-                  border-radius: 50%;
-                "
-                    />
-                    <h3 class="mb-3">Dr. Furstenberg Carter</h3>
-                    <p>
-                        An experienced veterinarian specializing in pet dermatology.
-                    </p>
-                    <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                    >
-                        CHANNEL
-                    </button>
-                    <button type="button" class="btn btn-primary mt-2">
-                        VIEW PROFILE
-                    </button>
-                </div>
+    <!-- Main Navigation -->
+    <div class="branding d-flex align-items-center py-2" style="background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+            <!-- Logo -->
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="../assets/images/logo.png" alt="HappyHearts Veterinary Clinic" style="height: 50px;">
+            </a>
+
+            <!-- Navigation Menu -->
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="index.html#tabs" class="nav-link">Departments</a></li>
+                    <li><a href="index.html#doctors" class="nav-link active">Doctors</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            <span>More</span>
+                            <i class="bi bi-chevron-down toggle-dropdown ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#gallery" class="dropdown-item">Gallery</a></li>
+                            <li><a href="index.html#testimonials" class="dropdown-item">Testimonials</a></li>
+                            <li><a href="index.html" class="dropdown-item">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <!-- Call to Action Buttons -->
+            <div class="d-flex align-items-center ms-3">
+<!--                <a class="btn btn-primary me-3" href="loginAndRegister.html" style="background-color: var(&#45;&#45;accent-color); border-color: var(&#45;&#45;accent-color);">-->
+<!--                    Make an Appointment-->
+<!--                </a>-->
+                <a class="btn btn-primary" href="loginAndRegister.html" style="background-color: var(--accent-color); border-color: var(--accent-color);">
+                    Sign In
+                </a>
             </div>
         </div>
     </div>
-</div>
+</header>
+<!-- Doctors Section -->
+<section id="doctors" class="doctors section light-background py-5">
+    <!-- Section Title -->
+    <div class="container section-title text-center mb-5" data-aos="fade-up">
+        <h2 class="display-4 fw-bold">Meet Our Veterinarian Team</h2>
+        <p class="lead" style="color: var(--text-light)">
+            Our compassionate veterinarians bring expertise and dedication to every pet's care.
+        </p>
+    </div>
 
-<!-- Services End -->
+    <div class="container">
+        <div class="row gy-4 justify-content-center">
 
-<!-- Modal -->
-<div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
->
-    <div class="modal-dialog custom-width">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                    Appointment Form
-                </h1>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <!-- Appointment Form -->
-                <form>
-                    <!-- Title and Name -->
-                    <div class="form-section row p-2">
-                        <div class="col-md-4">
-                            <label for="title" class="form-label">Title</label>
-                            <select id="title" class="form-select">
-                                <option value="mr">Mr</option>
-                                <option value="mrs">Mrs</option>
-                                <option value="miss">Miss</option>
-                                <option value="dr">Dr</option>
-                            </select>
-                        </div>
-                        <div class="col-md-8">
-                            <label for="name" class="form-label"
-                            >Name <span class="text-danger">*</span></label
-                            >
-                            <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Enter your name"
-                                    required
-                            />
-                            <div class="invalid-feedback">Name is required.</div>
+            <!-- Doctor 1 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member card h-100 border-0">
+                    <div class="member-img position-relative overflow-hidden">
+                        <img src="../assets/images/doctors/doctors-1.jpg" class="img-fluid w-100" alt="Dr. Walter White" />
+                        <div class="social d-flex justify-content-center align-items-center py-2">
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-
-                    <!-- Email -->
-                    <div class="form-section p-2">
-                        <label for="email" class="form-label">Email</label>
-                        <input
-                                type="email"
-                                id="email"
-                                class="form-control"
-                                placeholder="Enter your email"
-                        />
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="form-section row p-2">
-                        <div class="col-md-4">
-                            <label for="phone-number" class="form-label">Phone</label>
-                            <div class="input-group">
-                                <span class="input-group-text">+94</span>
-                                <input
-                                        type="tel"
-                                        id="phone-number"
-                                        class="form-control"
-                                        placeholder="71XXXXXXX"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pet Name Dropdown -->
-                    <div class="form-section p-2">
-                        <label for="pet-name" class="form-label">Pet Name</label>
-                        <select id="pet-name" class="form-select">
-                            <option value="" disabled selected>
-                                Select your pet's name
-                            </option>
-                            <option value="Buddy">Buddy</option>
-                            <option value="Charlie">Charlie</option>
-                            <option value="Luna">Luna</option>
-                            <option value="Max">Max</option>
-                            <option value="Bella">Bella</option>
-                        </select>
-                    </div>
-
-                    <!-- ID Option -->
-                   <!-- <div class="form-section p-2">
-                        <label class="form-label">ID Type</label>
-                        <div class="form-check form-check-inline">
-                            <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="idType"
-                                    id="nic"
-                                    checked
-                            />
-                            <label class="form-check-label" for="nic">NIC</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="idType"
-                                    id="passport"
-                            />
-                            <label class="form-check-label" for="passport"
-                            >Passport</label
-                            >
-                        </div>
-                    </div>-->
-
-                    <!-- NIC Number -->
-    <!--                <div class="form-section p-2">
-                        <label for="nic-number" class="form-label"
-                        >NIC Number <span class="text-danger">*</span></label
-                        >
-                        <input
-                                type="text"
-                                id="nic-number"
-                                class="form-control"
-                                placeholder="Enter NIC number"
-                                required
-                        />
-                        <div class="invalid-feedback">NIC number is required.</div>
-                    </div>-->
-
-                    <!-- Appointment Date -->
-                    <div class="form-section p-2">
-                        <label for="appointment-date" class="form-label"
-                        >Appointment Date</label
-                        >
-                        <input type="date" id="appointment-date" class="form-control" />
-                    </div>
-
-                    <!-- Appointment Time -->
-                    <div class="form-section p-2">
-                        <label for="appointment-time" class="form-label"
-                        >Appointment Time</label
-                        >
-                        <input type="time" id="appointment-time" class="form-control" />
-                    </div>
-
-                    <!-- Reason for Appointment -->
-                    <div class="form-section p-2">
-                        <label for="appointment-reason" class="form-label"
-                        >Reason for Appointment</label
-                        >
-                        <textarea
-                                id="appointment-reason"
-                                class="form-control"
-                                rows="3"
-                                placeholder="Describe the reason for your appointment"
-                        ></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-section p-2">
-                        <button type="submit" class="btn btn-primary w-100">
-                            Submit Appointment
+                    <div class="member-info card-body text-center">
+                        <h4 class="card-title fw-bold">Dr. Walter White</h4>
+                        <span>Chief Veterinary Officer</span>
+                        <p class="card-text mt-2 small" style="color: var(--text-light)">
+                            Specializing in internal medicine with 15+ years experience
+                        </p>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#doctorModal1">
+                            CHANNEL
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                >
-                    Close
-                </button>
-                <button
-                        type="submit"
-                        class="btn btn-primary"
-                >
-                    Submit
-                </button>
+
+            <!-- Doctor 2 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member card h-100 border-0">
+                    <div class="member-img position-relative overflow-hidden">
+                        <img src="../assets/images/doctors/doctors-2.jpg" class="img-fluid w-100" alt="Dr. Walter White" />
+                        <div class="social d-flex justify-content-center align-items-center py-2">
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info card-body text-center">
+                        <h4 class="card-title fw-bold">Dr. Sarah Johnson</h4>
+                        <span>Chief Veterinary Officer</span>
+                        <p class="card-text mt-2 small" style="color: var(--text-light)">
+                            Specializing in internal medicine with 15+ years experience
+                        </p>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#doctorModal1">
+                            CHANNEL
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- Doctor 3 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member card h-100 border-0">
+                    <div class="member-img position-relative overflow-hidden">
+                        <img src="../assets/images/doctors/doctors-3.jpg" class="img-fluid w-100" alt="Dr. Walter White" />
+                        <div class="social d-flex justify-content-center align-items-center py-2">
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info card-body text-center">
+                        <h4 class="card-title fw-bold">Dr. Walter White</h4>
+                        <span>Chief Veterinary Officer</span>
+                        <p class="card-text mt-2 small" style="color: var(--text-light)">
+                            Specializing in internal medicine with 15+ years experience
+                        </p>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#doctorModal1">
+                            CHANNEL
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Doctor 4-->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member card h-100 border-0">
+                    <div class="member-img position-relative overflow-hidden">
+                        <img src="../assets/images/doctors/doctors-4.jpg" class="img-fluid w-100" alt="Dr. Walter White" />
+                        <div class="social d-flex justify-content-center align-items-center py-2">
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="mx-2 text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info card-body text-center">
+                        <h4 class="card-title fw-bold">Dr. Walter White</h4>
+                        <span>Chief Veterinary Officer</span>
+                        <p class="card-text mt-2 small" style="color: var(--text-light)">
+                            Specializing in internal medicine with 15+ years experience
+                        </p>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#doctorModal1">
+                            CHANNEL
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+</section>
+
+<!-- Appointment Section -->
+<section id="appointment" class="appointment section py-5" style="background-color: #f8fbfb; display: none;" >
+    <!-- Section Title -->
+    <div class="container section-title text-center mb-5" data-aos="fade-up">
+        <h2 class="display-5 fw-bold">Book Your Appointment</h2>
+        <p class="lead text-muted">
+            Schedule a visit with our veterinary specialists for your pet's care
+        </p>
+    </div>
+    <!-- End Section Title -->
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <form class="bg-white p-4 rounded shadow-sm">
+            <div class="row g-3">
+                <!-- Personal Information -->
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="petName" class="form-label">Pet Name</label>
+                    <input type="text" class="form-control" id="petName" placeholder="John Doe" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="+94 77 123 4567" required>
+                </div>
+
+                <!-- Appointment Details -->
+                <div class="col-md-4">
+                    <label for="date" class="form-label">Appointment Date</label>
+                    <input type="datetime-local" class="form-control" id="date" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="department" class="form-label">Department</label>
+                    <select class="form-select" id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="General Medicine">General Medicine</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Dermatology">Dermatology</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Neurology">Neurology</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="doctor" class="form-label">Preferred Doctor</label>
+                    <select class="form-select" id="doctor" required>
+                        <option value="">Select Doctor</option>
+                        <option value="Dr. Walter White">Dr. Walter White</option>
+                        <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
+                        <option value="Dr. William Anderson">Dr. William Anderson</option>
+                        <option value="Dr. Amanda Jepson">Dr. Amanda Jepson</option>
+                    </select>
+                </div>
+
+                <!-- Message -->
+                <div class="col-12">
+                    <label for="message" class="form-label">Additional Information</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Describe your pet's condition or special requests"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2"
+                            style="background-color: #3fbbc0; border-color: #3fbbc0;">
+                        <i class="fas fa-calendar-check me-2"></i> Book Appointment
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const navmenu = document.querySelector('#navmenu');
+
+        mobileNavToggle.addEventListener('click', function() {
+            navmenu.classList.toggle('navmenu-active');
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all channel buttons
+        const channelButtons = document.querySelectorAll('.btn-outline-primary[data-bs-target="#doctorModal1"]');
+
+        // Get appointment section
+        const appointmentSection = document.getElementById('appointment');
+
+        // Add click event to each channel button
+        channelButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Show the appointment section
+                appointmentSection.style.display = 'block';
+
+                // Scroll to the appointment section smoothly
+                appointmentSection.scrollIntoView({ behavior: 'smooth' });
+
+                // You can also pre-select the doctor based on which button was clicked
+                const doctorCard = this.closest('.team-member');
+                const doctorName = doctorCard.querySelector('.card-title').textContent;
+                document.getElementById('doctor').value = doctorName;
+            });
+        });
+    });
+</script>
 </body>
 </html>
