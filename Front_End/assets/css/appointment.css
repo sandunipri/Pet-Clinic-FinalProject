@@ -1,7 +1,251 @@
-body {
-    background-color: #f9f9f9;
-    font-family: "Roboto Condensed", sans-serif;
+
+:root {
+    --accent-color: #3fbbc0;
+    --accent-dark: #2a9a9f;
+    --accent-light: #d1f2f3;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --bg-light: #f8fbfb;
 }
-.custom-width {
-    max-width: 50%;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: #ffffff;
+}
+
+.light-background {
+    background-color: var(--bg-light);
+}
+
+h2, h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: var(--text-dark);
+}
+
+/* Section Title */
+.section-title h2 {
+    position: relative;
+    padding-bottom: 15px;
+}
+.section-title h2:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Team Member Cards */
+.team-member {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(63, 187, 192, 0.2);
+}
+
+.member-img {
+    position: relative;
+    overflow: hidden;
+}
+.member-img img {
+    transition: transform 0.5s ease;
+}
+.team-member:hover .member-img img {
+    transform: scale(1.05);
+}
+
+.social {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    background: rgba(63, 187, 192, 0.8);
+    transition: all 0.3s ease;
+}
+.team-member:hover .social {
+    bottom: 0;
+}
+.social a {
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+.social a:hover {
+    color: var(--accent-light);
+    transform: scale(1.2);
+}
+
+.member-info span {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-outline-primary {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+.btn-outline-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.btn-primary:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+}
+
+/* Modal Styling */
+.modal-header {
+    border-bottom: 2px solid var(--accent-light);
+}
+.modal-title {
+    color: var(--accent-color);
+}
+/* Header Styles to Match Teal Color Scheme */
+:root {
+    --accent-color: #3fbbc0;
+    --accent-dark: #2a9a9f;
+    --accent-light: #d1f2f3;
+}
+
+.header {
+    font-family: 'Roboto', sans-serif;
+}
+
+.topbar {
+    font-size: 14px;
+}
+
+.navmenu ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navmenu li {
+    position: relative;
+}
+
+.navmenu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navmenu a:hover,
+.navmenu .active {
+    color: var(--accent-color);
+}
+
+.dropdown ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 200px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 99;
+}
+
+.dropdown:hover > ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown .dropdown-menu {
+    border: none;
+}
+
+.dropdown .dropdown-item {
+    padding: 8px 15px;
+    color: #333;
+}
+
+.dropdown .dropdown-item:hover {
+    background-color: var(--accent-light);
+    color: var(--accent-color);
+}
+
+.mobile-nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    .navmenu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        padding: 40px 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .navmenu ul {
+        flex-direction: column;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .navmenu-active {
+        right: 0;
+    }
+}
+/* Custom Form Styling */
+.appointment .form-control,
+.appointment .form-select {
+    border: 1px solid #dee2e6;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+.appointment .form-control:focus,
+.appointment .form-select:focus {
+    border-color: #3fbbc0;
+    box-shadow: 0 0 0 0.25rem rgba(63, 187, 192, 0.25);
+}
+
+.appointment label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.appointment .btn-primary:hover {
+    background-color: #2a9a9f !important;
+    border-color: #2a9a9f !important;
 }
