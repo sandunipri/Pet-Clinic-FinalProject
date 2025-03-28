@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | HappyHearts Veterinary Clinic</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --accent-color: #3fbbc0;
+            --accent-dark: #2a9a9f;
+            --accent-light: #d1f2f3;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --bg-light: #f8fbfb;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .topbar {
+            background-color: #333;
+            color: white;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .topbar i {
+            color: var(--accent-color);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .invoice-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .payment-method {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .payment-method:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(63, 187, 192, 0.05);
+        }
+
+        .payment-method.active {
+            border-color: var(--accent-color);
+            background-color: var(--accent-light);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-dark);
+            border-color: var(--accent-dark);
+        }
+
+        .btn-outline-primary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(63, 187, 192, 0.25);
+        }
+
+        .badge-teal {
+            background-color: var(--accent-light);
+            color: var(--accent-dark);
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header id="header" class="header sticky-top">
+    <div class="topbar d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="d-none d-md-flex align-items-center">
+                <i class="bi bi-clock me-2"></i> Monday - Saturday, 8AM to 10PM
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone me-2"></i> Call us now +94 7643 89984
+            </div>
+        </div>
+    </div>
+
+    <div class="branding d-flex align-items-center py-2">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="../assets/images/logo.png" alt="HappyHearts Veterinary Clinic">
+            </a>
+
+            <div class="d-flex align-items-center">
+                <a href="client.html" class="btn btn-outline-primary me-2">
+                    <i class="fas fa-arrow-left me-1"></i> Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Payment Content -->
+<div class="container py-4">
+    <div class="row">
+        <!-- Invoice Summary -->
+        <div class="col-lg-5 mb-4">
+            <div class="payment-card p-4 h-100">
+                <h4 class="mb-4" style="color: var(--accent-color);">
+                    <i class="fas fa-file-invoice-dollar me-2"></i> Invoice Summary
+                </h4>
+
+                <div class="invoice-card p-3 mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Invoice #:</span>
+                        <strong>INV-2023-0615-0142</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Date:</span>
+                        <strong>June 15, 2023</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Pet:</span>
+                        <strong>Max (Golden Retriever)</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Owner:</span>
+                        <strong>Sarah Johnson</strong>
+                    </div>
+                </div>
+
+                <h6 class="mt-4 mb-3">Services Rendered</h6>
+                <div class="invoice-card p-3">
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <span>Annual Checkup</span>
+                        <span>Rs. 3,500.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <span>Rabies Vaccination</span>
+                        <span>Rs. 1,200.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <span>DHPP Vaccination</span>
+                        <span>Rs. 1,500.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <span>Ear Medication</span>
+                        <span>Rs. 2,300.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <span>Consultation Fee</span>
+                        <span>Rs. 1,000.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between pt-2">
+                        <strong>Subtotal:</strong>
+                        <strong>Rs. 9,500.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Tax (8%):</span>
+                        <span>Rs. 760.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2 pt-2 border-top">
+                        <h5>Total Due:</h5>
+                        <h5 style="color: var(--accent-color);">Rs. 10,260.00</h5>
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-4">
+                    <i class="fas fa-check-circle me-2"></i> Insurance claim submitted for Rs. 6,000.00
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="col-lg-7">
+            <div class="payment-card p-4">
+                <h4 class="mb-4" style="color: var(--accent-color);">
+                    <i class="fas fa-credit-card me-2"></i> Payment Method
+                </h4>
+
+                <div class="mb-4">
+                    <h6 class="mb-3">Select Payment Option</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="payment-method p-3 text-center" onclick="selectPayment('card')">
+                                <i class="fas fa-credit-card fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                <div>Credit/Debit Card</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="payment-method p-3 text-center" onclick="selectPayment('bank')">
+                                <i class="fas fa-university fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                <div>Bank Transfer</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="payment-method p-3 text-center" onclick="selectPayment('mobile')">
+                                <i class="fas fa-mobile-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                <div>Mobile Payment</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="payment-method p-3 text-center" onclick="selectPayment('cash')">
+                                <i class="fas fa-money-bill-wave fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                <div>Cash at Clinic</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Form (shown when card payment selected) -->
+                <div id="cardPaymentForm">
+                    <h6 class="mb-3">Card Details</h6>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Card Number</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                                <span class="input-group-text"><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard ms-2"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Expiration Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">CVV</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="123">
+                                    <span class="input-group-text"><i class="fas fa-question-circle" title="3-digit code on back of card"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Cardholder Name</label>
+                            <input type="text" class="form-control" placeholder="Name on card">
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="saveCard">
+                            <label class="form-check-label" for="saveCard">
+                                Save card for future payments
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Payment Summary -->
+                <div class="border-top pt-3 mt-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Amount Due:</span>
+                        <strong>Rs. 10,260.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Insurance Coverage:</span>
+                        <strong class="text-success">- Rs. 6,000.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2 pt-2 border-top">
+                        <h5>Payment Required:</h5>
+                        <h5 style="color: var(--accent-color);">Rs. 4,260.00</h5>
+                    </div>
+                </div>
+
+                <!-- Payment Button -->
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary btn-lg py-3">
+                        <i class="fas fa-lock me-2"></i> Pay Rs. 4,260.00 Now
+                    </button>
+                </div>
+
+                <div class="alert alert-info mt-4 small">
+                    <i class="fas fa-info-circle me-2"></i> Your payment is secured with 256-bit SSL encryption.
+                    We do not store your credit card details.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function selectPayment(method) {
+        // Remove active class from all payment methods
+        document.querySelectorAll('.payment-method').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Add active class to selected method
+        event.currentTarget.classList.add('active');
+
+        // In a real app, you would show the appropriate form for each payment method
+        // For this demo, we're just showing the card form
+    }
+
+    // Initialize with card payment selected
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.payment-method').classList.add('active');
+    });
+</script>
+</body>
+</html>
