@@ -1,9 +1,14 @@
 package org.example.back_end.controller;
 
+import jakarta.servlet.annotation.MultipartConfig;
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.formDTO.AddPetFormDTO;
+import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.PetService;
 import org.example.back_end.service.UserService;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.example.back_end.dto.PetDTO;
@@ -19,13 +24,20 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/pet")
 @CrossOrigin
+@MultipartConfig(fileSizeThreshold = 10 * 1024 * 1024,
+        maxFileSize = 10 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024)
+
 public class PetController {
+    private final PetService petService;
+    private final UserService userService;
+    private final FileStorageService fileStorageService;
 
-    @Autowired
-    private PetService petService;
-
-    @Autowired
-    private UserService userService;
+    public PetController(PetService petService, UserService userService, FileStorageService fileStorageService) {
+        this.petService = petService;
+        this.userService = userService;
+        this.fileStorageService = fileStorageService;
+    }
 
 /*    @PostMapping("/save")
     public ResponseEntity<ResponseDTO> addPet(@RequestBody PetDTO petDTO) {
@@ -34,21 +46,22 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
     }*/
 
-    @PostMapping("/save")
+    @PostMapping(path = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    public ResponseEntity<ResponseDTO> addPet(@RequestHeader("Authorization") String Authorization, @RequestBody PetDTO petDTO) {
+    public ResponseEntity<ResponseDTO> addPet(@RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
         //Extract the user’s email from the token.
-        String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
-        System.out.println("email" + email);
-
-        //Retrieve the user.
-        UserDTO userDTO = userService.searchUser(email);
+        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
         System.out.println("userDTO" + userDTO);
 
-        //save the pet.
-        petService.savePet(petDTO, userDTO);
+        //save the imagePath
+        String imagePath = fileStorageService.savePetImage(addPetFormDTO.getPetImage());
+        System.out.println("imagePath" + imagePath);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
+        //convert the form to petDTO
+        PetDTO petDTO = petService.convertFormToPetDTO(addPetFormDTO);
+        petDTO.setUser(userDTO);
+        petService.savePet(petDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", addPetFormDTO));
     }
 
 

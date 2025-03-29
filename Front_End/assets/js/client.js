@@ -5,22 +5,39 @@ $(document).ready(function () {
     });
 
     // load profile image for the navigation bar
-    const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    $.ajax({
-        url: "http://localhost:8080/api/v1/user/getProfile",
-        type: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        success: function (response) {
-            $("#profileImage").attr("src", "../" + response.data.profileImage);
-            $('#userName').text(response.name);
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
+
+    function loadProfile() {
+        let token = localStorage.getItem('token');
+        console.log("loadProfile");
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/getProfile",
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+
+                //navigation bar
+                $("#profileImage").attr("src", "../" + response.data.profileImage);
+                $('#userName').text(response.data.name);
+
+                //load side profile
+                $("#userProfileImage").attr("src", "../" + response.data.profileImage);
+                $('#user_name').text(response.data.name);
+                $('#email').text(response.data.email);
+
+                //welcome message
+                $('#displayName').text(response.data.name);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    loadProfile();
 
 });
 

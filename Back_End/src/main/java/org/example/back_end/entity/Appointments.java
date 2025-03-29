@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "appointments")
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+
 @Data
 public class Appointments {
 

@@ -3,6 +3,7 @@ package org.example.back_end.service.impl;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
+import org.example.back_end.dto.formDTO.AddPetFormDTO;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.PetRepo;
@@ -38,13 +39,9 @@ public class PetServiceImpl implements PetService {
     }*/
 
     @Override
-    public void savePet(PetDTO petDTO, UserDTO userDTO) {
-        //set the user to the pet.
+    public void savePet(PetDTO petDTO) {
         Pet pet = modelMapper.map(petDTO, Pet.class);
-        User user = modelMapper.map(userDTO, User.class);
-        pet.setUser(user);
         petRepo.save(pet);
-
     }
 
     @Override
@@ -63,6 +60,20 @@ public class PetServiceImpl implements PetService {
     @Override
     public PetDTO searchPetByUserEmail(String email) {
         return modelMapper.map(petRepo.findByUserEmail(email), PetDTO.class);
+    }
+
+    @Override
+    public PetDTO convertFormToPetDTO(AddPetFormDTO addPetFormDTO) {
+        PetDTO petDTO = new PetDTO();
+        petDTO.setPetName(addPetFormDTO.getPetName());
+        petDTO.setBirthDate(addPetFormDTO.getBirthDate());
+        petDTO.setSpecies(addPetFormDTO.getSpecies());
+        petDTO.setWeight(addPetFormDTO.getWeight());
+        petDTO.setBreed(addPetFormDTO.getBreed());
+        petDTO.setAge(addPetFormDTO.getAge());
+        petDTO.setGender(addPetFormDTO.getGender());
+        petDTO.setPetImage(addPetFormDTO.getPetImage().getOriginalFilename());
+        return petDTO;
     }
 
 

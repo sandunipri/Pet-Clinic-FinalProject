@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@ToString
+
 @Entity(name = "payment")
 public class Payment {
     @Id

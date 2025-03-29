@@ -127,17 +127,25 @@
 
                         <!-- Pet Information -->
                         <div class="row g-3">
+                            <!-- Pet Name -->
                             <div class="col-md-6">
                                 <label for="pet-name" class="form-label">Pet Name *</label>
                                 <input type="text" class="form-control" id="pet-name" placeholder="e.g. Max" required>
                             </div>
 
+                            <!-- Birth Date -->
                             <div class="col-md-6">
-                                <label for="pet-breed" class="form-label">Breed</label>
-                                <input type="text" class="form-control" id="pet-breed"
-                                       placeholder="e.g. Golden Retriever">
+                                <label for="pet-bod" class="form-label">Pet BOD *</label>
+                                <input type="date" class="form-control" id="pet-bod" required>
                             </div>
 
+                            <!-- Breed -->
+                            <div class="col-md-6">
+                                <label for="pet-breed" class="form-label">Breed</label>
+                                <input type="text" class="form-control" id="pet-breed" placeholder="e.g. Golden Retriever">
+                            </div>
+
+                            <!-- Age -->
                             <div class="col-md-4">
                                 <label for="pet-age" class="form-label">Age</label>
                                 <div class="input-group">
@@ -146,6 +154,7 @@
                                 </div>
                             </div>
 
+                            <!-- Gender -->
                             <div class="col-md-4">
                                 <label for="pet-gender" class="form-label">Gender</label>
                                 <select class="form-select" id="pet-gender">
@@ -155,6 +164,7 @@
                                 </select>
                             </div>
 
+                            <!-- Weight -->
                             <div class="col-md-4">
                                 <label for="pet-weight" class="form-label">Weight</label>
                                 <div class="input-group">
@@ -163,17 +173,20 @@
                                 </div>
                             </div>
 
+                            <!-- Photo -->
                             <div class="col-12">
                                 <label for="pet-photo" class="form-label">Pet Photo</label>
                                 <input class="form-control" type="file" id="pet-photo" accept="image/*">
                             </div>
 
+                            <!-- Special Notes -->
                             <div class="col-12">
                                 <label for="pet-notes" class="form-label">Special Notes</label>
                                 <textarea class="form-control" id="pet-notes" rows="3"
                                           placeholder="Any medical conditions, allergies, or special care instructions"></textarea>
                             </div>
 
+                            <!-- Insurance Checkbox -->
                             <div class="col-12 mt-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="pet-insurance" checked>
@@ -183,6 +196,7 @@
                                 </div>
                             </div>
 
+                            <!-- Submit Button -->
                             <div class="col-12 mt-4">
                                 <button type="submit" class="btn btn-primary w-100 py-3">
                                     <i class="fas fa-paw me-2"></i> Register My Pet

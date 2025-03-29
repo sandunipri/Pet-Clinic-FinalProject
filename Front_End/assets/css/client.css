@@ -72,3 +72,39 @@ body {
     background-color: var(--accent-light);
     color: var(--accent-dark);
 }
+.dropdown-menu {
+    background-color: #f8fdff;
+    border: 1px solid #e0f7fa;
+}
+
+.dropdown-item:hover {
+    background-color: #e0f7fa !important;
+    transform: translateX(5px);
+}
+
+.dropdown-item:active {
+    background-color: #3fbbc0 !important;
+}
+
+.dropdown-item:active i,
+.dropdown-item:active span {
+    color: white !important;
+}
+
+.dropdown-item:hover {
+    background: rgba(63, 187, 192, 0.08) !important;
+    transform: translateX(4px);
+    color: #3fbbc0 !important;
+}
+
+.dropdown-item:hover i {
+    transform: scale(1.15);
+}
+
+.dropdown-item:active {
+    background: rgba(63, 187, 192, 0.15) !important;
+}
+
+.dropdown-divider {
+    border-color: rgba(63, 187, 192, 0.1);
+}

@@ -261,6 +261,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/client.css">
 </head>
+
 <body>
 <!-- Dashboard Header -->
 <header class="dashboard-header sticky-top">
@@ -277,34 +278,99 @@
                             data-bs-toggle="dropdown">
                         <i class="fas fa-plus me-1"></i> Quick Actions
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="addPet.html"><i
-                                class="fas fa-paw me-2"></i> Add Pet</a></li>
-                        <li><a class="dropdown-item" href="appointment.html"><i class="fas fa-calendar-check me-2"></i>
-                            Book
-                            Appointment</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" style="
+                                border: none;
+                                border-radius: 12px;
+                                overflow: hidden;
+                                background: rgba(255, 255, 255, 0.98);
+                                backdrop-filter: blur(10px);
+                                border: 1px solid rgba(63, 187, 192, 0.2);
+                     ">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center py-3 px-4" href="addPet.html" style="
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #2a2a2a;
+        ">
+                                <i class="fas fa-paw me-3" style="
+                color: #3fbbc0;
+                font-size: 1.1rem;
+                width: 20px;
+                text-align: center;
+            "></i>
+                                <span>Add Pet</span>
+                                <span class="ms-auto" style="
+                color: rgba(63, 187, 192, 0.7);
+                font-size: 0.8rem;
+            ">⌘ + P</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center py-3 px-4" href="appointment.html" style="
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #2a2a2a;
+        ">
+                                <i class="fas fa-calendar-check me-3" style="
+                color: #3fbbc0;
+                font-size: 1.1rem;
+                width: 20px;
+                text-align: center;
+            "></i>
+                                <span>Book Appointment</span>
+                                <span class="ms-auto" style="
+                color: rgba(63, 187, 192, 0.7);
+                font-size: 0.8rem;
+            ">⌘ + A</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userMenu"
-                       data-bs-toggle="dropdown">
-                        <img id="profileImage" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Profile" width="40" height="40"
-                             class="rounded-circle me-2">
-                        <span id="userName" class="d-none d-md-inline"></span>
+                       data-bs-toggle="dropdown" style="transition: all 0.3s ease;">
+                        <div class="position-relative me-2">
+                            <img id="profileImage" src="../assets/images/img_4.png" alt="Profile" width="40"
+                                 height="40"
+                                 class="rounded-circle border-3 border-primary shadow-sm" style="object-fit: cover;">
+                            <span class="position-absolute bottom-0 end-0 p-1 bg-success rounded-circle border border-2 border-white"
+                                  style="width: 12px; height: 12px;"></span>
+                        </div>
+                        <span id="userName" class="d-none d-md-inline fw-semibold text-gradient"
+                              style="background: linear-gradient(90deg, #4e73df, #224abe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Loading...
+    </span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#pets"><i class="fas fa-paw me-2"></i> My Pets</a></li>
-                        <li><a class="dropdown-item" href="#appointments"><i class="fas fa-calendar-alt me-2"></i>
-                            Appointments</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg"
+                        style="border: none; border-radius: 10px; overflow: hidden;">
                         <li>
-                            <hr class="dropdown-divider">
+                            <a class="dropdown-item py-3" href="profile.html" style="transition: all 0.2s ease;">
+                                <i class="fas fa-user me-2" style="color: #3fbbc0;"></i>
+                                <span style="color: #3fbbc0; font-weight: 500;">My Profile</span>
+                            </a>
                         </li>
-                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i> Sign Out</a>
+                        <li>
+                            <a class="dropdown-item py-3" href="#pets" style="transition: all 0.2s ease;">
+                                <i class="fas fa-paw me-2" style="color: #3fbbc0;"></i>
+                                <span style="color: #154243;; font-weight: 500;">My Pets</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-3" href="#appointments" style="transition: all 0.2s ease;">
+                                <i class="fas fa-calendar-alt me-2" style="color: #3fbbc0;"></i>
+                                <span style="color: #154243; font-weight: 500;">Appointments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider my-2" style="border-color: #e0f7fa;">
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-3" href="index.html" style="transition: all 0.2s ease;">
+                                <i class="fas fa-sign-out-alt me-2" style="color: #ff6b6b;"></i>
+                                <span style="color: #ff6b6b; font-weight: 500;">Sign Out</span>
+                            </a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -317,10 +383,10 @@
         <!-- Sidebar Navigation -->
         <div class="col-md-3 mb-4">
             <div class="profile-card p-3 mb-3 text-center">
-                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Profile" class="rounded-circle mb-3"
+                <img id="userProfileImage" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Profile" class="rounded-circle mb-3"
                      width="100" height="100">
-                <h5 class="mb-1">Sarah Johnson</h5>
-                <p class="text-muted small mb-2">Member since 2022</p>
+                    <h5 id="user_name" class="mb-1">Sarah Johnson</h5>
+                <p id="email" class="text-muted small mb-2">Member since 2022</p>
                 <a href="profile.html" class="btn btn-sm btn-outline-primary">View Profile</a>
             </div>
 
@@ -335,7 +401,8 @@
                     <a class="nav-link" href="#appointments"><i class="fas fa-calendar-alt me-2"></i> Appointments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="medicalReport.html"><i class="fas fa-file-medical me-2"></i> Medical Records</a>
+                    <a class="nav-link" href="medicalReport.html"><i class="fas fa-file-medical me-2"></i> Medical
+                        Records</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="payment.html"><i class="fas fa-receipt me-2"></i> Billing</a>
@@ -353,7 +420,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="card-title" style="color: var(--accent-dark);">Welcome back, Sarah!</h4>
+                            <h4 class="card-title" style="color: var(--accent-dark);">Welcome back, <span id="displayName">Sarah</span> !</h4>
                             <p class="card-text">You have 2 upcoming appointments this week.</p>
                         </div>
                         <button class="btn btn-primary">View Appointments</button>
@@ -365,9 +432,11 @@
             <div id="pets" class="mb-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4><i class="fas fa-paw me-2" style="color: var(--accent-color);"></i> My Pets</h4>
-                    <a href="appointment.html"> <button class="btn btn-sm btn-primary">
-                        <i class="fas fa-plus me-1"></i> Add New Pet
-                    </button></a>
+                    <a href="addPet.html">
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus me-1"></i> Add New Pet
+                        </button>
+                    </a>
                 </div>
 
                 <div class="row g-3">
@@ -391,7 +460,7 @@
                         </div>
                     </div>
 
-                    <!-- Pet 2 -->
+                    <!-- Pet 2
                     <div class="col-md-6">
                         <div class="pet-card p-3 h-100">
                             <div class="d-flex">
@@ -410,7 +479,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
@@ -419,9 +488,11 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4><i class="fas fa-calendar-alt me-2" style="color: var(--accent-color);"></i> Upcoming
                         Appointments</h4>
-                    <a href="appointment.html"> <button class="btn btn-sm btn-primary">
-                        <i class="fas fa-plus me-1"></i> New Appointment
-                    </button></a>
+                    <a href="appointment.html">
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus me-1"></i> New Appointment
+                        </button>
+                    </a>
 
                 </div>
 
@@ -474,17 +545,18 @@
 </div>
 
 <!-- Add Pet Modal -->
+<!--
 <div class="modal fade" id="addPetModal" tabindex="-1" aria-labelledby="addPetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header" style="border-bottom-color: var(--accent-light);">
+            <div class="modal-header" style="border-bottom-color: var(&#45;&#45;accent-light);">
                 <h5 class="modal-title" id="addPetModalLabel"><i class="fas fa-paw me-2"
-                                                                 style="color: var(--accent-color);"></i> Add New Pet
+                                                                 style="color: var(&#45;&#45;accent-color);"></i> Add New Pet
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Add Pet Form (same as previous example) -->
+                &lt;!&ndash; Add Pet Form (same as previous example) &ndash;&gt;
                 <form>
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -528,20 +600,22 @@
         </div>
     </div>
 </div>
+-->
 
 <!-- Book Appointment Modal -->
+<!--
 <div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header" style="border-bottom-color: var(--accent-light);">
+            <div class="modal-header" style="border-bottom-color: var(&#45;&#45;accent-light);">
                 <h5 class="modal-title" id="bookAppointmentModalLabel">
-                    <i class="fas fa-calendar-check me-2" style="color: var(--accent-color);"></i> Book
+                    <i class="fas fa-calendar-check me-2" style="color: var(&#45;&#45;accent-color);"></i> Book
                     New Appointment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Appointment Form (same as previous example) -->
+                &lt;!&ndash; Appointment Form (same as previous example) &ndash;&gt;
                 <form>
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -597,8 +671,11 @@
         </div>
     </div>
 </div>
+-->
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/client.js"></script>
 </body>
 </html>

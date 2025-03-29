@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@ToString
+
 @Entity
 @Table(name = "pet")
 public class Pet {
@@ -21,10 +21,13 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petId;
     private String petName;
+    private String birthDate;
     private String species;
+    private String weight;
     private String breed;
     private String age ;
     private String gender;
+    private String petImage;
 
     @OneToMany(mappedBy = "pet")
     private List<MedicalReport> medicalReportList;

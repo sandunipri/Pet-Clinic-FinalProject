@@ -1,14 +1,18 @@
-package org.example.back_end.dto;
+package org.example.back_end.dto.formDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.example.back_end.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
-public class PetDTO {
-    private int petId;
+@Data
+@ToString
+public class AddPetFormDTO {
+    private MultipartFile petImage;
     private String petName;
     private String birthDate;
     private String species;
@@ -16,7 +20,5 @@ public class PetDTO {
     private String breed;
     private String age ;
     private String gender;
-    private String petImage;
-    private UserDTO user;
-}
 
+}

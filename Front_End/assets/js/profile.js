@@ -14,9 +14,11 @@ function loadProfile() {
             'Authorization': 'Bearer ' + token
         },
         success: function (response) {
+            //load side profile
+            $('#userName').text(response.data.name);
+            
             $("#photoPreview").attr("src", "../" + response.data.profileImage);
             $('#Useremail').text(response.data.email);
-            $('#userName').text(response.data.name);
             $('#fullname').text(response.data.name);
             $('#userGender').text(response.data.gender);
             $('#userNic').text(response.data.nic);

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@ToString
+
 @Table(name = "vet")
 @Entity
 public class Veterinarian {

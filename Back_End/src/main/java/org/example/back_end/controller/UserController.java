@@ -1,5 +1,6 @@
 package org.example.back_end.controller;
 
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 
 import org.example.back_end.dto.AuthDTO;
@@ -19,6 +20,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1/user")
 @CrossOrigin
+@MultipartConfig(fileSizeThreshold = 10 * 1024 * 1024,
+        maxFileSize = 10 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024)
+
 public class UserController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
