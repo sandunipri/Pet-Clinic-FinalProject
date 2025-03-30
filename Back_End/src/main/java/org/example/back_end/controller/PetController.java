@@ -60,8 +60,11 @@ public class PetController {
         //convert the form to petDTO
         PetDTO petDTO = petService.convertFormToPetDTO(addPetFormDTO);
         petDTO.setUser(userDTO);
+        petDTO.setPetImage(imagePath);
+
         petService.savePet(petDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", addPetFormDTO));
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
     }
 
 

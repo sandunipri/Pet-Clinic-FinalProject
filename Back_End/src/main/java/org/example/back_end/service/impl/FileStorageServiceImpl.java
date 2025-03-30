@@ -11,10 +11,6 @@ import java.nio.file.Paths;
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
-/*    private static final String DEFAULT_DIRECTORY = "C:\\Users\\priya\\Desktop\\Projects\\Advanced API\\Spring\\Pet-Clinic-FinalProject\\Back_End\\src\\main\\resources\\static\\";
-    private static final String DEFAULT_IMAGE_DIRECTORY = DEFAULT_DIRECTORY + "images\\";
-    private static final String PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "profileImages\\";
-    private static final String VET_PROFILE_UPLOAD_DIR = DEFAULT_IMAGE_DIRECTORY + "vetProfileImages\\";*/
 
     private static final String PROFILE_IMAGE_DIRECTORY = "profileImages\\";
     private static final String VET_PROFILE_IMAGE_DIRECTORY = "vetProfileImages\\";
