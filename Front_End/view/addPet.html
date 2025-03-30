@@ -87,8 +87,8 @@
                                         <div class="pet-type-icon">
                                             <i class="fas fa-dog"></i>
                                         </div>
-                                        <input type="radio" class="btn-check" name="pet-type" id="pet-type-dog"
-                                               autocomplete="off" checked>
+                                        <input type="radio" class="btn-check" name="species" id="pet-type-dog"
+                                               value="DOG" autocomplete="off" checked>
                                         <label class="btn btn-outline-primary w-100" for="pet-type-dog">Dog</label>
                                     </div>
                                 </div>
@@ -97,8 +97,8 @@
                                         <div class="pet-type-icon">
                                             <i class="fas fa-cat"></i>
                                         </div>
-                                        <input type="radio" class="btn-check" name="pet-type" id="pet-type-cat"
-                                               autocomplete="off">
+                                        <input type="radio" class="btn-check" name="species" id="pet-type-cat"
+                                               value="CAT" autocomplete="off">
                                         <label class="btn btn-outline-primary w-100" for="pet-type-cat">Cat</label>
                                     </div>
                                 </div>
@@ -107,8 +107,8 @@
                                         <div class="pet-type-icon">
                                             <i class="fas fa-dove"></i>
                                         </div>
-                                        <input type="radio" class="btn-check" name="pet-type" id="pet-type-bird"
-                                               autocomplete="off">
+                                        <input type="radio" class="btn-check" name="species" id="pet-type-bird"
+                                               value="BIRD" autocomplete="off">
                                         <label class="btn btn-outline-primary w-100" for="pet-type-bird">Bird</label>
                                     </div>
                                 </div>
@@ -117,8 +117,8 @@
                                         <div class="pet-type-icon">
                                             <i class="fas fa-paw"></i>
                                         </div>
-                                        <input type="radio" class="btn-check" name="pet-type" id="pet-type-other"
-                                               autocomplete="off">
+                                        <input type="radio" class="btn-check" name="species" id="pet-type-other"
+                                               value="OTHER" autocomplete="off">
                                         <label class="btn btn-outline-primary w-100" for="pet-type-other">Other</label>
                                     </div>
                                 </div>
@@ -129,35 +129,38 @@
                         <div class="row g-3">
                             <!-- Pet Name -->
                             <div class="col-md-6">
-                                <label for="pet-name" class="form-label">Pet Name *</label>
-                                <input type="text" class="form-control" id="pet-name" placeholder="e.g. Max" required>
+                                <label for="petName" class="form-label">Pet Name *</label>
+                                <input type="text" class="form-control" id="petName" name="petName"
+                                       placeholder="e.g. Max"
+                                       required>
                             </div>
 
                             <!-- Birth Date -->
                             <div class="col-md-6">
-                                <label for="pet-bod" class="form-label">Pet BOD *</label>
-                                <input type="date" class="form-control" id="pet-bod" required>
+                                <label for="birthDate" class="form-label">Pet BOD *</label>
+                                <input type="Date" class="form-control" id="birthDate" name="birthDate" required>
                             </div>
 
                             <!-- Breed -->
                             <div class="col-md-6">
-                                <label for="pet-breed" class="form-label">Breed</label>
-                                <input type="text" class="form-control" id="pet-breed" placeholder="e.g. Golden Retriever">
+                                <label for="breed" class="form-label">Breed</label>
+                                <input type="text" class="form-control" id="breed" name="breed"
+                                       placeholder="e.g. Golden Retriever">
                             </div>
 
                             <!-- Age -->
                             <div class="col-md-4">
-                                <label for="pet-age" class="form-label">Age</label>
+                                <label for="age" class="form-label">Age</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="pet-age" placeholder="0">
+                                    <input type="number" class="form-control" id="age" name="age" placeholder="0">
                                     <span class="input-group-text">years</span>
                                 </div>
                             </div>
 
                             <!-- Gender -->
                             <div class="col-md-4">
-                                <label for="pet-gender" class="form-label">Gender</label>
-                                <select class="form-select" id="pet-gender">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" name="gender">
                                     <option value="">Select</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -166,39 +169,39 @@
 
                             <!-- Weight -->
                             <div class="col-md-4">
-                                <label for="pet-weight" class="form-label">Weight</label>
+                                <label for="weight" class="form-label">Weight</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="pet-weight" placeholder="0">
+                                    <input type="number" class="form-control" id="weight" name="weight" placeholder="0">
                                     <span class="input-group-text">kg</span>
                                 </div>
                             </div>
 
                             <!-- Photo -->
                             <div class="col-12">
-                                <label for="pet-photo" class="form-label">Pet Photo</label>
-                                <input class="form-control" type="file" id="pet-photo" accept="image/*">
+                                <label for="petImage" class="form-label">Pet Photo</label>
+                                <input class="form-control" type="file" id="petImage" name="petImage" accept="image/*">
                             </div>
 
                             <!-- Special Notes -->
-                            <div class="col-12">
-                                <label for="pet-notes" class="form-label">Special Notes</label>
-                                <textarea class="form-control" id="pet-notes" rows="3"
-                                          placeholder="Any medical conditions, allergies, or special care instructions"></textarea>
-                            </div>
+                            <!-- <div class="col-12">
+                                 <label for="pet-notes" class="form-label">Special Notes</label>
+                                 <textarea class="form-control" id="pet-notes" rows="3"
+                                           placeholder="Any medical conditions, allergies, or special care instructions"></textarea>
+                             </div>-->
 
                             <!-- Insurance Checkbox -->
-                            <div class="col-12 mt-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="pet-insurance" checked>
-                                    <label class="form-check-label" for="pet-insurance">
-                                        My pet has health insurance
-                                    </label>
-                                </div>
-                            </div>
+                            <!--    <div class="col-12 mt-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="pet-insurance" checked>
+                                        <label class="form-check-label" for="pet-insurance">
+                                            My pet has health insurance
+                                        </label>
+                                    </div>
+                                </div>-->
 
                             <!-- Submit Button -->
                             <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-primary w-100 py-3">
+                                <button type="submit" id="addPet" class="btn btn-primary w-100 py-3">
                                     <i class="fas fa-paw me-2"></i> Register My Pet
                                 </button>
                             </div>
@@ -245,37 +248,12 @@
 </footer>
 
 <!-- Bootstrap JS -->
-<script src="../js/jquery-3.7.1.min.js" ></script>
-<script src="../js/bootstrap.bundle.min.js" ></script>
-<script src="../assets/js/pet.js" ></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/pet.js"></script>
+
 <script>
-    document.getElementById('pet-registration-form').addEventListener('submit', function (e) {
-        e.preventDefault();
 
-        // Get form values
-        const petType = document.querySelector('input[name="pet-type"]:checked').nextElementSibling.textContent;
-        const petName = document.getElementById('pet-name').value;
-
-        // Show success message (in a real app, you would send this to your backend)
-        alert(`Successfully registered ${petName} the ${petType}!`);
-
-        // Reset form
-        this.reset();
-
-        // In a real application, you would redirect to the pet profile page
-        // window.location.href = 'my-pets.html';
-    });
-</script>
-<script>
-    // Mobile Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function () {
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        const navmenu = document.querySelector('#navmenu');
-
-        mobileNavToggle.addEventListener('click', function () {
-            navmenu.classList.toggle('navmenu-active');
-        });
-    });
 </script>
 </body>
 </html>

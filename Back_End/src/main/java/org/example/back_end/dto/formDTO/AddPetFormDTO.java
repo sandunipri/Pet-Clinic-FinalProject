@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.example.back_end.entity.User;
 import org.springframework.web.multipart.MultipartFile;
+import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,11 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class AddPetFormDTO {
     private MultipartFile petImage;
     private String petName;
-    private String birthDate;
+    private Date birthDate;
     private String species;
-    private String weight;
+    private double weight;
     private String breed;
-    private String age ;
+    private int age ;
     private String gender;
 
 }

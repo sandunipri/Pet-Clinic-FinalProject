@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 public class PetDTO {
     private int petId;
     private String petName;
-    private String birthDate;
+    private Date birthDate;
     private String species;
-    private String weight;
+    private double weight;
     private String breed;
-    private String age ;
+    private int age ;
     private String gender;
     private String petImage;
     private UserDTO user;

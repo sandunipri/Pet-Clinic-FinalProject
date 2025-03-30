@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -21,11 +22,11 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petId;
     private String petName;
-    private String birthDate;
+    private Date birthDate;
     private String species;
-    private String weight;
+    private double weight;
     private String breed;
-    private String age ;
+    private int age ;
     private String gender;
     private String petImage;
 
