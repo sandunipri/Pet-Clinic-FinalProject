@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         } else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-//            userDTO.setRole("USER");
+
             userRepository.save(modelMapper.map(userDTO, User.class));
             return VarList.Created;
         }
@@ -83,9 +83,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if (userRepository.existsByEmail(userDTO.getEmail())) {
             return VarList.Not_Acceptable;
         } else {
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-//            userDTO.setRole("USER");
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
             userRepository.save(modelMapper.map(userDTO, User.class));
             return VarList.Created;
         }

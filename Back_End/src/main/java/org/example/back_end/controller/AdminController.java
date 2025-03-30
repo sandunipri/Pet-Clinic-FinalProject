@@ -33,12 +33,12 @@ public class AdminController {
     }
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-//    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
         UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, null);
 
         try {
-            int res = userService.saveUser(userDTO);
+            int res = userService.saveAdmin(userDTO);
             switch (res) {
                 case VarList.Created -> {
                     String token = jwtUtil.generateToken(userDTO);

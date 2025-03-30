@@ -76,5 +76,8 @@ public class PetServiceImpl implements PetService {
         return petDTO;
     }
 
-
+    @Override
+    public List<PetDTO> getPetsFromUser(UserDTO userDTO) {
+        return modelMapper.map(petRepo.findByUserEmail(userDTO.getEmail()), new TypeToken<List<PetDTO>>() {}.getType());
+    }
 }

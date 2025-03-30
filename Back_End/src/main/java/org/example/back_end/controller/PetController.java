@@ -68,12 +68,27 @@ public class PetController {
     }
 
 
-    @GetMapping("/getAll")
+/*    @GetMapping("/getAll")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> getAllPets() {
         System.out.println("get all pets");
 
         List<PetDTO> petList = petService.getAllPets();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "success", petList));
+    }*/
+
+    @GetMapping("/getPetsFromUser")
+    public ResponseEntity<ResponseDTO> getPetsFromUser(@RequestHeader("Authorization") String Authorization) {
+        //get user email from the token.
+        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
+        System.out.println("userDTO" + userDTO);
+
+        //get the pets from the user
+        List<PetDTO> petList = petService.getPetsFromUser(userDTO);
+        System.out.println(petList);
+        if (petList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "No pets found", petList));
+        }
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "success", petList));
     }
 

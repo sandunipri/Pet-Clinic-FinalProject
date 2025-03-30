@@ -11,8 +11,7 @@ $(document).ready(function () {
             data: JSON.stringify({
                 "email": Email,
                 "password": Password,
-                "name": "USER",
-                "role": "USER"
+                "name":name
 
             }),
             success: function (res) {
