@@ -13,4 +13,6 @@ public interface PetService {
     PetDTO searchPetByUserEmail(String email);
     PetDTO convertFormToPetDTO(AddPetFormDTO addPetFormDTO);
     List<PetDTO> getPetsFromUser(UserDTO userDTO);
+    boolean deletePet(int petId);
+    void updatePet(PetDTO petDTO);
 }

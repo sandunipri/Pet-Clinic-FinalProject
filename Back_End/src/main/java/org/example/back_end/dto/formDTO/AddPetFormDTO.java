@@ -13,6 +13,7 @@ import java.sql.Date;
 @Data
 @ToString
 public class AddPetFormDTO {
+    private int petId;
     private MultipartFile petImage;
     private String petName;
     private Date birthDate;

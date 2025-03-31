@@ -68,15 +68,6 @@ public class PetController {
     }
 
 
-/*    @GetMapping("/getAll")
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    public ResponseEntity<ResponseDTO> getAllPets() {
-        System.out.println("get all pets");
-
-        List<PetDTO> petList = petService.getAllPets();
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "success", petList));
-    }*/
-
     @GetMapping("/getPetsFromUser")
     public ResponseEntity<ResponseDTO> getPetsFromUser(@RequestHeader("Authorization") String Authorization) {
         //get user email from the token.
@@ -86,10 +77,38 @@ public class PetController {
         //get the pets from the user
         List<PetDTO> petList = petService.getPetsFromUser(userDTO);
         System.out.println(petList);
+
         if (petList.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "No pets found", petList));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "No pets found", null));
         }
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "success", petList));
     }
 
+    @PutMapping(path = "/updatePet", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<ResponseDTO> updatePet( @RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
+        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
+        System.out.println("userDTO" + userDTO);
+
+        //save the imagePath
+        String imagePath = fileStorageService.savePetImage(addPetFormDTO.getPetImage());
+        System.out.println("imagePath" + imagePath);
+
+        //convert the form to petDTO
+        PetDTO petDTO = petService.convertFormToPetDTO(addPetFormDTO);
+        petDTO.setUser(userDTO);
+        petDTO.setPetImage(imagePath);
+
+        petService.updatePet(petDTO);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
+
+
+    }
+
+    @DeleteMapping("/deletePet")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<ResponseDTO> deletePet(@RequestHeader PetDTO petDTO) {
+        return null;
+    }
 }
