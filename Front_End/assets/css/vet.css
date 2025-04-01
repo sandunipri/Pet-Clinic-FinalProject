@@ -1,0 +1,137 @@
+
+:root {
+    --accent-color: #3fbbc0;
+    --accent-dark: #2a9a9f;
+    --accent-light: #d1f2f3;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --bg-light: #f8fbfb;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.topbar {
+    background-color: #3fbbc0;
+    color: white;
+    height: 40px;
+    font-size: 14px;
+}
+
+.topbar i {
+    color: var(--accent-color);
+}
+
+.logo img {
+    height: 50px;
+}
+
+.form-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--accent-color);
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    bottom: 0;
+    left: 0;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+}
+
+.btn-outline-primary {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(63, 187, 192, 0.25);
+}
+
+.specialty-tag {
+    display: inline-block;
+    background-color: var(--accent-light);
+    color: var(--accent-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.specialty-tag .remove-tag {
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.avatar-upload {
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.avatar-upload .avatar-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    border: 3px solid var(--accent-light);
+    overflow: hidden;
+}
+
+.avatar-upload .avatar-edit {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+
+.avatar-upload .avatar-edit label {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
