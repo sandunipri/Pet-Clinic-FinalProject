@@ -1,14 +1,18 @@
 package org.example.back_end.service.impl;
 
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.dto.tableModalDTO.UserTableModalDTO;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.UserRepository;
 import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +22,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -34,6 +40,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private EntityManager entityManager;
 
 
     @Override
@@ -90,7 +99,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         }
     }
 
-
     @Override
     public int updateUser(UserDTO userDTO) {
         if (userRepository.existsByEmail(userDTO.getEmail())) {
@@ -139,4 +147,40 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         }
         return true;
     }
+
+    @Override
+    public List<UserTableModalDTO> getAllUsers(UserDTO userDTO) {
+        //check the user role
+    /*    if (userDTO.getRole().equals("ADMIN")) {
+            List<User> userList = userRepository.findAll();
+            List<UserTableModalDTO> userTableModalDTOList = new ArrayList<>();
+            for(User user : userList) {
+                UserTableModalDTO modalDTO = modelMapper.map(user, UserTableModalDTO.class);
+                modalDTO.setPetCount(user.getPetList().size());
+                userTableModalDTOList.add(modalDTO);
+            }
+            return userTableModalDTOList;
+        }else{
+            return null;
+        }*/
+        User user = modelMapper.map(userDTO, User.class);
+
+        String jpql = "SELECT u FROM User u WHERE u.role = : role";
+
+        TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
+        query.setParameter("role", "USER");
+
+        List<User> resultList = query.getResultList();
+
+        List<UserTableModalDTO> userTableModalDTOList = new ArrayList<>();
+        for(User user1 : resultList) {
+            UserTableModalDTO modalDTO = modelMapper.map(user1, UserTableModalDTO.class);
+            modalDTO.setPetCount(user1.getPetList().size());
+            userTableModalDTOList.add(modalDTO);
+        }
+        return userTableModalDTOList;
+
+
+    }
+
 }

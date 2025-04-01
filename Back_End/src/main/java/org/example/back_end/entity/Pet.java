@@ -2,10 +2,7 @@ package org.example.back_end.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.List;
@@ -13,8 +10,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@ToString
+@Getter
+@Setter
 
 @Entity
 @Table(name = "pet")

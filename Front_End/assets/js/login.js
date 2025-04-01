@@ -15,13 +15,13 @@ $(document).ready(function () {
 
             }),
             success: function (res) {
-                console.log("Response:", res); // Logs the entire response
+                console.log("Response:", res.data); // Logs the entire response
 
                 let user = res.data.userDTO
-                let token = res.token || res.data?.token;
+                let token = res.data.token;
 
                 console.log("User Object:", user); // Logs user object
-                console.log("User Role:", res.data.userDTO.role); // Logs user role
+                console.log("Token:", token); // Logs user role
 
                 if (user && token) {
                     alert(`Successfully logged in as ${user.role || "Unknown"}`);

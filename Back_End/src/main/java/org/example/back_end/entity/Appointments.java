@@ -1,10 +1,7 @@
 package org.example.back_end.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -14,8 +11,8 @@ import java.util.List;
 @Table(name = "appointments")
 @AllArgsConstructor
 @NoArgsConstructor
-
-@Data
+@Getter
+@Setter
 public class Appointments {
 
     @Id

@@ -301,199 +301,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    <style>
-        :root {
-            --accent-color: #3fbbc0;
-            --accent-dark: #2a9a9f;
-            --accent-light: #d1f2f3;
-            --text-dark: #333333;
-            --text-light: #777777;
-            --bg-light: #f8fbfb;
-            --sidebar-width: 250px;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        .topbar {
-            background-color: #3fbbc0;
-            color: white;
-            height: 60px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1030;
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            object-fit: cover;
-        }
-
-        .dropdown-menu {
-            min-width: 200px;
-        }
-
-        .toggle-sidebar {
-            color: white;
-            font-size: 1.25rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .toggle-sidebar:hover {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 40px;
-            background: white;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            z-index: 100;
-            transition: all 0.3s;
-        }
-
-        .main-content {
-            margin-left: var(--sidebar-width);
-            margin-top: 40px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-
-        .sidebar-collapsed .sidebar {
-            width: 80px;
-        }
-
-        .sidebar-collapsed .main-content {
-            margin-left: 80px;
-        }
-
-        .sidebar-collapsed .sidebar-text {
-            display: none;
-        }
-
-        .sidebar-collapsed .nav-link {
-            justify-content: center;
-        }
-
-        .nav-link {
-            color: var(--text-dark);
-            padding: 12px 20px;
-            border-left: 3px solid transparent;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: var(--accent-light);
-            color: var(--accent-dark);
-            border-left-color: var(--accent-color);
-        }
-
-        .nav-link i {
-            width: 24px;
-            text-align: center;
-            margin-right: 10px;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .card-header {
-            background-color: white;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-weight: 600;
-        }
-
-        .stat-card {
-            border-top: 4px solid var(--accent-color);
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-dark);
-            border-color: var(--accent-dark);
-        }
-
-        .btn-outline-primary {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .btn-outline-primary:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .badge-teal {
-            background-color: var(--accent-light);
-            color: var(--accent-dark);
-        }
-
-        .table th {
-            background-color: var(--accent-light);
-            color: var(--accent-dark);
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 10px;
-        }
-
-        .dataTables_wrapper .dataTables_length select {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-        }
-
-        .toggle-sidebar {
-            cursor: pointer;
-            font-size: 20px;
-            color: var(--accent-color);
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        @media (max-width: 992px) {
-            .sidebar {
-                left: -100%;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .sidebar-collapsed .sidebar {
-                left: 0;
-                width: 80px;
-            }
-
-            .sidebar-collapsed .main-content {
-                margin-left: 80px;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
 <!-- Top Bar -->
@@ -538,7 +347,9 @@
                             <i class="fas fa-cog me-2"></i> Settings
                         </a>
                     </li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li>
                         <a class="dropdown-item text-danger" href="#" id="logoutBtn">
                             <i class="fas fa-sign-out-alt me-2"></i> Sign Out
@@ -549,9 +360,6 @@
         </div>
     </div>
 </div>
-
-<!-- JavaScript for functionality -->
-
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -612,7 +420,8 @@
         <!-- Dashboard Tab -->
         <div class="tab-pane fade show active" id="dashboard">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4><i class="fas fa-tachometer-alt me-2" style="color: var(--accent-color);"></i> Dashboard Overview</h4>
+                <h4><i class="fas fa-tachometer-alt me-2" style="color: var(--accent-color);"></i> Dashboard Overview
+                </h4>
                 <div>
                     <button class="btn btn-sm btn-outline-primary">
                         <i class="fas fa-sync-alt me-1"></i> Refresh
@@ -815,30 +624,32 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="usersTable" class="table table-striped" style="width:100%">
+                        <table id="usersTable" class="table table-striped" style="width:100% ">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
+                                <th>Image</th>
                                 <th>Email</th>
+                                <th>Name</th>
+                                <th>Address</th>
                                 <th>Phone</th>
                                 <th>Pets</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>USR-1001</td>
-                                <td>
-                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" class="user-avatar me-2">
-                                    Sarah Johnson
+                            <tbody id="user_table">
+                            <!--<tr>
+                                <td id="profileImage">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg"
+                                         class="user-avatar me-2">
+
                                 </td>
-                                <td>sarah.johnson@example.com</td>
-                                <td>+94 77 123 4567</td>
-                                <td>2</td>
-                                <td><span class="badge bg-success">Active</span></td>
-                                <td>
+                                <td id="email"></td>
+                                <td id="name"></td>
+                                <td id="address"></td>
+                                <td id="telNo"></td>
+                                <td id="petList"></td>
+&lt;!&ndash;                                <td><span class="badge bg-success">Active</span></td>&ndash;&gt;
+                                <td id="action">
                                     <button class="btn btn-sm btn-outline-primary me-1">
                                         <i class="fas fa-eye"></i>
                                     </button>
@@ -849,7 +660,7 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
-                            </tr>
+                            </tr>-->
                             <!-- More user rows would be here -->
                             </tbody>
                         </table>
@@ -977,7 +788,8 @@
         <!-- Appointments Tab -->
         <div class="tab-pane fade" id="appointments">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4><i class="fas fa-calendar-check me-2" style="color: var(--accent-color);"></i> Manage Appointments</h4>
+                <h4><i class="fas fa-calendar-check me-2" style="color: var(--accent-color);"></i> Manage Appointments
+                </h4>
                 <div>
                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
                         <i class="fas fa-plus me-1"></i> New Appointment
@@ -1079,7 +891,7 @@
     }
 
     // Logout functionality
-    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
         e.preventDefault();
         // Add your logout logic here
         fetch('/api/auth/logout', {
@@ -1091,7 +903,7 @@
     });
 
     // Initialize from localStorage
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         if (localStorage.getItem('sidebarCollapsed') === 'true') {
             document.body.classList.add('sidebar-collapsed');
         }

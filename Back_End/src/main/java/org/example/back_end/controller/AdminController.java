@@ -5,6 +5,7 @@ import org.example.back_end.dto.AuthDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.dto.tableModalDTO.UserTableModalDTO;
 import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
@@ -14,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/admin")
@@ -62,4 +65,16 @@ public class AdminController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
+
+    @GetMapping("/getAllUsers")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllUsers(@RequestHeader ("Authorization") String Authorization) {
+        System.out.println(Authorization);
+
+        //Extract the user’s email from the token.
+        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
+
+        List<UserTableModalDTO> userTableModalDTOS = userService.getAllUsers(userDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "User List", userTableModalDTOS));
+       }
 }

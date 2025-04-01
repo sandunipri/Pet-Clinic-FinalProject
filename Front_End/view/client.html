@@ -463,20 +463,19 @@
                     <div class="col-md-5">
                         <div class="pet-card p-3 h-100">
                             <div class="d-flex">
-                                <img id="petImage"
+                                <img id="petImages"
                                      src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
                                      alt="Max" class="rounded-circle me-5" width="80" height="80">
                                 <div>
                                     <h5 id="petType" class="mb-1">Max <span
                                             class="badge badge-teal rounded-pill">Dog</span></h5>
-                                    <p id="breed" class="text-muted small mb-1">Golden Retriever</p>
-                                    <p id="age" class="text-muted small mb-1"> • 5 years</p>
+                                    <p id="petbreed" class="text-muted small mb-1">Golden Retriever</p>
+                                    <p id="petage" class="text-muted small mb-1"> • 5 years</p>
                                     <p class="small mb-2">Last visit: <span id="currentDate"></span></p>
                                     <div class="btn-group btn-group-sm">
-                                        <a>
-                                            <button class="btn btn-outline-primary">View</button>
-                                        </a>
-                                        <a>
+                                            <button type="button" id="deletePet" class="btn btn-outline-primary me-3">
+                                                DELETE
+                                            </button>
                                             <button
                                                     class="btn btn-outline-primary"
                                                     data-bs-toggle="modal"
@@ -484,7 +483,6 @@
                                             >
                                                 Edit
                                             </button>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -497,13 +495,15 @@
             <!--update pets-->
             <!-- Edit Pet Modal -->
 
-            <div class="modal fade" id="editPetModal" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="editPetModal" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow-lg">
                         <!-- Modal Header (Teal) -->
-                        <div class="modal-header py-3" style="background-color: #3fbbc0; color: white; border-radius: 0.3rem 0.3rem 0 0;">
+                        <div class="modal-header py-3"
+                             style="background-color: #3fbbc0; color: white; border-radius: 0.3rem 0.3rem 0 0;">
                             <h5 class="modal-title fw-bold">Edit Pet Details</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                         </div>
 
                         <!-- Modal Body -->
@@ -520,9 +520,12 @@
                                                 id="editPetImagePreview"
                                                 style="object-fit: cover; border: 3px solid #e9f7f7;"
                                         >
-                                        <label for="editPetImage" class="btn btn-sm btn-teal position-absolute bottom-0 end-0 rounded-circle p-0" style="width: 30px; height: 30px;">
+                                        <label for="petImage"
+                                               class="btn btn-sm btn-teal position-absolute bottom-0 end-0 rounded-circle p-0"
+                                               style="width: 30px; height: 30px;">
                                             <i class="fas fa-camera"></i>
-                                            <input type="file" id="editPetImage" accept="image/*" class="d-none">
+                                            <input type="file" id="petImage" name="petImage" accept="image/*"
+                                                   class="d-none">
                                         </label>
                                     </div>
                                     <small class="text-muted d-block mt-2">Max. 2MB (JPG, PNG)</small>
@@ -533,13 +536,13 @@
                                     <!-- Pet Name -->
                                     <div class="col-md-6">
                                         <label class="form-label">Pet Name</label>
-                                        <input type="text" class="form-control" id="editPetName" value="Max">
+                                        <input type="text" class="form-control" id="petName" name="petName" value="Max">
                                     </div>
 
                                     <!-- Species -->
                                     <div class="col-md-6">
                                         <label class="form-label">Species</label>
-                                        <select class="form-select" id="editPetSpecies">
+                                        <select class="form-select" id="species" name="species">
                                             <option value="Dog" selected>Dog</option>
                                             <option value="Cat">Cat</option>
                                             <option value="Bird">Bird</option>
@@ -549,19 +552,20 @@
                                     <!-- Breed -->
                                     <div class="col-md-6">
                                         <label class="form-label">Breed</label>
-                                        <input type="text" class="form-control" id="editPetBreed" value="Golden Retriever">
+                                        <input type="text" class="form-control" id="breed" name="breed"
+                                               value="Golden Retriever">
                                     </div>
 
                                     <!-- Age -->
                                     <div class="col-md-6">
                                         <label class="form-label">Age</label>
-                                        <input type="number" class="form-control" id="editPetAge" value="5">
+                                        <input type="number" class="form-control" id="age" name="age" value="5">
                                     </div>
 
                                     <!-- bday Visit -->
                                     <div class="col-12">
                                         <label class="form-label">BOD :</label>
-                                        <input type="date" class="form-control" id="editPetDob">
+                                        <input type="date" class="form-control" id="birthDate" name="birthDate">
                                     </div>
                                 </div>
                             </form>
@@ -570,7 +574,8 @@
                         <!-- Modal Footer (Teal Button) -->
                         <div class="modal-footer py-3 border-top-0">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn text-white" style="background-color: #3fbbc0;" id="savePetChanges">
+                            <button type="button" class="btn text-white" style="background-color: #3fbbc0;"
+                                    id="savePetChanges">
                                 <i class="fas fa-save me-1"></i> Save Changes
                             </button>
                         </div>
@@ -654,8 +659,6 @@
             reader.readAsDataURL(file); // Convert image to base64 URL
         }
     });
-
-
 </script>
 
 </body>

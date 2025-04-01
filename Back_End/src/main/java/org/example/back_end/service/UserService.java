@@ -3,6 +3,9 @@ package org.example.back_end.service;
 
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.dto.tableModalDTO.UserTableModalDTO;
+
+import java.util.List;
 
 public interface UserService {
     int saveUser(UserDTO userDTO);
@@ -13,4 +16,6 @@ public interface UserService {
     UserDTO convertFormToUserDTO(RegisterFormDTO registerFormDTO, String savedPath);
     UserDTO getUserByToken(String substring);
     boolean deleteUser(String token);
+
+    List<UserTableModalDTO> getAllUsers(UserDTO userDTO);
 }

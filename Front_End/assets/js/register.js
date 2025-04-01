@@ -10,7 +10,13 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                alert("Register Success");
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    text: "Register Success!"
+                }).then(() => {
+                  window.location.href = 'index.html';
+                });
             },
             error: function (data) {
                 alert("Register Failed");

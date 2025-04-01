@@ -108,7 +108,14 @@ public class PetController {
 
     @DeleteMapping("/deletePet")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    public ResponseEntity<ResponseDTO> deletePet(@RequestHeader PetDTO petDTO) {
-        return null;
+    public ResponseEntity<ResponseDTO> deletePet(@RequestParam int petId) {
+        System.out.println("petId" + petId);
+        boolean isDeleted = petService.deletePet(petId);
+
+        if (!isDeleted) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "pet not found", null));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Deleted success", isDeleted));
+
     }
 }
