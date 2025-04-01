@@ -51,8 +51,6 @@ public class AppointmentController {
         PetDTO petDTO = petService.searchPetByUserEmail(email);
         System.out.println("Pet found: " + petDTO);
 
-
-
 //        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
 //        System.out.println("Pet found: " + petDTO);
 

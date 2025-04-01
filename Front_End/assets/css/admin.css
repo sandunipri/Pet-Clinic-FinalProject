@@ -189,4 +189,42 @@ body {
     .sidebar-collapsed .main-content {
         margin-left: 80px;
     }
+
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-light.border {
+        transition: all 0.3s ease;
+    }
+
+    .btn-light.border:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary {
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+    }
+
+    .rounded-3 {
+        border-radius: 0.75rem !important;
+    }
+
+    /* Ensure anchor tags display as block to fill container */
+    .d-grid a {
+        display: block;
+        text-decoration: none;
+    }
 }

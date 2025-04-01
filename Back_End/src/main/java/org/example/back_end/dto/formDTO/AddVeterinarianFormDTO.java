@@ -11,11 +11,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @ToString
 public class AddVeterinarianFormDTO {
+    private int id;
     private MultipartFile profileImage;
-    private String name;
+    private String title;
+    private String firstName;
+    private String lastName;
+    private String gender;
     private String email;
-    private String address;
     private String phone;
+    private String address;
+    private String city;
+    private String licenseNo;
     private String specialty;
+    private String YOEeperience;
+    private String bio;
+
 
 }

@@ -9,10 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 public class VeterinarianDTO {
     private int id;
-    private String name;
+    private String title;
+    private String firstName;
+    private String lastName;
+    private String gender;
     private String email;
-    private String address;
     private String phone;
+    private String address;
+    private String city;
+    private String licenseNo;
     private String specialty;
+    private String YOEeperience;
+    private String bio;
     private String profileImage;
 }

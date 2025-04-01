@@ -304,6 +304,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
+<style>
+
+</style>
 <body>
 <!-- Top Bar -->
 <div class="topbar d-flex align-items-center fixed-top">
@@ -582,31 +585,82 @@
                 </div>
 
                 <div class="col-lg-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h5 class="mb-0">Quick Actions</h5>
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-white border-bottom-0 pb-0">
+                            <h5 class="mb-3 fw-semibold text-primary"><i class="fas fa-bolt me-2"></i> Quick Actions</h5>
                         </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVetModal">
-                                    <i class="fas fa-user-md me-2"></i> Add Veterinarian
-                                </button>
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-calendar-plus me-2"></i> Create Appointment
-                                </button>
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-paw me-2"></i> Register Pet
-                                </button>
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-user-plus me-2"></i> Add New User
-                                </button>
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-file-invoice-dollar me-2"></i> Generate Report
-                                </button>
+                        <div class="card-body pt-0">
+                            <div class="d-grid gap-3">
+                                <!-- Add Veterinarian -->
+                                <a href="addVeterinaries.html" class="btn btn-primary text-start py-3 px-4 rounded-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-circle bg-white bg-opacity-25 me-3 p-2">
+                                            <i class="fas fa-user-md fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold">Add Veterinarian</h6>
+                                            <small class="text-white text-opacity-75">Register new veterinary staff</small>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Create Appointment -->
+                                <a href="appointment.html" class="btn btn-light text-start py-3 px-4 rounded-3 border">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3 p-2">
+                                            <i class="fas fa-calendar-plus fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold">Create Appointment</h6>
+                                            <small class="text-muted">Schedule client visit</small>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Register Pet -->
+                                <a href="addPet.html" class="btn btn-light text-start py-3 px-4 rounded-3 border">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3 p-2">
+                                            <i class="fas fa-paw fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold">Register Pet</h6>
+                                            <small class="text-muted">Add new patient record</small>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Add New User -->
+                                <a href="loginAndRegister.html" class="btn btn-light text-start py-3 px-4 rounded-3 border">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3 p-2">
+                                            <i class="fas fa-user-plus fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold">Add New User</h6>
+                                            <small class="text-muted">Create staff/client account</small>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- Generate Report -->
+                                <a href="medicalReport.html" class="btn btn-light text-start py-3 px-4 rounded-3 border">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3 p-2">
+                                            <i class="fas fa-file-invoice-dollar fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold">Generate Report</h6>
+                                            <small class="text-muted">Create financial/medical reports</small>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
 
@@ -708,30 +762,6 @@
                             </tr>
                             </thead>
                             <tbody id="pet_table">
-                            <tr>
-                                <td>PET-1001</td>
-                                <td>
-                                    <img id="petImage" src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                                         class="user-avatar me-2">
-                                    Max
-                                </td>
-                                <td>Dog / Golden Retriever</td>
-                                <td>Sarah Johnson</td>
-                                <td>5 years</td>
-                                <td>June 15, 2023</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- More pet rows would be here -->
                             </tbody>
                         </table>
                     </div>
@@ -811,6 +841,7 @@
 </div>
 
 <!-- Add Veterinarian Modal -->
+<!--
 <div class="modal fade" id="addVetModal" tabindex="-1" aria-labelledby="addVetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -819,7 +850,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Add Veterinarian Form (from previous example) would be here -->
+                &lt;!&ndash; Add Veterinarian Form (from previous example) would be here &ndash;&gt;
                 <p>Veterinarian form would appear here</p>
             </div>
             <div class="modal-footer">
@@ -829,6 +860,7 @@
         </div>
     </div>
 </div>
+-->
 
 
 <script src="../js/jquery-3.7.1.min.js"></script>

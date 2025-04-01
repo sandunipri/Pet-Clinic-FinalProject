@@ -42,14 +42,8 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Override
     public VeterinarianDTO convertFormToVeterinarianDTO(AddVeterinarianFormDTO addVeterinarianFormDTO, String savedPath) {
-        VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
-        veterinarianDTO.setName(addVeterinarianFormDTO.getName());
-        veterinarianDTO.setEmail(addVeterinarianFormDTO.getEmail());
-        veterinarianDTO.setAddress(addVeterinarianFormDTO.getAddress());
-        veterinarianDTO.setPhone(addVeterinarianFormDTO.getPhone());
-        veterinarianDTO.setSpecialty(addVeterinarianFormDTO.getSpecialty());
+        VeterinarianDTO veterinarianDTO = modelMapper.map(addVeterinarianFormDTO, VeterinarianDTO.class);
         veterinarianDTO.setProfileImage(savedPath);
-
         return veterinarianDTO;
     }
 
