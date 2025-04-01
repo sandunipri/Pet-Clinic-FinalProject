@@ -71,8 +71,8 @@ $(document).ready(function () {
                             <td>${vet.email}</td>
                             <td>${vet.name}</td>
                             <td>${vet.address}</td>
-                            <td>${vet.telNo}</td>
-                            <td>${vet.species}</td>
+                            <td>${vet.phone}</td>
+                            <td>${vet.specialty}</td>
                             <td>
                              <button class="btn btn-sm btn-outline-primary me-1">
                                         <i class="fas fa-eye"></i>
@@ -83,7 +83,6 @@ $(document).ready(function () {
                                     <button class="btn btn-sm btn-outline-danger">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                    
                              </td>
                         </tr>
                     `);

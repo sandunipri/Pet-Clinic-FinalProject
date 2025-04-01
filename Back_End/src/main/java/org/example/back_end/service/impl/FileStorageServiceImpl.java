@@ -57,7 +57,7 @@ public class FileStorageServiceImpl implements FileStorageService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return filePath.toString();
+        return UPLOAD_DIRECTORY + VET_PROFILE_IMAGE_DIRECTORY + fileName;
     }
 
     @Override
