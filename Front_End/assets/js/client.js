@@ -63,7 +63,7 @@ $(document).ready(function () {
                         <div class="pet-card p-3 h-100">
                             <div class="d-flex">
                                 <img id="petImages" src="../${response.data[i].petImage}"
-                                     alt="Max" class="rounded-circle me-5 " width="80" height="80">
+                                     alt="Max" class="rounded-circle me-4 " width="80" height="80">
                                 <div>
                                     <h5 id="petType" class="mb-1">${response.data[i].petName} <span class="badge badge-teal rounded-pill">${response.data[i].species}</span></h5>
                                     <p id="petbreed" class="text-muted small mb-1">${response.data[i].breed}</p>
@@ -78,7 +78,12 @@ $(document).ready(function () {
                                                     onclick="loadModal()"
                                             >
                                                 Edit
-                                            </button>
+                                            </button
+                                                    class="btn btn-outline-primary"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#editPetModal"
+                                                    onclick="loadModal()"
+                                            >
                                         </div>
                                 </div>
                             </div>

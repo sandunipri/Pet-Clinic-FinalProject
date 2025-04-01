@@ -94,9 +94,53 @@ $(document).ready(function () {
         });
     }
 
+    function allPets(){
+        $.ajax({
+            url : "http://localhost:8080/api/v1/admin/getAllPets",
+            type : "GET",
+            success: function (response) {
+                let pets = response.data;
+                let tableBody = $('#pet_table');
+                tableBody.empty();
+                pets.forEach(pets => {
+                    tableBody.append(`
+                        <tr>
+                            <td>
+                            <img src="../${pets.petImage}"
+                                         class="user-avatar me-2">
+                            </td>
+                            <td>${pets.petName}</td>
+                            <td>${pets.species}</td>
+                            <td>${pets.breed}</td>
+                            <td>${pets.age}</td>
+                            <td>${pets.user.name}</td>
+                               <td>
+                             <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                             </td>
+                        </tr>
+                    `);
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+
+        })
+
+    }
+
 
     allUsers();
     allVets();
+    allPets();
 
 
 });

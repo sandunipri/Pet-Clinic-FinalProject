@@ -12,7 +12,6 @@ import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -182,5 +181,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 
     }
+
+
 
 }

@@ -4,19 +4,18 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.UserDTO;
-import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AddPetFormDTO;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.entity.User;
 import org.example.back_end.repo.PetRepo;
 import org.example.back_end.repo.UserRepository;
 import org.example.back_end.service.PetService;
-import org.example.back_end.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,7 +44,6 @@ public class PetServiceImpl implements PetService {
         return modelMapper.map(petRepo.findAll(), new TypeToken<List<PetDTO>>() {
         }.getType());
     }
-
     @Override
     public PetDTO searchPet(int petId) {
         return petRepo.findById(petId)
@@ -100,5 +98,6 @@ public class PetServiceImpl implements PetService {
 
         }
     }
+
 
 }
