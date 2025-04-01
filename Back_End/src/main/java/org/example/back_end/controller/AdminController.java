@@ -4,10 +4,12 @@ import jakarta.servlet.annotation.MultipartConfig;
 import org.example.back_end.dto.AuthDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
+import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.RegisterFormDTO;
 import org.example.back_end.dto.tableModalDTO.UserTableModalDTO;
 import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.UserService;
+import org.example.back_end.service.VeterinarianService;
 import org.example.back_end.util.JwtUtil;
 import org.example.back_end.util.VarList;
 import org.springframework.http.HttpStatus;
@@ -28,11 +30,13 @@ public class AdminController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
     private final FileStorageService fileStorageService;
+    private final VeterinarianService veterinarianService;
 
-    public AdminController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService) {
+    public AdminController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService, VeterinarianService veterinarianService) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
         this.fileStorageService = fileStorageService;
+        this.veterinarianService = veterinarianService;
     }
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -77,4 +81,11 @@ public class AdminController {
         List<UserTableModalDTO> userTableModalDTOS = userService.getAllUsers(userDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "User List", userTableModalDTOS));
        }
+
+
+    @GetMapping("getAllVeterinary")
+    public ResponseEntity<ResponseDTO> getAllVeterinary() {
+        List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinary();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinary List", veterinarianDTOList));
+    }
 }

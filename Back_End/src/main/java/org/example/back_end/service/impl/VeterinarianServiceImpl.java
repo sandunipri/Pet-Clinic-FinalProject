@@ -1,8 +1,11 @@
 package org.example.back_end.service.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AddVeterinarianFormDTO;
+import org.example.back_end.entity.User;
 import org.example.back_end.entity.Veterinarian;
 import org.example.back_end.repo.VeterinarianRepo;
 import org.example.back_end.service.VeterinarianService;
@@ -21,6 +24,10 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private EntityManager entityManager;
+
 
 
     @Override
@@ -53,4 +60,11 @@ public class VeterinarianServiceImpl implements VeterinarianService {
                 .orElse(null);
 
     }
+
+    @Override
+    public List<VeterinarianDTO> getAllVeterinary() {
+        return modelMapper.map(veterinarianRepo.findAll(),new TypeToken<List<VeterinarianDTO>>(){}.getType());
+
+    }
+
 }

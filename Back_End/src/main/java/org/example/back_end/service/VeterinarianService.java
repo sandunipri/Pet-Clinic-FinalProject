@@ -8,10 +8,9 @@ import java.util.List;
 
 public interface VeterinarianService {
     void saveVeterinarian(VeterinarianDTO veterinarian);
-
     List<VeterinarianDTO> getAllVeterinarian();
-
     VeterinarianDTO convertFormToVeterinarianDTO(AddVeterinarianFormDTO addVeterinarianFormDTO, String savedPath);
-
     VeterinarianDTO searchVeterinarian(int id);
+
+    List<VeterinarianDTO> getAllVeterinary();
 }
