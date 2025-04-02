@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#logOutBtn').click(function () {
+    $('#logoutBtn').click(function () {
         localStorage.removeItem('token');
         window.location.href = 'index.html';
     });

@@ -61,14 +61,17 @@
                             <div class="avatar-upload mb-4">
                                 <div class="avatar-preview">
                                     <img id="vetAvatarPreview"
-                                         src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22150%22%20height%3D%22150%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20150%20150%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_18c8e0d6e3d%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A15pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_18c8e0d6e3d%22%3E%3Crect%20width%3D%22150%22%20height%3D%22150%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2255.5%22%20y%3D%2280.8%22%3E150x150%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-                                         alt="Avatar Preview">
+                                         src="../assets/images/Doney-logo_color.png"
+                                         alt="Avatar Preview"
+                                         style="width: 150px; height: 150px; max-width: 150px; max-height: 150px; object-fit: cover;">
+
                                 </div>
                                 <div class="avatar-edit">
                                     <input type="file" id="profileImage" name="profileImage" accept="image/*">
                                     <label for="profileImage"><i class="fas fa-camera"></i></label>
                                 </div>
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
@@ -127,7 +130,8 @@
 
                             <div class="mb-3">
                                 <label for="YOEeperience" class="form-label">Years of Experience</label>
-                                <input type="number" class="form-control" id="YOEeperience" name="YOEeperience" min="0" max="50">
+                                <input type="number" class="form-control" id="YOEeperience" name="YOEeperience" min="0"
+                                       max="50">
                             </div>
 
                             <div class="mb-3">
@@ -160,98 +164,98 @@
                         </div>
                     </div>
 
-           <!--         &lt;!&ndash; Work Schedule &ndash;&gt;
-                    <div class="mb-4">
-                        <h5 class="mb-3" style="color: var(&#45;&#45;accent-color);">Work Schedule</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead style="background-color: var(&#45;&#45;accent-light);">
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th>
-                                    <th>Available</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Monday</td>
-                                    <td><input type="time" class="form-control" value="08:00"></td>
-                                    <td><input type="time" class="form-control" value="17:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Tuesday</td>
-                                    <td><input type="time" class="form-control" value="08:00"></td>
-                                    <td><input type="time" class="form-control" value="17:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td><input type="time" class="form-control" value="08:00"></td>
-                                    <td><input type="time" class="form-control" value="17:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Thursday</td>
-                                    <td><input type="time" class="form-control" value="08:00"></td>
-                                    <td><input type="time" class="form-control" value="17:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td><input type="time" class="form-control" value="08:00"></td>
-                                    <td><input type="time" class="form-control" value="17:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td><input type="time" class="form-control" value="09:00"></td>
-                                    <td><input type="time" class="form-control" value="14:00"></td>
-                                    <td><input class="form-check-input" type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td><input type="time" class="form-control" disabled></td>
-                                    <td><input type="time" class="form-control" disabled></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <!--         &lt;!&ndash; Work Schedule &ndash;&gt;
+                             <div class="mb-4">
+                                 <h5 class="mb-3" style="color: var(&#45;&#45;accent-color);">Work Schedule</h5>
+                                 <div class="table-responsive">
+                                     <table class="table table-bordered">
+                                         <thead style="background-color: var(&#45;&#45;accent-light);">
+                                         <tr>
+                                             <th>Day</th>
+                                             <th>Start Time</th>
+                                             <th>End Time</th>
+                                             <th>Available</th>
+                                         </tr>
+                                         </thead>
+                                         <tbody>
+                                         <tr>
+                                             <td>Monday</td>
+                                             <td><input type="time" class="form-control" value="08:00"></td>
+                                             <td><input type="time" class="form-control" value="17:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Tuesday</td>
+                                             <td><input type="time" class="form-control" value="08:00"></td>
+                                             <td><input type="time" class="form-control" value="17:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Wednesday</td>
+                                             <td><input type="time" class="form-control" value="08:00"></td>
+                                             <td><input type="time" class="form-control" value="17:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Thursday</td>
+                                             <td><input type="time" class="form-control" value="08:00"></td>
+                                             <td><input type="time" class="form-control" value="17:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Friday</td>
+                                             <td><input type="time" class="form-control" value="08:00"></td>
+                                             <td><input type="time" class="form-control" value="17:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Saturday</td>
+                                             <td><input type="time" class="form-control" value="09:00"></td>
+                                             <td><input type="time" class="form-control" value="14:00"></td>
+                                             <td><input class="form-check-input" type="checkbox" checked></td>
+                                         </tr>
+                                         <tr>
+                                             <td>Sunday</td>
+                                             <td><input type="time" class="form-control" disabled></td>
+                                             <td><input type="time" class="form-control" disabled></td>
+                                             <td><input class="form-check-input" type="checkbox"></td>
+                                         </tr>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                             </div>
 
-                    &lt;!&ndash; System Access &ndash;&gt;
-                    <div class="mb-4">
-                        <h5 class="mb-3" style="color: var(&#45;&#45;accent-color);">System Access</h5>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="vetUsername" class="form-label">Username *</label>
-                                <input type="text" class="form-control" id="vetUsername" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="vetPassword" class="form-label">Password *</label>
-                                <input type="password" class="form-control" id="vetPassword" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="vetRole" class="form-label">Role *</label>
-                                <select class="form-select" id="vetRole" required>
-                                    <option value="">Select role</option>
-                                    <option value="vet">Veterinarian</option>
-                                    <option value="senior_vet">Senior Veterinarian</option>
-                                    <option value="admin">Administrator</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="vetStatus" class="form-label">Status *</label>
-                                <select class="form-select" id="vetStatus" required>
-                                    <option value="active" selected>Active</option>
-                                    <option value="inactive">Inactive</option>
-                                    <option value="on_leave">On Leave</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>-->
+                             &lt;!&ndash; System Access &ndash;&gt;
+                             <div class="mb-4">
+                                 <h5 class="mb-3" style="color: var(&#45;&#45;accent-color);">System Access</h5>
+                                 <div class="row g-3">
+                                     <div class="col-md-6">
+                                         <label for="vetUsername" class="form-label">Username *</label>
+                                         <input type="text" class="form-control" id="vetUsername" required>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <label for="vetPassword" class="form-label">Password *</label>
+                                         <input type="password" class="form-control" id="vetPassword" required>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <label for="vetRole" class="form-label">Role *</label>
+                                         <select class="form-select" id="vetRole" required>
+                                             <option value="">Select role</option>
+                                             <option value="vet">Veterinarian</option>
+                                             <option value="senior_vet">Senior Veterinarian</option>
+                                             <option value="admin">Administrator</option>
+                                         </select>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <label for="vetStatus" class="form-label">Status *</label>
+                                         <select class="form-select" id="vetStatus" required>
+                                             <option value="active" selected>Active</option>
+                                             <option value="inactive">Inactive</option>
+                                             <option value="on_leave">On Leave</option>
+                                         </select>
+                                     </div>
+                                 </div>
+                             </div>-->
 
                     <!-- Form Actions -->
                     <div class="d-flex justify-content-end mt-5">
@@ -273,44 +277,52 @@
 <script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/vet.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
-
-<!--
 <script>
-    // Preview avatar image when selected
-    document.getElementById('vetAvatarUpload').addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                document.getElementById('vetAvatarPreview').src = event.target.result;
-            };
-            reader.readAsDataURL(file);
+    document.addEventListener("DOMContentLoaded", function () {
+        // Preview avatar image when selected
+        const fileInput = document.getElementById('profileImage');
+        const avatarPreview = document.getElementById('vetAvatarPreview');
+
+        if (fileInput && avatarPreview) {
+            fileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        avatarPreview.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         }
-    });
 
-    // Add specialty tags
-    document.getElementById('addSpecialtyBtn').addEventListener('click', function () {
-        const input = document.getElementById('vetSpecialtyInput');
-        const specialty = input.value.trim();
+        // Add specialty tags
+        const addSpecialtyBtn = document.getElementById('addSpecialtyBtn');
+        const specialtyInput = document.getElementById('vetSpecialtyInput');
+        const specialtiesContainer = document.getElementById('specialtiesContainer');
 
-        if (specialty) {
-            const container = document.getElementById('specialtiesContainer');
-            const tag = document.createElement('span');
-            tag.className = 'specialty-tag';
-            tag.innerHTML = `${specialty} <span class="remove-tag" onclick="this.parentElement.remove()">&times;</span>`;
-            container.appendChild(tag);
-            input.value = '';
-        }
-    });
+        if (addSpecialtyBtn && specialtyInput && specialtiesContainer) {
+            addSpecialtyBtn.addEventListener('click', function () {
+                const specialty = specialtyInput.value.trim();
+                if (specialty) {
+                    const tag = document.createElement('span');
+                    tag.className = 'specialty-tag';
+                    tag.innerHTML = `${specialty} <span class="remove-tag" onclick="this.parentElement.remove()">&times;</span>`;
+                    specialtiesContainer.appendChild(tag);
+                    specialtyInput.value = '';
+                }
+            });
 
-    // Allow adding specialties with Enter key
-    document.getElementById('vetSpecialtyInput').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            document.getElementById('addSpecialtyBtn').click();
+            // Allow adding specialties with Enter key
+            specialtyInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSpecialtyBtn.click();
+                }
+            });
         }
     });
 </script>
--->
+
 </body>
 </html>
