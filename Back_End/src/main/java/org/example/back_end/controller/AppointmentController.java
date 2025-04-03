@@ -33,7 +33,7 @@ public class AppointmentController {
 
 
     @PostMapping("/save")
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    @PreAuthorize("hasAnyAuthority('USER')")
     public ResponseEntity<ResponseDTO> saveAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDTO appointmentDTO) {
         //Extract the user’s email from the token.
         String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
@@ -48,11 +48,11 @@ public class AppointmentController {
         System.out.println("Veterinarian found: " + veterinarianDTO);
 
         //Retrieve the pet in using userEmail.
-        PetDTO petDTO = petService.searchPetByUserEmail(email);
-        System.out.println("Pet found: " + petDTO);
+       /* PetDTO petDTO = petService.searchPetByUserEmail(email);
+        System.out.println("Pet found: " + petDTO);*/
 
-//        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
-//        System.out.println("Pet found: " + petDTO);
+        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
+        System.out.println("Pet found: " + petDTO);
 
         //save the appointment.
         appointmentService.saveAppointment(appointmentDTO, userDTO, petDTO, veterinarianDTO);

@@ -24,6 +24,7 @@ import java.util.List;
 @MultipartConfig(fileSizeThreshold = 10 * 1024 * 1024,
         maxFileSize = 10 * 1024 * 1024,
         maxRequestSize = 10 * 1024 * 1024)
+
 public class AdminController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
@@ -81,14 +82,15 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "User List", userTableModalDTOS));
     }
 
-
     @GetMapping("getAllVeterinary")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllVeterinary() {
-        List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinary();
+        List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinarian();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinary List", veterinarianDTOList));
     }
 
     @GetMapping("/getAllPets")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllPets() {
         List<PetDTO> userDTOList = petService.getAllPets();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Pet List", userDTOList));

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PetServiceImpl implements PetService {
@@ -46,15 +47,16 @@ public class PetServiceImpl implements PetService {
     }
     @Override
     public PetDTO searchPet(int petId) {
-        return petRepo.findById(petId)
-                .map(pet -> modelMapper.map(pet, PetDTO.class))
-                .orElse(null);
+
+        return modelMapper.map(petRepo.findByPetId(petId), PetDTO.class);
+
     }
 
-    @Override
+    /*@Override
     public PetDTO searchPetByUserEmail(String email) {
-        return modelMapper.map(petRepo.findByUserEmail(email), PetDTO.class);
-    }
+        Pet pet = petRepo.findByUserEmail(email);
+        return modelMapper.map(pet, PetDTO.class);
+    }*/
 
     @Override
     public PetDTO convertFormToPetDTO(AddPetFormDTO addPetFormDTO) {

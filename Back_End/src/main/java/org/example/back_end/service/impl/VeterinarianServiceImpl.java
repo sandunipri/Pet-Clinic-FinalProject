@@ -55,10 +55,9 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     }
 
-    @Override
+/*    @Override
     public List<VeterinarianDTO> getAllVeterinary() {
         return modelMapper.map(veterinarianRepo.findAll(),new TypeToken<List<VeterinarianDTO>>(){}.getType());
-
-    }
+    }*/
 
 }

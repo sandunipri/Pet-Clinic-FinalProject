@@ -10,7 +10,7 @@ public interface PetService {
     void savePet(PetDTO petDTO);
     List<PetDTO> getAllPets();
     PetDTO searchPet(int petId);
-    PetDTO searchPetByUserEmail(String email);
+//    PetDTO searchPetByUserEmail(String email);
     PetDTO convertFormToPetDTO(AddPetFormDTO addPetFormDTO);
     List<PetDTO> getPetsFromUser(UserDTO userDTO);
     boolean deletePet(int petId);
