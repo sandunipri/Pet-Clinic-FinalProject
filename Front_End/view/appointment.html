@@ -101,20 +101,22 @@
     </div>
     <!-- End Section Title -->
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <form class="bg-white p-4 rounded shadow-sm">
+        <form id="appointmentForm"  class="bg-white p-4 rounded shadow-sm">
             <div class="row g-3">
                 <!-- Personal Information -->
                 <div class="col-md-4">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                    <label for="userName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="userName"  name="name" placeholder="John Doe" required>
                 </div>
                 <div class="col-md-4">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="petName" class="form-label">Pet Name</label>
-                    <input type="text" class="form-control" id="petName" placeholder="John Doe" required>
+                    <label for="petList" class="form-label">Pet Name :</label>
+                    <select class="form-select" id="petList" required>
+                        <option value="">Select Pet</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="phone" class="form-label">Phone</label>
@@ -127,20 +129,27 @@
                     <input type="datetime-local" class="form-control" id="date" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="department" class="form-label">Department</label>
-                    <select class="form-select" id="department" required>
-                        <option value="">Select Department</option>
-                        <option value="General Medicine">General Medicine</option>
-                        <option value="Surgery">Surgery</option>
-                        <option value="Dermatology">Dermatology</option>
-                        <option value="Cardiology">Cardiology</option>
-                        <option value="Neurology">Neurology</option>
+                    <label for="time" class="form-label">Time</label>
+                    <select class="form-select" id="time" name="time" required>
+                        <option value="">Select Time</option>
+                        <option value="08:30">8.30 AM</option>
+                        <option value="09:00">9.00 AM</option>
+                        <option value="09:30">9.30 AM</option>
+                        <option value="10:00">10.00 AM</option>
+                        <option value="10:30">10.30 AM</option>
+                    </select>
+
+                </div>
+                <div class="col-md-4">
+                    <label for="specialty-select" class="form-label">Department</label>
+                    <select class="form-select" id="specialty-select" name="specialty" required>
+                        <option value="doc-specialities">Select Department</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="doctor" class="form-label">Preferred Doctor</label>
                     <select class="form-select" id="doctor" name="doctor" required>
-                        <option value="Dr. John Doe">Select Doctor</option>
+                        <option value="">Select Doctor</option>
                         <!--<option value="Dr. Walter White">Dr. Walter White</option>
                         <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
                         <option value="Dr. William Anderson">Dr. William Anderson</option>
@@ -150,13 +159,13 @@
 
                 <!-- Message -->
                 <div class="col-12">
-                    <label for="message" class="form-label">Additional Information</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Describe your pet's condition or special requests"></textarea>
+                    <label for="reason" class="form-label">Additional Information</label>
+                    <textarea class="form-control" id="reason" rows="3" placeholder="Describe your pet's condition or special requests"></textarea>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="col-12 text-center mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2"
+                    <button type="button" id="bookAppointment" class="btn btn-primary btn-lg px-4 py-2"
                             style="background-color: #3fbbc0; border-color: #3fbbc0;">
                         <i class="fas fa-calendar-check me-2"></i> Book Appointment
                     </button>
@@ -168,45 +177,8 @@
 
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/sweetalert2@11.js"></script>
 <script src="../assets/js/vet.js"></script>
-<!--<script>
-    // Mobile Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-        const navmenu = document.querySelector('#navmenu');
-
-        mobileNavToggle.addEventListener('click', function() {
-            navmenu.classList.toggle('navmenu-active');
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all channel buttons
-        const channelButtons = document.querySelectorAll('.btn-outline-primary[data-bs-target="#doctorModal1"]');
-
-        // Get appointment section
-        const appointmentSection = document.getElementById('appointment');
-
-        // Add click event to each channel button
-        channelButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Show the appointment section
-                appointmentSection.style.display = 'block';
-
-                // Scroll to the appointment section smoothly
-                appointmentSection.scrollIntoView({ behavior: 'smooth' });
-
-                // You can also pre-select the doctor based on which button was clicked
-                const doctorCard = this.closest('.team-member');
-                const doctorName = doctorCard.querySelector('.card-title').textContent;
-                document.getElementById('doctor').value = doctorName;
-            });
-        });
-    });
-</script>-->
+<script src="../assets/js/appointment.js"></script>
 </body>
 </html>

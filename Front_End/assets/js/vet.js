@@ -43,14 +43,18 @@ $(document).ready(function () {
             success: function (response) {
 
                 const doctorSelect = $('#doctor');
+                const specialtySelect = $('#specialty-select');
                 doctorSelect.empty().append('<option value="">Select Doctor</option>');
+                specialtySelect.empty().append(`<option value="">Department</option>`);
 
                 for (let i = 0; i < response.data.length; i++) {
 
                     const vet = response.data[i];
                     const fullName = `${vet.title}. ${vet.firstName} ${vet.lastName}`;
 
-                    doctorSelect.append(`<option value="${fullName}">${fullName}</option>`);
+                    doctorSelect.append(`<option value="${vet.id}">${fullName}</option>`);
+                    specialtySelect.append(`<option value="${vet.specialty.toLowerCase()}">${vet.specialty}</option>`);
+
 
                     $('#docList').append(`
                         <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
@@ -67,11 +71,11 @@ $(document).ready(function () {
                                 <div class="member-info card-body text-center">
                                     <h4 id="name" class="card-title fw-bold">${fullName}</h4>
                                     <span>Chief Veterinary Officer</span>
-                                    <p id="specialty" class="card-text mt-2 small" style="color: var(--text-light)">
+                                    <p id="specialty" data-doctorspecialty="${vet.specialty}" class="card-text mt-2 small" style="color: var(--text-light)" >
                                     ${vet.specialty}
                                     </p>
                                     <button class="btn btn-outline-primary btn-sm mt-2 channel-btn" 
-                                        data-doctorname="${fullName}">
+                                        data-doctorname="${vet.id}">
                                         CHANNEL
                                     </button>
                                 </div>
@@ -93,12 +97,23 @@ $(document).ready(function () {
     function loadDoctors() {
         $(document).on('click', '.channel-btn', function(e) {
             e.preventDefault();
+
+            let user = localStorage.getItem("user");
+            let userJSON = JSON.parse(user)
+
+            $('#userName').val(userJSON.name);
+            $('#email').val(userJSON.email);
+
             const doctorName = $(this).data('doctorname');
+            const doctorSpecialty = $(this).closest('.member-info').find('#specialty').data('doctorspecialty');
+            console.log("Selected Doctor:", doctorName);
+            console.log("Selected Specialty:", doctorSpecialty);
             const appointmentSection = $('#appointment');
 
             // Set the selected doctor
             $('#doctor').val(doctorName).trigger('change');
-
+            // Set the selected specialty
+            $('#specialty-select').val(doctorSpecialty.toLowerCase()).trigger('change');
             // Show and scroll to appointment form
             appointmentSection.css('display', 'block');
             $('html, body').animate({
@@ -107,6 +122,8 @@ $(document).ready(function () {
 
             // Focus on the first field
             $('#name').focus();
+
+
         });
     }
 

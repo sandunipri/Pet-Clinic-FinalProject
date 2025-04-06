@@ -26,6 +26,7 @@ $(document).ready(function () {
                 if (user && token) {
                     alert(`Successfully logged in as ${user.role || "Unknown"}`);
                     window.localStorage.setItem("token", token);
+                    window.localStorage.setItem("user", JSON.stringify(user));
 
                     if (user.role === "USER") {
                         window.location.href = 'client.html';

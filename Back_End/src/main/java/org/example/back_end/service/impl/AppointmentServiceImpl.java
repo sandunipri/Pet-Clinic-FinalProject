@@ -4,6 +4,7 @@ import org.example.back_end.dto.AppointmentDTO;
 import org.example.back_end.dto.PetDTO;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
+import org.example.back_end.dto.formDTO.AppointmentDetailsDTO;
 import org.example.back_end.entity.Appointments;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.entity.User;
@@ -37,16 +38,23 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     @Override
-    public void saveAppointment(AppointmentDTO appointmentDTO, UserDTO userDTO, PetDTO petDTO, VeterinarianDTO veterinarianDTO) {
+    public void saveAppointment(AppointmentDTO appointmentDTO) {
         Appointments appointments = modelMapper.map(appointmentDTO, Appointments.class);
-        User user = modelMapper.map(userDTO, User.class);
-        Pet pet = modelMapper.map(petDTO, Pet.class);
-        Veterinarian veterinarian = modelMapper.map(veterinarianDTO, Veterinarian.class);
-
-        appointments.setUser(user);
-        appointments.setPet(pet);
-        appointments.setVeterinarian(veterinarian);
-
         appointmentRepo.save(appointments);
+    }
+
+    @Override
+    public AppointmentDTO setDetails(AppointmentDetailsDTO appointmentDetails, UserDTO userDTO, PetDTO petDTO, VeterinarianDTO veterinarianDTO) {
+        AppointmentDTO appointmentDTO = new AppointmentDTO();
+
+        appointmentDTO.setDate(appointmentDetails.getDate());
+        appointmentDTO.setTime(appointmentDetails.getTime());
+        appointmentDTO.setReason(appointmentDetails.getReason());
+
+        appointmentDTO.setUser(userDTO);
+        appointmentDTO.setPet(petDTO);
+        appointmentDTO.setVeterinarian(veterinarianDTO);
+
+        return appointmentDTO;
     }
 }

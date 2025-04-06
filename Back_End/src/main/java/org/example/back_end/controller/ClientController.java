@@ -6,6 +6,7 @@ import org.example.back_end.dto.AuthDTO;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.formDTO.RegisterFormDTO;
+import org.example.back_end.service.EmailService;
 import org.example.back_end.service.FileStorageService;
 import org.example.back_end.service.UserService;
 import org.example.back_end.util.JwtUtil;
@@ -28,11 +29,13 @@ public class ClientController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
     private final FileStorageService fileStorageService;
+    private final EmailService emailService;
 
-    public ClientController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService) {
+    public ClientController(UserService userService, JwtUtil jwtUtil, FileStorageService fileStorageService, EmailService emailService) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
         this.fileStorageService = fileStorageService;
+        this.emailService = emailService;
     }
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -48,6 +51,7 @@ public class ClientController {
                     AuthDTO authDTO = new AuthDTO();
                     authDTO.setUserDTO(userDTO);
                     authDTO.setToken(token);
+                    emailService.sendRegisteredEmail(userDTO.getName(), userDTO.getEmail(), "Welcome to Pet Clinic. Successfully registered to Pet Clinic!");
                     return ResponseEntity.status(HttpStatus.CREATED)
                             .body(new ResponseDTO(VarList.Created, "Success", authDTO));
                 }

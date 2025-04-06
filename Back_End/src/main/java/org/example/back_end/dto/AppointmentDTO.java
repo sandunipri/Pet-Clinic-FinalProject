@@ -19,8 +19,7 @@ public class AppointmentDTO {
     private Date date;
     private String time;
     private String reason;
-    private Pet pet;
-    private Veterinarian veterinarian;
-    private User user;
-
+    private PetDTO pet;
+    private VeterinarianDTO veterinarian;
+    private UserDTO user;
 }

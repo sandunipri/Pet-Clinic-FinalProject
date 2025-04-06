@@ -77,12 +77,16 @@ $(document).ready(function () {
                             <td>${vet.phone}</td>
                             <td>${vet.specialty}</td>
                             <td>
+                           
                              <button class="btn btn-sm btn-outline-primary me-1">
                                         <i class="fas fa-eye"></i>
                                     </button>
+                          
+                                     <a href="viewVeterinariesProfile.html">
                                     <button class="btn btn-sm btn-outline-primary me-1">
                                         <i class="fas fa-edit"></i>
                                     </button>
+                                              </a>
                                     <button class="btn btn-sm btn-outline-danger">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -121,15 +125,17 @@ $(document).ready(function () {
                             <td>${pets.age}</td>
                             <td>${pets.user.name}</td>
                                <td>
-                             <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                             <i class="fas fa-eye"></i>
+                                        </button>
+                                 
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                              </td>
                         </tr>
                     `);

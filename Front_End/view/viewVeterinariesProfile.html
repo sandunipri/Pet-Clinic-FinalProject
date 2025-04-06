@@ -10,6 +10,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/vet.css">
 </head>
+<style>
+    .profile-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .profile-info h2 {
+        color: var(--accent-color);
+    }
+
+    .card-header {
+        background-color: var(--accent-light);
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+
+    .timeline {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .timeline-item:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+    }
+
+    .specialties .badge {
+        font-weight: normal;
+    }
+</style>
 <body>
 <!-- Header -->
 <header id="header" class="header sticky-top">
@@ -245,55 +293,9 @@
 <!-- Bootstrap JS -->
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/admin.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
 
-<style>
-    .profile-card {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
 
-    .profile-header {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .profile-info h2 {
-        color: var(--accent-color);
-    }
-
-    .card-header {
-        background-color: var(--accent-light);
-        color: var(--accent-color);
-        font-weight: 600;
-    }
-
-    .timeline {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .timeline-item {
-        position: relative;
-        padding-left: 20px;
-        margin-bottom: 15px;
-    }
-
-    .timeline-item:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 5px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: var(--accent-color);
-    }
-
-    .specialties .badge {
-        font-weight: normal;
-    }
-</style>
 </body>
 </html>

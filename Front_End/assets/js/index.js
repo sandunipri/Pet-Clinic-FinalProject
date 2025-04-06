@@ -59,49 +59,45 @@ $(document).ready(function () {
     });
 
     function getAllVetsDisplay() {
-        console.log("sasfafafasf")
-
-        let token = localStorage.getItem('token');
-        console.log("getAllVetsDispaly");
 
         $.ajax({
-
             url: "http://localhost:8080/api/v1/veterinarian/getAll",
             type: 'GET',
-            headers: {
-                "Authorization": 'Bearer ' + token
-            },
 
             success: function (response) {
-                const fullName = `${vet.title}. ${vet.firstName} ${vet.lastName}`;
-
                 for (let i = 0; i < response.data.length; i++) {
+
+                    const vet = response.data[i];
+                    const fullName = `${vet.title}. ${vet.firstName} ${vet.lastName}`;
+
+                    console.log("Vet:", fullName);
+
                     $('#vetLists').append(`
-                <div class="row gy-4">
-                         <div id="vetLists"
-                            class="col-lg-3 col-md-6 d-flex align-items-stretch"
-                            data-aos="fade-up"
-                            data-aos-delay="100">
-                       <div class="team-member">
-                        <div class="member-img">
-                            <img
-                                    src="../${response.data[i].profileImage}"
-                                    class="img-fluid"
-                                    alt=""
-                            />
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
+                        
+                                 <div id="vetLists"
+                                    class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                                    data-aos="fade-up"
+                                    data-aos-delay="100">
+                               <div class="team-member">
+                                <div class="member-img">
+                                    <img
+                                            src="../${vet.profileImage}"
+                                            class="img-fluid"
+                                            alt=""
+                                    />
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>${fullName}</h4>
+                                    <span>Chief Medical Officer</span>
+                                </div>
+                     
                         </div>
-                        <div class="member-info">
-                            <h4>${fullName}</h4>
-                            <span>Chief Medical Officer</span>
-                        </div>
-                    </div>
-                </div>
                     `)
                 }
             },

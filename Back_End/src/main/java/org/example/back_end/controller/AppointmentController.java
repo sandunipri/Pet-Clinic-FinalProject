@@ -2,6 +2,7 @@ package org.example.back_end.controller;
 
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.back_end.dto.*;
+import org.example.back_end.dto.formDTO.AppointmentDetailsDTO;
 import org.example.back_end.entity.Pet;
 import org.example.back_end.service.AppointmentService;
 import org.example.back_end.service.PetService;
@@ -34,29 +35,24 @@ public class AppointmentController {
 
     @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('USER')")
-    public ResponseEntity<ResponseDTO> saveAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity<ResponseDTO> saveAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDetailsDTO appointmentDetails) {
         //Extract the user’s email from the token.
+
         String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
-        System.out.println("email" + email);
 
         //Retrieve the user.
         UserDTO userDTO = userService.searchUser(email);
-        System.out.println("userDTO" + userDTO);
 
         //Retrieve the veterinarian.
-        VeterinarianDTO veterinarianDTO = veterinarianService.searchVeterinarian(appointmentDTO.getVeterinarian().getId());
-        System.out.println("Veterinarian found: " + veterinarianDTO);
+        VeterinarianDTO veterinarianDTO = veterinarianService.searchVeterinarian(Integer.parseInt(appointmentDetails.getVetId()));
 
-        //Retrieve the pet in using userEmail.
-       /* PetDTO petDTO = petService.searchPetByUserEmail(email);
-        System.out.println("Pet found: " + petDTO);*/
+        PetDTO petDTO = petService.searchPet(Integer.parseInt(appointmentDetails.getPetId()));
 
-        PetDTO petDTO = petService.searchPet(appointmentDTO.getPet().getPetId());
-        System.out.println("Pet found: " + petDTO);
-
+        AppointmentDTO appointmentDTO = appointmentService.setDetails(appointmentDetails, userDTO, petDTO, veterinarianDTO);
         //save the appointment.
-        appointmentService.saveAppointment(appointmentDTO, userDTO, petDTO, veterinarianDTO);
+        appointmentService.saveAppointment(appointmentDTO);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", appointmentDTO));
+        //send an email to the user.
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", null));
     }
 }
