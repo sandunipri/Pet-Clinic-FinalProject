@@ -10,37 +10,84 @@
     />
     <link rel="stylesheet" href="../assets/css/login.css">
 </head>
+<style>
+    .google-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        color: #757575;
+        border: 1px solid #dcdcdc;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .google-btn img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .google-btn:hover {
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .google-btn:active {
+        background-color: #ececec;
+        box-shadow: 0 1px 3px rgba(0, 0, 0,0.2);
+        }
+</style>
 
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form id="registerForm">
             <h1>Create Account</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+<!--            <div class="social-container">-->
+<!--                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
+<!--                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>-->
+<!--                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+<!--            </div>-->
             <span>or use your email for registration</span>
             <input id="email" name="email" type="email" placeholder="Email"/>
             <input id="name" name="name" type="text" placeholder="Name"/>
             <input id="password" name="password" type="password" placeholder="Password"/>
             <button type="button" id="regBtn">Sign Up</button>
+            <a class="google-btn"
+               href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:8080/api/v1/auth/googleLogin&response_type=code&client_id=239666846117-tfg6urmk5563ovtqau5qg274c8hbq68i.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&access_type=offline">
+                <img src="https://developers.google.com/identity/images/g-logo.png"
+                     alt="Google Logo">
+                Login in with Google
+            </a>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form action="">
             <h1>Sign in</h1>
-            <div class="social-container">
+            <!--<div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+            </div>-->
             <span>or use your account</span>
             <input id="exampleInputEmail1" type="email" placeholder="Email"/>
             <input id="exampleInputPassword1" type="password" placeholder="Password"/>
             <a href="#">Forgot your password?</a>
             <button type="button" id="loginBtn">Sign In</button>
+            <a class="google-btn"
+               href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:8080/api/v1/auth/googleLogin&response_type=code&client_id=239666846117-tfg6urmk5563ovtqau5qg274c8hbq68i.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&access_type=offline">
+                <img src="https://developers.google.com/identity/images/g-logo.png"
+                     alt="Google Logo">
+                Login in with Google
+            </a>
         </form>
     </div>
     <div class="overlay-container">

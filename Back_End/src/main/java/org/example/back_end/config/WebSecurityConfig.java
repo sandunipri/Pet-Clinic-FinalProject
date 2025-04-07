@@ -53,6 +53,7 @@ public class WebSecurityConfig {
                                 "/api/v1/admin/register",
                                 "/api/v1/veterinarian/getAll",
                                 "/api/v1/auth/refreshToken",
+                                "/api/v1/auth/googleLogin",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html").permitAll()

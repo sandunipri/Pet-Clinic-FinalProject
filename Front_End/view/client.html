@@ -619,6 +619,20 @@
 <!-- Bootstrap JS -->
 <script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let urlParams = new URLSearchParams(window.location.search);
+        let newJwtToken = urlParams.get("token");
+        let newAccessToken = urlParams.get("accessToken");
+        let user = urlParams.get("user");
+
+        if (newJwtToken) {
+            localStorage.setItem("token", newJwtToken);
+            localStorage.setItem("accessToken", newAccessToken);
+            localStorage.setItem("user", user);
+        }
+    });
+</script>
 <script src="../assets/js/client.js"></script>
 <script>
     document.getElementById("profileImage").addEventListener("change", function (event) {
@@ -632,6 +646,7 @@
         }
     });
 </script>
+
 
 </body>
 </html>

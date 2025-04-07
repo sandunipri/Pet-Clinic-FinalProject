@@ -25,4 +25,5 @@ public class UserDTO {
     private String emergencyContact;
     private String emergencyContactName;
     private String profileImage;
+    private boolean isGoogleUser;
 }

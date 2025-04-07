@@ -4,10 +4,7 @@ import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.back_end.dto.*;
 import org.example.back_end.dto.formDTO.AppointmentDetailsDTO;
 import org.example.back_end.entity.Pet;
-import org.example.back_end.service.AppointmentService;
-import org.example.back_end.service.PetService;
-import org.example.back_end.service.UserService;
-import org.example.back_end.service.VeterinarianService;
+import org.example.back_end.service.*;
 import org.example.back_end.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +29,10 @@ public class AppointmentController {
     @Autowired
     private VeterinarianService veterinarianService;
 
+    @Autowired
+    private EmailService emailService;
+
+
 
     @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('USER')")
@@ -53,6 +54,8 @@ public class AppointmentController {
         appointmentService.saveAppointment(appointmentDTO);
 
         //send an email to the user.
+        emailService.sendAppointmentEmail(userDTO.getName(), userDTO.getEmail(), "Appointment Confirmation",appointmentDTO);
+
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", null));
     }
 }

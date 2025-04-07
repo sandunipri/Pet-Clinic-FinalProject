@@ -31,6 +31,7 @@ public class User implements Serializable {
     private String emergencyContact;
     private String emergencyContactName;
     private String profileImage;
+    private boolean isGoogleUser;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Pet> petList;
