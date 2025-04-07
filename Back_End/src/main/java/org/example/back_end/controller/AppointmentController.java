@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/appointment")
 @CrossOrigin
@@ -58,4 +60,20 @@ public class AppointmentController {
 
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", null));
     }
+
+    @GetMapping("/getAllAppointmentsFromUser")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<ResponseDTO> getAppointmentsFromUser(@RequestHeader("Authorization") String Authorization) {
+        //Extract the user’s email from the token.
+        String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
+
+        //Retrieve the user.
+        UserDTO userDTO = userService.searchUser(email);
+
+        //Retrieve all appointments from the user.
+        List<AppointmentDTO> appointmentDTOList = appointmentService.getAllAppointmentsFromUser(userDTO);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
+    }
+
 }

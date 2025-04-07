@@ -16,7 +16,6 @@ public class EmailServiceImpl implements EmailService {
 
     private final String sender = "vetmedpetclinic2025@gmail.com";
 
-
     private String registeredAlert(String userName) {
         String dateTime = java.time.LocalDateTime.now()
                 .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -58,8 +57,6 @@ public class EmailServiceImpl implements EmailService {
                 </html>
                 """, userName, dateTime);
     }
-
-
 
     @Override
     public void sendRegisteredEmail(String name, String email, String subject) {

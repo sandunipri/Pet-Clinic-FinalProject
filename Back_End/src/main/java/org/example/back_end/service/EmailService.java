@@ -7,6 +7,8 @@ public interface EmailService {
 
     void sendRegisteredEmail(String name, String email, String subject);
 
+//    void sendLoginEmail(String name, String email, String subject);
+
     void sendAppointmentEmail(String name, String email, String appointmentConfirmation, AppointmentDTO appointmentDTO);
 }
 

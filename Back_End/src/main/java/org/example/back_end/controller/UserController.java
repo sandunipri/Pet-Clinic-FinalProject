@@ -52,6 +52,14 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
     public ResponseEntity<ResponseDTO> updateUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
         UserDTO existUser = userService.searchUser(registerFormDTO.getEmail());
+
+        if (registerFormDTO.getProfileImage() != null && !registerFormDTO.getProfileImage().isEmpty()) {
+            String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
+            existUser.setProfileImage(savedPath);
+        }else {
+            existUser.setProfileImage(existUser.getProfileImage());
+        }
+
         existUser.setName(registerFormDTO.getName());
         existUser.setAddress(registerFormDTO.getAddress());
         existUser.setTelNo(registerFormDTO.getTelNo());
@@ -59,12 +67,6 @@ public class UserController {
         existUser.setNic(registerFormDTO.getNic());
         existUser.setEmergencyContact(registerFormDTO.getEmergencyContact());
         existUser.setEmergencyContactName(registerFormDTO.getEmergencyContactName());
-
-
-        if (registerFormDTO.getProfileImage() != null) {
-            String savedPath = fileStorageService.saveProfileImage(registerFormDTO.getProfileImage());
-            existUser.setProfileImage(savedPath);
-        }
 
         int res = userService.updateUser(existUser);
         if (res == VarList.OK) {
