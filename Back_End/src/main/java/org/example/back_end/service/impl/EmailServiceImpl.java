@@ -16,6 +16,21 @@ public class EmailServiceImpl implements EmailService {
 
     private final String sender = "vetmedpetclinic2025@gmail.com";
 
+    @Override
+    public void sendRegisteredEmail(String name, String email, String subject) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setFrom(sender);
+            helper.setTo(email);
+            helper.setSubject(subject);
+            helper.setText(registeredAlert(name), true);
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     private String registeredAlert(String userName) {
         String dateTime = java.time.LocalDateTime.now()
                 .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -56,22 +71,6 @@ public class EmailServiceImpl implements EmailService {
                   </body>
                 </html>
                 """, userName, dateTime);
-    }
-
-    @Override
-    public void sendRegisteredEmail(String name, String email, String subject) {
-        try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(sender);
-            helper.setTo(email);
-            helper.setSubject(subject);
-            helper.setText(registeredAlert(name), true);
-
-            mailSender.send(message);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override

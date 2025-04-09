@@ -16,4 +16,7 @@ public interface AppointmentService {
     AppointmentDTO setDetails(AppointmentDetailsDTO appointmentDetails, UserDTO userDTO, PetDTO petDTO, VeterinarianDTO veterinarianDTO);
 
     List<AppointmentDTO> getAllAppointmentsFromUser(UserDTO userDTO);
+
+    List<AppointmentDTO> getAllAppointments();
+
 }

@@ -80,4 +80,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         }.getType());
 
     }
+
+    @Override
+    public List<AppointmentDTO> getAllAppointments() {
+        return modelMapper.map(appointmentRepo.findAll(), new TypeToken<List<AppointmentDTO>>(){}.getType());
+    }
 }

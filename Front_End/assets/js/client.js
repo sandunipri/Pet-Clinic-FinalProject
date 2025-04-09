@@ -133,8 +133,53 @@ $(document).ready(function () {
         });
     });
 
+    function loadAppointmentFromUser() {
+        let token = localStorage.getItem('token');
+        console.log("loadAppointmentFromUser");
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/appointment/getAllAppointmentsFromUser",
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+
+            success: function (response) {
+                console.log(response.data);
+                $('#appointmentList').empty(); // Clear the existing appointments
+
+                for (let i = 0; i < response.data.length; i++) {
+                    const appointment = response.data[i];
+                    //how to get the vet name from appointment object
+                    const vetName = `${appointment.veterinarian.title} ${appointment.veterinarian.firstName} ${appointment.veterinarian.lastName}`;
+
+                    $('#appointmentList').append(`
+                     <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div
+                                        <h6 class="mb-1">${appointment.reason}</h6>
+                                        <p class="small text-muted mb-1">
+                                            <i class="far fa-calendar me-1"></i> ${appointment.date}
+                                        </p>
+                                        <p class="small text-muted mb-0">
+                                            <i class="fas fa-user-md me-1"></i> ${vetName}
+                                        </p>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        <button class="btn btn-sm btn-outline-primary">Reschedule</button>
+                                    </div>
+                                </div>
+                            </div>`)
+                }
+            },
+
+        });
+    }
+
     loadProfile();
     loadAllPets();
+    loadAppointmentFromUser();
 
 });
 

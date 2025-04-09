@@ -75,5 +75,14 @@ public class AppointmentController {
 
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
     }
+    @GetMapping("/getAllAppointments")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllAppointments(@RequestHeader("Authorization") String Authorization) {
+        List<AppointmentDTO> appointmentDTOList = appointmentService.getAllAppointments();
+        if (appointmentDTOList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "No appointments found", null));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
+    }
 
 }

@@ -34,7 +34,7 @@ $(document).ready(function () {
             console.log(error);
         }
     });
-}
+    }
 
     $('#bookAppointment').click(function () {
         let token = localStorage.getItem('token');
