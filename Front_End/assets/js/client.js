@@ -75,6 +75,7 @@ $(document).ready(function () {
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editPetModal"
                                                     data-petimage =  "${response.data[i].petImage}"
+                                                    data-petid = "${response.data[i].petId}"
                                                     data-petname = "${response.data[i].petName}"
                                                     data-pettype = "${response.data[i].species}"
                                                     data-petbreed = "${response.data[i].breed}"
@@ -102,6 +103,7 @@ $(document).ready(function () {
         console.log("Edit Pet button clicked");
         let pet = {
             petImage: $(this).data("petimage"),
+            petId: $(this).data("petid"),
             petName: $(this).data("petname"),
             species: $(this).data("pettype"),
             breed: $(this).data("petbreed"),
@@ -187,6 +189,7 @@ function viewPetProfile(pet) {
     console.log("viewPetProfile function called");
     $('#editPetImagePreview').attr('src', '../' + pet.petImage);
     $('#petName').val(pet.petName);
+    $('#petId').val(pet.petId);
     $('#species').val(pet.species);
     $('#breed').val(pet.breed);
     $('#age').val(pet.age);

@@ -37,16 +37,12 @@ $(document).ready(function () {
             }
         });
     })
-    /*
-        $('#updatePet').click(function () {
+
+    $('#updatePet').click(function () {
             console.log("Update Pet button clicked");
             let token = localStorage.getItem('token');
-            if (!token) {
-                alert("Please log in to update a pet.");
-                return;
-            }
 
-            let formData = new FormData($('#updatePetForm')[0]);
+            let formData = new FormData($('#editPetModal')[0]);
             console.log(formData);
 
             $.ajax({
@@ -61,7 +57,7 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     alert("Pet Updated Success");
-                    loadAllPets();
+                    window.location.reload();
                 },
                 error: function (data) {
                     alert("Pet Updated Failed");
@@ -69,8 +65,5 @@ $(document).ready(function () {
             });
 
         })
-    */
-
-
 
 });

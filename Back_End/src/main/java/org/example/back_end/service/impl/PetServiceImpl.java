@@ -101,5 +101,17 @@ public class PetServiceImpl implements PetService {
         }
     }
 
+    @Override
+    public PetDTO updatePetDetails(AddPetFormDTO addPetFormDTO) {
+        Pet pet = petRepo.getReferenceById(addPetFormDTO.getPetId());
+        pet.setPetName(addPetFormDTO.getPetName());
+        pet.setBirthDate(addPetFormDTO.getBirthDate());
+        pet.setSpecies(addPetFormDTO.getSpecies());
+        pet.setBreed(addPetFormDTO.getBreed());
+        pet.setAge(addPetFormDTO.getAge());
+
+        return modelMapper.map(pet, PetDTO.class);
+
+    }
 
 }

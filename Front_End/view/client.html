@@ -467,7 +467,7 @@
             <!--update pets-->
             <!-- Edit Pet Modal -->
 
-            <div class="modal fade" id="editPetModal" tabindex="-1" aria-hidden="true">
+            <form class="modal fade" id="editPetModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow-lg">
                         <!-- Modal Header (Teal) -->
@@ -505,6 +505,7 @@
 
                                 <!-- Pet Details (Grid Layout) -->
                                 <div class="row g-3">
+                                    <input type="text" id="petId" name="petId" hidden="hidden">
                                     <!-- Pet Name -->
                                     <div class="col-md-6">
                                         <label class="form-label">Pet Name</label>
@@ -546,14 +547,14 @@
                         <!-- Modal Footer (Teal Button) -->
                         <div class="modal-footer py-3 border-top-0">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn text-white" style="background-color: #3fbbc0;"
-                                    id="savePetChanges">
+                            <button  type="button" class="btn text-white" style="background-color: #3fbbc0;"
+                                    id="updatePet">
                                 <i class="fas fa-save me-1"></i> Save Changes
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <!-- Upcoming Appointments -->
             <div id="appointments" class="mb-4">
@@ -618,6 +619,7 @@
     });
 </script>
 <script src="../assets/js/client.js"></script>
+<script src="../assets/js/pet.js"></script>
 <script>
     document.getElementById("profileImage").addEventListener("change", function (event) {
         const file = event.target.files[0]; // Get selected file

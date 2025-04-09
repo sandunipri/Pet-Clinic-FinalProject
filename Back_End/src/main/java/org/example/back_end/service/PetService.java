@@ -15,4 +15,6 @@ public interface PetService {
     List<PetDTO> getPetsFromUser(UserDTO userDTO);
     boolean deletePet(int petId);
     void updatePet(PetDTO petDTO);
+
+    PetDTO updatePetDetails(AddPetFormDTO addPetFormDTO);
 }

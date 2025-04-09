@@ -86,15 +86,20 @@ public class PetController {
     @PutMapping(path = "/updatePet", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> updatePet( @RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
+
         UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
         System.out.println("userDTO" + userDTO);
 
         //save the imagePath
+        if (addPetFormDTO.getPetImage() == null || addPetFormDTO.getPetImage().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseDTO(VarList.Bad_Request, "image is required", null));
+        }
+
         String imagePath = fileStorageService.savePetImage(addPetFormDTO.getPetImage());
         System.out.println("imagePath" + imagePath);
 
         //convert the form to petDTO
-        PetDTO petDTO = petService.convertFormToPetDTO(addPetFormDTO);
+        PetDTO petDTO = petService.updatePetDetails(addPetFormDTO);
         petDTO.setUser(userDTO);
         petDTO.setPetImage(imagePath);
 
