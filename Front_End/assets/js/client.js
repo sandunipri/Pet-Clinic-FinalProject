@@ -57,6 +57,7 @@ $(document).ready(function () {
                 $('#petList').empty(); // Clear the existing pets
 
                 for (let i = 0; i < response.data.length; i++) {
+
                     $('#petList').append(`
                         <div class="col-md-5">
                         <div class="pet-card p-3 h-100">
@@ -117,14 +118,16 @@ $(document).ready(function () {
 
     });
 
-    $('#deletePet').click(function () {
-        console.log("Delete Pet button clicked");
-        let petId = $('#petId').val();
-        console.log("Pet ID:", petId);
-
+    $(document).on("click", "#deletePet", function () {
+        let token = localStorage.getItem('token');
+        let petId = $(this).closest('.pet-card').find('.editPetDetails').data("petid");
         $.ajax({
-            url: "http://localhost:8080/api/v1/pet/deletePet/" + petId,
+            url: `http://localhost:8080/api/v1/pet/deletePet?petId=${petId}`,
             type: "DELETE",
+            contentType: "application/json",
+            headers : {
+                "Authorization": 'Bearer ' + token
+            },
             success: function (data) {
                 alert("Pet Deleted Success");
                 loadAllPets();
@@ -133,8 +136,8 @@ $(document).ready(function () {
                 alert("Pet Deleted Failed");
             }
         });
-    });
 
+    });
     function loadAppointmentFromUser() {
         let token = localStorage.getItem('token');
         console.log("loadAppointmentFromUser");
@@ -196,6 +199,7 @@ function viewPetProfile(pet) {
     $('#birthDate').val(pet.birthDate);
 
     $('#editPetModal').modal('show');
+
 }
 
 

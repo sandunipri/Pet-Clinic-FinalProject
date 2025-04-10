@@ -113,6 +113,7 @@ public class PetController {
     @DeleteMapping("/deletePet")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> deletePet(@RequestParam int petId) {
+
         System.out.println("petId" + petId);
         boolean isDeleted = petService.deletePet(petId);
 
