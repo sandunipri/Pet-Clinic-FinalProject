@@ -4,6 +4,29 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     });
 
+    function loadProfile() {
+        let token = localStorage.getItem('token');
+        console.log("loadProfile");
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/getProfile",
+            type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+
+                //navigation bar
+                $("#profileImage").attr("src", "../" + response.data.profileImage);
+                $('#userName').text(response.data.name);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
     function allUsers(){
         $.ajax({
             url: 'http://localhost:8080/api/v1/admin/getAllUsers',
@@ -195,6 +218,7 @@ $(document).ready(function () {
         })
     }
 
+    loadProfile();
     allUsers();
     allVets();
     allPets();

@@ -138,6 +138,7 @@ $(document).ready(function () {
         });
 
     });
+
     function loadAppointmentFromUser() {
         let token = localStorage.getItem('token');
         console.log("loadAppointmentFromUser");
@@ -162,7 +163,8 @@ $(document).ready(function () {
                      <div class="list-group-item">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div
-                                        <h6 class="mb-1">${appointment.reason}</h6>
+                                        <h6 class="mb-1">Appointment Reason :${appointment.reason}</h6>
+                                        <h6 class="mb-1">Pet Name :${appointment.pet.petName}</h6>
                                         <p class="small text-muted mb-1">
                                             <i class="far fa-calendar me-1"></i> ${appointment.date}
                                         </p>
@@ -171,8 +173,8 @@ $(document).ready(function () {
                                         </p>
                                     </div>
                                     <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-primary">Details</button>
-                                        <button class="btn btn-sm btn-outline-primary">Reschedule</button>
+                                        <button class="btn btn-sm btn-outline-primary">DELETE</button>
+                                        <button class="btn btn-sm btn-outline-primary">RESHEDULE</button>
                                     </div>
                                 </div>
                             </div>`)
@@ -187,6 +189,7 @@ $(document).ready(function () {
     loadAppointmentFromUser();
 
 });
+
 
     function viewPetProfile(pet) {
     console.log("viewPetProfile function called");
