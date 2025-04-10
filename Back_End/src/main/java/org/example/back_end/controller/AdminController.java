@@ -95,4 +95,5 @@ public class AdminController {
         List<PetDTO> userDTOList = petService.getAllPets();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Pet List", userDTOList));
     }
+
 }

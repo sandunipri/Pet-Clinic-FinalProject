@@ -149,9 +149,56 @@ $(document).ready(function () {
 
     }
 
+    function allAppointments(){
+        console.log("Get All Appointments")
+        let token = localStorage.getItem('token');
+
+        $.ajax({
+            url : "http://localhost:8080/api/v1/appointment/getAllAppointments",
+            type : "GET",
+            headers : {
+                "Authorization": 'Bearer ' + token
+            },
+            success: function (response){
+                let appointments = response.data
+                let tableBody = $('#appointment_table');
+                appointments.forEach(appointment => {
+                    console.log("appointment id :" + appointment.id)
+                    tableBody.append(`
+                            <tr>
+                                <td>${appointment.id}</td>
+                                <td>${appointment.date}<br>${appointment.time}</td>
+                                <td>${appointment.pet.petName}</td>
+                                <th>${appointment.veterinarian.title} ${appointment.veterinarian.firstName} ${appointment.veterinarian.lastName}</th>
+                                <td>${appointment.user.name}</td>
+                                <td>${appointment.reason}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                    `);
+                })
+
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+        })
+    }
+
     allUsers();
     allVets();
     allPets();
+    allAppointments();
 
 
 });

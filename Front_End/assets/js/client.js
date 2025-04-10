@@ -188,7 +188,7 @@ $(document).ready(function () {
 
 });
 
-function viewPetProfile(pet) {
+    function viewPetProfile(pet) {
     console.log("viewPetProfile function called");
     $('#editPetImagePreview').attr('src', '../' + pet.petImage);
     $('#petName').val(pet.petName);

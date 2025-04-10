@@ -35,7 +35,6 @@ public class AppointmentController {
     private EmailService emailService;
 
 
-
     @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('USER')")
     public ResponseEntity<ResponseDTO> saveAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDetailsDTO appointmentDetails) {
@@ -75,6 +74,7 @@ public class AppointmentController {
 
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
     }
+
     @GetMapping("/getAllAppointments")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllAppointments(@RequestHeader("Authorization") String Authorization) {
