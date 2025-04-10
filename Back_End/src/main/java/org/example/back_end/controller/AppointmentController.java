@@ -85,4 +85,15 @@ public class AppointmentController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
     }
 
+    @DeleteMapping("/deleteAppointment")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<ResponseDTO> deleteAppointment(@RequestParam int id) {
+        boolean isDeleted = appointmentService.deleteAppointment(id);
+        if (isDeleted) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment deleted successfully", null));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "Appointment not found", null));
+        }
+    }
+
 }

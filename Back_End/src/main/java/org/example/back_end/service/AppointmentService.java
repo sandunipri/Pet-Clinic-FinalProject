@@ -19,4 +19,5 @@ public interface AppointmentService {
 
     List<AppointmentDTO> getAllAppointments();
 
+    boolean deleteAppointment(int appointmentId);
 }

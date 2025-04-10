@@ -85,4 +85,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     public List<AppointmentDTO> getAllAppointments() {
         return modelMapper.map(appointmentRepo.findAll(), new TypeToken<List<AppointmentDTO>>(){}.getType());
     }
+
+    @Override
+    public boolean deleteAppointment(int appointmentId) {
+        if (appointmentRepo.existsById(appointmentId)){
+            appointmentRepo.deleteById(appointmentId);
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

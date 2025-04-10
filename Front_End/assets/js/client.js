@@ -161,6 +161,7 @@ $(document).ready(function () {
 
                     $('#appointmentList').append(`
                      <div class="list-group-item">
+                         <div class="list-group-item" data-appointment-id="${appointment.id}">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div
                                         <h6 class="mb-1">Appointment Reason :${appointment.reason}</h6>
@@ -173,16 +174,39 @@ $(document).ready(function () {
                                         </p>
                                     </div>
                                     <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-primary">DELETE</button>
+                                        <button id="deleteAppointment" class="btn btn-sm btn-outline-primary">DELETE</button>
                                         <button class="btn btn-sm btn-outline-primary">RESHEDULE</button>
                                     </div>
                                 </div>
-                            </div>`)
+                         </div>
+                     </div>`)
                 }
             },
 
         });
     }
+
+    $(document).on("click", "#deleteAppointment", function () {
+        let token = localStorage.getItem('token');
+        let appointmentID = $(this).closest('.list-group-item').data("appointment-id");
+        console.log(appointmentID)
+        $.ajax({
+            url: `http://localhost:8080/api/v1/appointment/deleteAppointment?id=${appointmentID}`,
+            type: "DELETE",
+            headers : {
+                "Authorization": 'Bearer ' + token
+            },
+            success: function (data) {
+                alert("Appointment Deleted Success");
+                loadAppointmentFromUser();
+            },
+            error: function (data) {
+                alert("Appointment Deleted Failed");
+            }
+        });
+
+    });
+
 
     loadProfile();
     loadAllPets();
