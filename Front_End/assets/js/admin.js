@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     function allVets(){
         $.ajax({
-            url: 'http://localhost:8080/api/v1/admin/getAllVeterinary',
+            url: 'http://localhost:8080/api/v1/veterinarian/getAllVeterinary',
             type: 'GET',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

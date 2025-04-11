@@ -9,53 +9,65 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/vet.css">
+    <link rel="stylesheet" href="../assets/css/vetProfile.css">
 </head>
 <style>
-    .profile-card {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    .hover-grow {
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(78, 115, 223, 0.1);
     }
 
-    .profile-header {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
+    .hover-grow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(78, 115, 223, 0.15);
     }
 
-    .profile-info h2 {
-        color: var(--accent-color);
+    .hover-grow:active {
+        transform: translateY(0);
     }
 
-    .card-header {
-        background-color: var(--accent-light);
-        color: var(--accent-color);
-        font-weight: 600;
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+        background-size: 200% 200%;
+        animation: gradientMove 8s ease infinite;
     }
 
-    .timeline {
-        list-style: none;
-        padding-left: 0;
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
-    .timeline-item {
-        position: relative;
-        padding-left: 20px;
-        margin-bottom: 15px;
+    .hover-scale {
+        transition: transform 0.2s ease;
+    }
+    .hover-scale:hover {
+        transform: scale(1.05);
     }
 
-    .timeline-item:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 5px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: var(--accent-color);
+    .profile-pic-upload:hover img {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
     }
 
-    .specialties .badge {
-        font-weight: normal;
+    .form-control:focus, .form-select:focus {
+        box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+        border-color: #4e73df;
+    }
+
+    .form-check-input:checked + .badge {
+        background-color: #4e73df !important;
+        color: white !important;
+        transform: scale(1.05);
+    }
+
+    .modal.fade .modal-dialog {
+        animation: modalSlideIn 0.3s ease-out forwards;
+    }
+
+    @keyframes modalSlideIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
     }
 </style>
 <body>
@@ -134,6 +146,9 @@
                                         <strong>Date of Birth:</strong> May 15, 1985
                                     </li>
                                     <li class="mb-3">
+                                        <strong>Specially:</strong> Surgery
+                                    </li>
+                                    <li class="mb-3">
                                         <strong>Years of Experience:</strong> 12 years
                                     </li>
                                 </ul>
@@ -171,120 +186,142 @@
                     </div>
                 </div>
 
-                <!-- Professional Information -->
-                <div class="card mb-4">
-                    <div class="card-header bg-accent-light">
-                        <h5 class="mb-0"><i class="fas fa-graduation-cap me-2"></i> Professional Information</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <h6 class="mb-3"><i class="fas fa-user-md me-2"></i> About</h6>
-                            <p class="mb-0">
-                                Dr. Sarah Johnson is a board-certified veterinary surgeon with over 12 years of experience
-                                in small animal medicine. She graduated with honors from the University of Peradeniya
-                                and completed her surgical residency at the Royal Veterinary College in London.
-                                Dr. Johnson specializes in orthopedic and soft tissue surgery and has published
-                                numerous papers in veterinary journals.
-                            </p>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6 class="mb-3"><i class="fas fa-certificate me-2"></i> Education</h6>
-                                <ul class="timeline">
-                                    <li class="timeline-item">
-                                        <strong>Doctor of Veterinary Medicine (DVM)</strong>
-                                        <p class="mb-1">University of Peradeniya, 2008</p>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <strong>Surgical Residency</strong>
-                                        <p class="mb-1">Royal Veterinary College, London, 2012</p>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <strong>Diplomate, American College of Veterinary Surgeons</strong>
-                                        <p class="mb-1">2014</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="mb-3"><i class="fas fa-award me-2"></i> Certifications</h6>
-                                <ul>
-                                    <li>Board Certified Veterinary Surgeon (ACVS)</li>
-                                    <li>Certified Veterinary Pain Practitioner (CVPP)</li>
-                                    <li>Advanced Cardiac Life Support (ACLS)</li>
-                                    <li>Fear Free Certified Professional</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Work Schedule -->
-                <div class="card mb-4">
-                    <div class="card-header bg-accent-light">
-                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i> Work Schedule</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Availability</th>
-                                    <th>Hours</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Monday</td>
-                                    <td><span class="badge bg-success">Available</span></td>
-                                    <td>8:00 AM - 5:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Tuesday</td>
-                                    <td><span class="badge bg-success">Available</span></td>
-                                    <td>8:00 AM - 5:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td><span class="badge bg-success">Available</span></td>
-                                    <td>8:00 AM - 5:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Thursday</td>
-                                    <td><span class="badge bg-success">Available</span></td>
-                                    <td>8:00 AM - 5:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td><span class="badge bg-success">Available</span></td>
-                                    <td>8:00 AM - 5:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td><span class="badge bg-warning text-dark">Limited</span></td>
-                                    <td>9:00 AM - 2:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td><span class="badge bg-danger">Unavailable</span></td>
-                                    <td>-</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Action Buttons -->
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-outline-primary me-2">
                         <i class="fas fa-print me-1"></i> Print Profile
                     </button>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-edit me-1"></i> Edit Profile
+                    <button class="btn btn-primary px-4 py-2 rounded-pill hover-grow"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editProfileModal">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-user-edit me-2"></i>
+                            <span>Edit Profile</span>
+                        </div>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0">
+            <!-- Modal Header with Animated Gradient -->
+            <div class="modal-header bg-gradient-primary text-white position-relative overflow-hidden">
+                <div class="position-absolute w-100 h-100 bg-primary opacity-15" style="top: 0; left: 0; z-index: 0;"></div>
+                <h5 class="modal-title position-relative z-index-1">
+                    <i class="fas fa-user-edit me-2"></i> Edit Veterinarian Profile
+                </h5>
+                <button type="button" class="btn-close btn-close-white position-relative z-index-1" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body with Floating Labels -->
+            <div class="modal-body p-4">
+                <form id="vetProfileForm">
+                    <div class="row g-4">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <!-- Profile Picture Upload -->
+                            <div class="mb-4 text-center">
+                                <div class="profile-pic-upload position-relative mx-auto" style="width: 120px;">
+                                    <img id="profilePreview" src="../assets/images/vet-profile.jpg" class="rounded-circle shadow-sm border border-3 border-white" width="120" height="120" style="object-fit: cover;">
+                                    <label for="profileUpload" class="btn btn-sm btn-primary rounded-pill position-absolute bottom-0 end-0 shadow-sm" style="width: 36px; height: 36px;">
+                                        <i class="fas fa-camera"></i>
+                                        <input type="file" id="profileUpload" accept="image/*" class="d-none">
+                                    </label>
+                                </div>
+                                <small class="text-muted d-block mt-2">Max 2MB (JPG, PNG)</small>
+                            </div>
+
+                            <!-- Personal Info -->
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="fullName" value="Sarah Elizabeth Johnson">
+                                <label for="fullName">Full Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="title">
+                                    <option value="Dr." selected>Dr.</option>
+                                    <option value="Prof.">Prof.</option>
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Mrs.">Mrs.</option>
+                                </select>
+                                <label for="title">Title</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="dob" value="1985-05-15">
+                                <label for="dob">Date of Birth</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="license" value="VET-789456-SL">
+                                <label for="license">License Number</label>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <!-- Contact Info -->
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" value="sarah.j@happyhearts.com">
+                                <label for="email">Email Address</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="phone" value="+94771234567">
+                                <label for="phone">Phone Number</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="address" style="height: 100px">123 Pet Street, Colombo 05, Sri Lanka</textarea>
+                                <label for="address">Clinic Address</label>
+                            </div>
+
+                            <!-- Specialties -->
+                            <div class="mb-3">
+                                <label class="form-label">Specialties</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="surgery" checked>
+                                        <label class="form-check-label badge bg-primary-light text-dark" for="surgery">Surgery</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dentistry" checked>
+                                        <label class="form-check-label badge bg-primary-light text-dark" for="dentistry">Dentistry</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="medicine" checked>
+                                        <label class="form-check-label badge bg-primary-light text-dark" for="medicine">Internal Medicine</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dermatology">
+                                        <label class="form-check-label badge bg-primary-light text-dark" for="dermatology">Dermatology</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Experience -->
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="experience" value="12">
+                                <label for="experience">Years of Experience</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer with Animated Buttons -->
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-outline-secondary hover-scale" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> Cancel
+                </button>
+                <button type="button" class="btn btn-primary hover-scale" id="saveProfileChanges">
+                    <i class="fas fa-save me-1"></i> Save Changes
+                </button>
             </div>
         </div>
     </div>
@@ -295,6 +332,35 @@
 <script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/admin.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
+<script>
+    document.getElementById('profileUpload').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('profilePreview').src = event.target.result;
+                // Add temporary animation
+                const img = document.getElementById('profilePreview');
+                img.style.transform = 'scale(1.1)';
+                setTimeout(() => { img.style.transform = 'scale(1)'; }, 300);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Save button animation
+    document.getElementById('saveProfileChanges').addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Saving...';
+        setTimeout(() => {
+            // Simulate save completion
+            this.innerHTML = '<i class="fas fa-check me-1"></i> Saved!';
+            setTimeout(() => {
+                bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide();
+                this.innerHTML = '<i class="fas fa-save me-1"></i> Save Changes';
+            }, 1000);
+        }, 1500);
+    });
+</script>
 
 
 </body>
