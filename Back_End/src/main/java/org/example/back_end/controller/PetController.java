@@ -18,6 +18,7 @@ import org.example.back_end.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -87,21 +88,26 @@ public class PetController {
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> updatePet( @RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
 
+        PetDTO existPet = petService.searchPet(addPetFormDTO.getPetId());
+        String petImage = existPet.getPetImage();
+        System.out.println("existPet" + petImage);
+
+
         UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
         System.out.println("userDTO" + userDTO);
 
-        //save the imagePath
-        if (addPetFormDTO.getPetImage() == null || addPetFormDTO.getPetImage().isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseDTO(VarList.Bad_Request, "image is required", null));
+        if (addPetFormDTO.getPetImage() != null && !addPetFormDTO.getPetImage().isEmpty()) {
+            String imagePath = fileStorageService.savePetImage(addPetFormDTO.getPetImage());
+            existPet.setPetImage(imagePath);
+        }else {
+            existPet.setPetImage(existPet.getPetImage());
         }
-
-        String imagePath = fileStorageService.savePetImage(addPetFormDTO.getPetImage());
-        System.out.println("imagePath" + imagePath);
 
         //convert the form to petDTO
         PetDTO petDTO = petService.updatePetDetails(addPetFormDTO);
         petDTO.setUser(userDTO);
-        petDTO.setPetImage(imagePath);
+        petDTO.setPetImage(existPet.getPetImage());
+
 
         petService.updatePet(petDTO);
 

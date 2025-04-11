@@ -118,6 +118,20 @@ $(document).ready(function () {
 
     });
 
+    function viewPetProfile(pet) {
+        console.log("viewPetProfile function called");
+        $('#editPetImagePreview').attr('src', '../' + pet.petImage);
+        $('#petName').val(pet.petName);
+        $('#petId').val(pet.petId);
+        $('#species').val(pet.species);
+        $('#breed').val(pet.breed);
+        $('#age').val(pet.age);
+        $('#birthDate').val(pet.birthDate);
+
+        $('#editPetModal').modal('show');
+
+    }
+
     $(document).on("click", "#deletePet", function () {
         let token = localStorage.getItem('token');
         let petId = $(this).closest('.pet-card').find('.editPetDetails').data("petid");
@@ -156,8 +170,8 @@ $(document).ready(function () {
 
                 for (let i = 0; i < response.data.length; i++) {
                     const appointment = response.data[i];
-                    //how to get the vet name from appointment object
                     const vetName = `${appointment.veterinarian.title} ${appointment.veterinarian.firstName} ${appointment.veterinarian.lastName}`;
+
 
                     $('#appointmentList').append(`
                      <div class="list-group-item">
@@ -174,8 +188,16 @@ $(document).ready(function () {
                                         </p>
                                     </div>
                                     <div class="btn-group">
-                                        <button id="deleteAppointment" class="btn btn-sm btn-outline-primary">DELETE</button>
-                                        <button class="btn btn-sm btn-outline-primary">RESHEDULE</button>
+                                    <button id="deleteAppointment" class="btn btn-sm btn-outline-primary">DELETE</button>
+                                    <button class="btn btn-sm btn-outline-primary reschedule-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#updateAppointmentModal"
+                                            data-appointment-id="${appointment.id}"
+                                            data-appointment-date="${appointment.date}"
+                                            data-appointment-time="${appointment.time}"
+                                            data-appointment-reason="${appointment.reason}">
+                                        <i class="fas fa-calendar-alt me-1"></i> Reschedule
+                                    </button>
                                     </div>
                                 </div>
                          </div>
@@ -185,6 +207,72 @@ $(document).ready(function () {
 
         });
     }
+
+    $(document).on("click",".reschedule-btn",function (){
+        console.log(" Reschedule button click")
+
+        let appointment = {
+            id : $(this).data("appointment-id"),
+            date: $(this).data("appointment-date"),
+            time :$(this).data("appointment-time"),
+            reason :$(this).data("appointment-reason")
+        };
+
+    console.log(appointment)
+    viewAppointmentProfile(appointment);
+    });
+
+    function viewAppointmentProfile(appointment){
+
+        console.log("view appointment function called");
+        $('#updateAppointmentId').val(appointment.id);
+        $('#updateAppointmentDate').val(appointment.date);
+        $('#updateAppointmentTime').val(appointment.time);
+        $('#updateAppointmentReason').val(appointment.reason);
+
+        $('#updateAppointmentModal').modal('show');
+
+    }
+    $('#updateAppointmentBtn').click(function (){
+        console.log("updated btm clicked")
+        let token = localStorage.getItem('token')
+
+        console.log(token)
+
+        let appointmentId = $('#updateAppointmentId').val();
+        let date = $('#updateAppointmentDate').val();
+        let time = $('#updateAppointmentTime').val();
+        let reason = $('#updateAppointmentReason').val();
+
+        console.log(date)
+        console.log(time)
+        console.log(reason)
+
+        $.ajax({
+            url:"http://localhost:8080/api/v1/appointment/updateAppointment",
+            type : "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "id" : appointmentId,
+                "date" : date,
+                "time" : time,
+                "reason": reason
+            }),
+            headers: {
+                "Authorization": 'Bearer ' + token
+            },
+
+            success : function (data){
+                alert("Appointment Updated successfully");
+            },
+            error : function (data){
+                alert("Appointment Updated Failed")
+            }
+
+
+
+        })
+    })
 
     $(document).on("click", "#deleteAppointment", function () {
         let token = localStorage.getItem('token');
@@ -207,7 +295,6 @@ $(document).ready(function () {
 
     });
 
-
     loadProfile();
     loadAllPets();
     loadAppointmentFromUser();
@@ -215,18 +302,6 @@ $(document).ready(function () {
 });
 
 
-    function viewPetProfile(pet) {
-    console.log("viewPetProfile function called");
-    $('#editPetImagePreview').attr('src', '../' + pet.petImage);
-    $('#petName').val(pet.petName);
-    $('#petId').val(pet.petId);
-    $('#species').val(pet.species);
-    $('#breed').val(pet.breed);
-    $('#age').val(pet.age);
-    $('#birthDate').val(pet.birthDate);
 
-    $('#editPetModal').modal('show');
-
-}
 
 

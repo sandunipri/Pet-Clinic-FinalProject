@@ -13,6 +13,7 @@ import org.example.back_end.entity.User;
 import org.example.back_end.entity.Veterinarian;
 import org.example.back_end.repo.AppointmentRepo;
 import org.example.back_end.repo.PetRepo;
+import org.example.back_end.repo.UserRepository;
 import org.example.back_end.repo.VeterinarianRepo;
 import org.example.back_end.service.AppointmentService;
 import org.example.back_end.service.UserService;
@@ -37,6 +38,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepo;
 
     @Autowired
     private VeterinarianRepo veterinarianRepo;
@@ -93,6 +97,28 @@ public class AppointmentServiceImpl implements AppointmentService {
             return true;
         }else {
             return false;
+        }
+    }
+
+    @Override
+    public AppointmentDTO updateAppointmentDetails(AppointmentDetailsDTO appointmentDetails) {
+
+        Appointments appointments = appointmentRepo.findById(appointmentDetails.getId())
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+        appointments.setDate(appointmentDetails.getDate());
+        appointments.setTime(appointmentDetails.getTime());
+        appointments.setReason(appointmentDetails.getReason());
+
+        return modelMapper.map(appointments, AppointmentDTO.class);
+
+    }
+
+    @Override
+    public void updateAppointment(AppointmentDTO appointmentDTO) {
+        if (appointmentRepo.existsById(appointmentDTO.getId())){
+            appointmentRepo.save(modelMapper.map(appointmentDTO, Appointments.class));
+        }else {
+            throw new RuntimeException("Appointment not found");
         }
     }
 }

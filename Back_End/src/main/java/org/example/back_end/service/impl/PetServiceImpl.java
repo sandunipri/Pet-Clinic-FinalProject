@@ -52,12 +52,6 @@ public class PetServiceImpl implements PetService {
 
     }
 
-    /*@Override
-    public PetDTO searchPetByUserEmail(String email) {
-        Pet pet = petRepo.findByUserEmail(email);
-        return modelMapper.map(pet, PetDTO.class);
-    }*/
-
     @Override
     public PetDTO convertFormToPetDTO(AddPetFormDTO addPetFormDTO) {
         PetDTO petDTO = modelMapper.map(addPetFormDTO, PetDTO.class);

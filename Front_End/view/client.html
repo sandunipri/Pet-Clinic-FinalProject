@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/client.css">
 </head>
+<!-- CSS Styling (add to your stylesheet) -->
+
 <body>
 <!-- Dashboard Header -->
 <header class="dashboard-header sticky-top">
@@ -302,6 +304,69 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Appointment Update Modal -->
+            <div class="modal fade" id="updateAppointmentModal" tabindex="-1" aria-labelledby="updateAppointmentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updateAppointmentModalLabel">
+                                <i class="fas fa-calendar-alt me-2" style="color: var(--accent-color);"></i>
+                                Update Appointment
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                            <div class="modal-body">
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <div>
+                                        You can only update the <strong>date</strong>, <strong>time</strong>, and <strong>reason</strong> for this appointment.<br>
+                                        If you need to change other details, please <strong>delete</strong> this appointment and book a new one.
+                                    </div>
+                                </div>
+
+                                <input type="hidden" id="updateAppointmentId" name="id">
+
+                                <!-- Date Field -->
+                                <div class="mb-3">
+                                    <label for="updateAppointmentDate" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="updateAppointmentDate"  name="date" required>
+                                </div>
+
+                                <!-- Time Field -->
+                                <div class="mb-3">
+                                    <label for="updateAppointmentTime" class="form-label">Time</label>
+                                    <select class="form-select" id="updateAppointmentTime"  name="time" required>
+                                        <option value="">Select a time</option>
+                                        <option value="09:00">09:00 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="13:00">01:00 PM</option>
+                                        <option value="14:00">02:00 PM</option>
+                                        <option value="15:00">03:00 PM</option>
+                                        <option value="16:00">04:00 PM</option>
+                                    </select>
+                                </div>
+
+                                <!-- Reason Field -->
+                                <div class="mb-3">
+                                    <label for="updateAppointmentReason" class="form-label">Reason</label>
+                                    <textarea class="form-control" id="updateAppointmentReason" name="reason" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button id="updateAppointmentBtn" type="button" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i> Update Appointment
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
@@ -325,6 +390,8 @@
 </script>
 <script src="../assets/js/client.js"></script>
 <script src="../assets/js/pet.js"></script>
+<script src="../js/sweetalert2@11.js"></script>
+
 <script>
     document.getElementById("profileImage").addEventListener("change", function (event) {
         const file = event.target.files[0]; // Get selected file

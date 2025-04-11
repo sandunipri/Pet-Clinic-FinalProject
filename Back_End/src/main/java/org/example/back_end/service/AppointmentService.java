@@ -20,4 +20,8 @@ public interface AppointmentService {
     List<AppointmentDTO> getAllAppointments();
 
     boolean deleteAppointment(int appointmentId);
+
+    AppointmentDTO updateAppointmentDetails(AppointmentDetailsDTO appointmentDetails);
+
+    void updateAppointment(AppointmentDTO appointmentDTO);
 }

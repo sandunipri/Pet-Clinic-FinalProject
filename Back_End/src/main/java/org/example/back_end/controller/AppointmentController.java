@@ -57,7 +57,7 @@ public class AppointmentController {
         //send an email to the user.
         emailService.sendAppointmentEmail(userDTO.getName(), userDTO.getEmail(), "Appointment Confirmation",appointmentDTO);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", null));
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Added success", appointmentDetails));
     }
 
     @GetMapping("/getAllAppointmentsFromUser")
@@ -83,6 +83,28 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "No appointments found", null));
         }
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
+    }
+
+
+    @PutMapping("/updateAppointment")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<ResponseDTO> updateAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDetailsDTO appointmentDetails) {
+        String email = userService.getUserByToken(Authorization.substring(7)).getEmail();
+        UserDTO userDTO = userService.searchUser(email);
+        System.out.println("userDTO" + userDTO);
+
+        String appointmentId = String.valueOf(appointmentDetails.getId());
+
+
+        if (appointmentId == null || appointmentId.isEmpty()) {
+            throw new RuntimeException("Appointment ID is required");
+        }
+
+        //convert the form to appointmentDTO
+        AppointmentDTO appointmentDTO = appointmentService.updateAppointmentDetails(appointmentDetails);
+
+        appointmentService.updateAppointment(appointmentDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Updated success", appointmentDetails));
     }
 
     @DeleteMapping("/deleteAppointment")

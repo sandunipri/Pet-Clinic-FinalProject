@@ -56,11 +56,12 @@ $(document).ready(function () {
                     'Authorization': 'Bearer ' + token
                 },
                 success: function (data) {
+                    $('#editPetModal').modal('hide');
                     alert("Pet Updated Success");
                     window.location.reload();
                 },
                 error: function (data) {
-                    alert("Pet Updated Failed");
+                   alert("Pet Updated Failed");
                 }
             });
 

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.example.back_end.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 import java.sql.Date;
 
