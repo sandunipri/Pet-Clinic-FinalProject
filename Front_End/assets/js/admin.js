@@ -126,7 +126,7 @@ $(document).ready(function () {
 
     function allPets(){
         $.ajax({
-            url : "http://localhost:8080/api/v1/admin/getAllPets",
+            url : "http://localhost:8080/api/v1/pet/getAllPets",
             type : "GET",
             headers : {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

@@ -49,11 +49,11 @@ public class VeterinarianController {
         return ResponseEntity.ok(new ResponseDTO(201, "Veterinarian is saved", veterinarianDTO));
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<ResponseDTO> getAllVeterinarian() {
-        System.out.println("getAllVeterinarian");
-        List<VeterinarianDTO> veterinarianList = veterinarianService.getAllVeterinarian();
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK,"Veterinarian List", veterinarianList));
+    @GetMapping("getAllVeterinary")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllVeterinary() {
+        List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinarian();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinary List", veterinarianDTOList));
     }
 
     @GetMapping("/getAllVetsCount")

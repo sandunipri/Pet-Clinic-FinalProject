@@ -68,6 +68,13 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
     }
 
+    @GetMapping("/getAllPets")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllPets() {
+        List<PetDTO> userDTOList = petService.getAllPets();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Pet List", userDTOList));
+    }
+
     @GetMapping("/getPetsFromUser")
     public ResponseEntity<ResponseDTO> getPetsFromUser(@RequestHeader("Authorization") String Authorization) {
         //get user email from the token.

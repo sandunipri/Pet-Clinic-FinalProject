@@ -82,18 +82,8 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "User List", userTableModalDTOS));
     }
 
-    @GetMapping("getAllVeterinary")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<ResponseDTO> getAllVeterinary() {
-        List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinarian();
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinary List", veterinarianDTOList));
-    }
 
-    @GetMapping("/getAllPets")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<ResponseDTO> getAllPets() {
-        List<PetDTO> userDTOList = petService.getAllPets();
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Pet List", userDTOList));
-    }
+
+
 
 }
