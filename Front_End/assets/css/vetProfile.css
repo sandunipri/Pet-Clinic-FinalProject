@@ -44,3 +44,61 @@
 .specialties .badge {
     font-weight: normal;
 }
+
+.hover-grow {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(78, 115, 223, 0.1);
+}
+
+.hover-grow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(78, 115, 223, 0.15);
+}
+
+.hover-grow:active {
+    transform: translateY(0);
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.profile-pic-upload:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+    border-color: #4e73df;
+}
+
+.form-check-input:checked + .badge {
+    background-color: #4e73df !important;
+    color: white !important;
+    transform: scale(1.05);
+}
+
+.modal.fade .modal-dialog {
+    animation: modalSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

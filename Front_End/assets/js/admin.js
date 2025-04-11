@@ -40,7 +40,6 @@ $(document).ready(function () {
                 let tableBody = $('#user_table');
                 tableBody.empty();
                 users.forEach(user => {
-                    console.log(user.petList);
                     tableBody.append(`
                         <tr>
                             <td>
@@ -75,6 +74,7 @@ $(document).ready(function () {
     }
 
     function allVets(){
+        console.log("Get All Vets")
         $.ajax({
             url: 'http://localhost:8080/api/v1/veterinarian/getAllVeterinary',
             type: 'GET',
@@ -86,33 +86,30 @@ $(document).ready(function () {
 
                 let vets = response.data;
                 let tableBody = $('#vet_table');
+
                 tableBody.empty();
                 vets.forEach(vet => {
+                    let vetName = vet.title + " " + vet.firstName + " " + vet.lastName;
                     tableBody.append(`
-                        <tr>
+                         <tr class="vet-row" data-vetid="${vet.id}" data-vetemail="${vet.email}">
                             <td>
                             <img src="../${vet.profileImage}"
                                          class="user-avatar me-2">
                                          </td>
                             <td>${vet.email}</td>
-                            <td>${vet.name}</td>
+                            <td>${vetName}</td>
                             <td>${vet.address}</td>
                             <td>${vet.phone}</td>
                             <td>${vet.specialty}</td>
                             <td>
-                           
-                             <button class="btn btn-sm btn-outline-primary me-1">
+                                <a href="viewVeterinariesProfile.html">
+                                   <button class="btn btn-sm btn-outline-primary me-1 view-vet-btn">
                                         <i class="fas fa-eye"></i>
-                                    </button>
-                          
-                                     <a href="viewVeterinariesProfile.html">
-                                    <button class="btn btn-sm btn-outline-primary me-1">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                              </a>
-                                    <button class="btn btn-sm btn-outline-danger">
+                                   </button>
+                                </a>
+                                   <button class="btn btn-sm btn-outline-danger">
                                         <i class="fas fa-trash"></i>
-                                    </button>
+                                   </button>
                              </td>
                         </tr>
                     `);
@@ -123,6 +120,15 @@ $(document).ready(function () {
             }
         });
     }
+
+    $(document).on('click', '.view-vet-btn', function() {
+        const row = $(this).closest('tr');
+        const vetId = row.data('vetid');
+
+        sessionStorage.setItem('selectedVetId', vetId);
+
+        window.location.href = 'viewVeterinariesProfile.html';
+    });
 
     function allPets(){
         $.ajax({
@@ -186,7 +192,6 @@ $(document).ready(function () {
                 let appointments = response.data
                 let tableBody = $('#appointment_table');
                 appointments.forEach(appointment => {
-                    console.log("appointment id :" + appointment.id)
                     tableBody.append(`
                             <tr>
                                 <td>${appointment.id}</td>

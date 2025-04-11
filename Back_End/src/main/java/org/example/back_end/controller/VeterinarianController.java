@@ -63,4 +63,15 @@ public class VeterinarianController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK,"Veterinarian Count", count));
     }
 
+    @GetMapping("/getVetProfile")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getVetProfile(@RequestParam int id) {
+        VeterinarianDTO veterinarianDTO = veterinarianService.searchVeterinarian(id);
+        if (veterinarianDTO != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinarian Profile", veterinarianDTO));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "Veterinarian Not Found", null));
+        }
+    }
+
 }

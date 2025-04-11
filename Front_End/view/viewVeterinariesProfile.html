@@ -11,65 +11,7 @@
     <link rel="stylesheet" href="../assets/css/vet.css">
     <link rel="stylesheet" href="../assets/css/vetProfile.css">
 </head>
-<style>
-    .hover-grow {
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(78, 115, 223, 0.1);
-    }
 
-    .hover-grow:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(78, 115, 223, 0.15);
-    }
-
-    .hover-grow:active {
-        transform: translateY(0);
-    }
-
-    .bg-gradient-primary {
-        background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
-        background-size: 200% 200%;
-        animation: gradientMove 8s ease infinite;
-    }
-
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .hover-scale {
-        transition: transform 0.2s ease;
-    }
-    .hover-scale:hover {
-        transform: scale(1.05);
-    }
-
-    .profile-pic-upload:hover img {
-        transform: scale(1.05);
-        transition: transform 0.3s ease;
-    }
-
-    .form-control:focus, .form-select:focus {
-        box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
-        border-color: #4e73df;
-    }
-
-    .form-check-input:checked + .badge {
-        background-color: #4e73df !important;
-        color: white !important;
-        transform: scale(1.05);
-    }
-
-    .modal.fade .modal-dialog {
-        animation: modalSlideIn 0.3s ease-out forwards;
-    }
-
-    @keyframes modalSlideIn {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-</style>
 <body>
 <!-- Header -->
 <header id="header" class="header sticky-top">
@@ -107,16 +49,14 @@
             <div class="profile-card p-4 p-md-5">
                 <div class="profile-header d-flex flex-column flex-md-row align-items-center mb-5">
                     <div class="profile-avatar me-md-4 mb-4 mb-md-0">
-                        <img src="../assets/images/vet-profile.jpg" alt="Dr. Sarah Johnson" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                        <img src="../assets/images/Doney-logo_color.png" alt="Dr. Sarah Johnson" id="imagePreview " class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                     </div>
                     <div class="profile-info">
-                        <h2 class="mb-2">Dr. Sarah Johnson</h2>
-                        <p class="text-muted mb-2"><i class="fas fa-id-card me-2"></i> License #: VET-789456-SL</p>
+                        <h2 id="vetName" class="mb-2">Dr. Sarah Johnson</h2>
+                        <p  class="text-muted mb-2"><i class="fas fa-id-card me-2"></i> License : <span id="licenseNo" >VET-789456-SL</span></p>
                         <p class="text-muted mb-2"><i class="fas fa-briefcase-medical me-2"></i> Senior Veterinarian</p>
                         <div class="specialties mb-2">
-                            <span class="badge bg-primary me-1">Surgery</span>
-                            <span class="badge bg-primary me-1">Dentistry</span>
-                            <span class="badge bg-primary me-1">Internal Medicine</span>
+                            <span id="specialty" class="badge bg-primary me-1">Surgery</span>
                         </div>
                         <div class="profile-status">
                             <span class="badge bg-success"><i class="fas fa-circle me-1"></i> Active</span>
@@ -134,22 +74,22 @@
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     <li class="mb-3">
-                                        <strong>Title:</strong> Dr.
+                                        <strong>Title : </strong><span id="vetTitle">Dr.</span>
                                     </li>
                                     <li class="mb-3">
-                                        <strong>Full Name:</strong> Sarah Elizabeth Johnson
+                                        <strong>Full Name : </strong><span id="vetFullName"> Sarah Elizabeth Johnson</span>
                                     </li>
                                     <li class="mb-3">
-                                        <strong>Gender:</strong> Female
+                                        <strong>Gender : </strong> <span id="vetGender">Male</span>
+                                    </li>
+<!--                                    <li class="mb-3">-->
+<!--                                        <strong>Address : </strong><span id="vetAddress">May 15, 1985</span>-->
+<!--                                    </li>-->
+                                    <li class="mb-3">
+                                        <strong>Specially : </strong><span id="vetSpecialty"> Surgery</span>
                                     </li>
                                     <li class="mb-3">
-                                        <strong>Date of Birth:</strong> May 15, 1985
-                                    </li>
-                                    <li class="mb-3">
-                                        <strong>Specially:</strong> Surgery
-                                    </li>
-                                    <li class="mb-3">
-                                        <strong>Years of Experience:</strong> 12 years
+                                        <strong>Years of Experience : </strong><span id="vetExperience">12 years</span>
                                     </li>
                                 </ul>
                             </div>
@@ -165,19 +105,20 @@
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     <li class="mb-3">
-                                        <strong><i class="fas fa-envelope me-2"></i> Email:</strong>
-                                        <a href="mailto:sarah.j@happyhearts.com">sarah.j@happyhearts.com</a>
+                                        <strong><i class="fas fa-envelope me-2"></i> Email : </strong>
+                                        <a  id="vetEmail" href="mailto:sarah.j@happyhearts.com">sarah.j@happyhearts.com</a>
                                     </li>
                                     <li class="mb-3">
                                         <strong><i class="fas fa-phone me-2"></i> Phone:</strong>
-                                        <a href="tel:+94771234567">+94 77 123 4567</a>
+                                        <a id="vetTelNo" href="tel:+94771234567">+94 77 123 4567</a>
                                     </li>
                                     <li class="mb-3">
                                         <strong><i class="fas fa-map-marker-alt me-2"></i> Address:</strong>
-                                        123 Pet Street, Colombo 05, Sri Lanka
+                                        <span id="vetAddress">123 Pet Street, Colombo 05, Sri Lanka</span>
                                     </li>
                                     <li class="mb-3">
                                         <strong><i class="fas fa-calendar-alt me-2"></i> Joined Date:</strong>
+                                        <span></span>
                                         January 10, 2015
                                     </li>
                                 </ul>
@@ -330,7 +271,8 @@
 <!-- Bootstrap JS -->
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
-<script src="../assets/js/admin.js"></script>
+<!--<script src="../assets/js/admin.js"></script>-->
+<script src="../assets/js/vet.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
 <script>
     document.getElementById('profileUpload').addEventListener('change', function(e) {

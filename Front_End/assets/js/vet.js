@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#saveVet').click(function () {
         let token = localStorage.getItem('token');
         let formData = new FormData($('#addVetForm')[0]);
@@ -93,7 +94,7 @@ $(document).ready(function () {
             }
         });
     }
-    // Handle channel button clicks
+
     function loadDoctors() {
         $(document).on('click', '.channel-btn', function(e) {
             e.preventDefault();
@@ -134,9 +135,49 @@ $(document).ready(function () {
         });
     }
 
+    function loadVeProfile(){
+        let token = localStorage.getItem('token');
+        console.log("loadVeProfile");
+        console.log(token)
+
+        let vetId = sessionStorage.getItem('selectedVetId')
+        console.log(vetId)
+
+        $.ajax({
+            url: `http://localhost:8080/api/v1/veterinarian/getVetProfile?id=${vetId}`,
+            type: 'GET',
+            headers: {
+                "Authorization": 'Bearer ' + token
+            },
+            success: function (response) {
+                console.log("response")
+                $("#imagePreview").attr("src", "../" + response.data.profileImage);
+                $("#vetName").text(response.data.title + ". " + response.data.firstName + " " + response.data.lastName);
+                $("#licenseNo").text(response.data.licenseNo);
+                $("#specialty").text(response.data.specialty);
+
+                /* personal Information*/
+                $("#vetTitle").text(response.data.title)
+                $("#vetFullName").text(response.data.firstName + " " + response.data.lastName);
+                $("#vetGender").text(response.data.gender);
+                $("#vetSpecialty").text(response.data.specialty);
+                $("#vetExperience").text(response.data.YOEeperience);
+
+                /*contact information*/
+                $("#vetEmail").text(response.data.email);
+                $("#vetTelNo").text(response.data.phone);
+                $("#vetAddress").text(response.data.address + " " + response.data.city);
+
+            },
+            error: function (error) {
+                console.error("Error loading veterinarian profile:", error);
+            }
+        });
+    }
+
     getAllVetsDisplay();
     loadDoctors();
-    // handleAppointmentForm();
     setupMobileNav();
+    loadVeProfile();
 
 })
