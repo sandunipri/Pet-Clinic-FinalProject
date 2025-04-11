@@ -101,6 +101,17 @@ public class UserController {
                 .body(new ResponseDTO(VarList.OK, "success",role));
     }
 
+    @GetMapping("/getAllUsersCount")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllUsersCount() {
+        int count = userService.getAllUsersCount();
+
+        System.out.println(count);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ResponseDTO(VarList.OK, "Success", count));
+    }
+
 
 /*
     @PostMapping("/register")

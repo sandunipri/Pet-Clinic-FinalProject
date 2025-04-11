@@ -182,6 +182,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     }
 
+    @Override
+    public int getAllUsersCount() {
+        String jpql = "SELECT COUNT(u) FROM User u WHERE u.role = :role";
+        TypedQuery<Long> query = entityManager.createQuery(jpql, Long.class);
+        query.setParameter("role", "USER");
+        Long count = query.getSingleResult();
+        return count.intValue();
+
+    }
 
 
 }

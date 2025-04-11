@@ -108,4 +108,12 @@ public class PetServiceImpl implements PetService {
 
     }
 
+    @Override
+    public int getAllPetsCount() {
+        String query = "SELECT COUNT(p) FROM Pet p";
+        TypedQuery<Long> typedQuery = entityManager.createQuery(query, Long.class);
+        Long count = typedQuery.getSingleResult();
+        return count.intValue();
+    }
+
 }

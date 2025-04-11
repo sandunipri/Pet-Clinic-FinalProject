@@ -85,7 +85,6 @@ public class AppointmentController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointments retrieved successfully", appointmentDTOList));
     }
 
-
     @PutMapping("/updateAppointment")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> updateAppointment(@RequestHeader("Authorization") String Authorization,  @RequestBody AppointmentDetailsDTO appointmentDetails) {
@@ -116,6 +115,14 @@ public class AppointmentController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "Appointment not found", null));
         }
+    }
+
+    @GetMapping("/getAppointmentsCount")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAppointmentsCount() {
+        System.out.println("getAllAppointmentsCount");
+        int count = appointmentService.getAllAppointmentCount();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Appointment Count", count));
     }
 
 }

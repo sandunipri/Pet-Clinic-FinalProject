@@ -11,5 +11,5 @@ public interface VeterinarianService {
     List<VeterinarianDTO> getAllVeterinarian();
     VeterinarianDTO convertFormToVeterinarianDTO(AddVeterinarianFormDTO addVeterinarianFormDTO, String savedPath);
     VeterinarianDTO searchVeterinarian(int id);
-//    List<VeterinarianDTO> getAllVeterinary();
+    int getAllVetsCount();
 }

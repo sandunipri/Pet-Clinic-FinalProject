@@ -233,6 +233,7 @@ $(document).ready(function () {
         $('#updateAppointmentModal').modal('show');
 
     }
+
     $('#updateAppointmentBtn').click(function (){
         console.log("updated btm clicked")
         let token = localStorage.getItem('token')
@@ -264,6 +265,7 @@ $(document).ready(function () {
 
             success : function (data){
                 alert("Appointment Updated successfully");
+                window.location.reload();
             },
             error : function (data){
                 alert("Appointment Updated Failed")
@@ -294,6 +296,7 @@ $(document).ready(function () {
         });
 
     });
+
 
     loadProfile();
     loadAllPets();

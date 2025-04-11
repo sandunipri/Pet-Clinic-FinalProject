@@ -17,4 +17,7 @@ public interface PetService {
     void updatePet(PetDTO petDTO);
 
     PetDTO updatePetDetails(AddPetFormDTO addPetFormDTO);
+
+    int getAllPetsCount();
+
 }

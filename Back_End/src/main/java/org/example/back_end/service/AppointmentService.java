@@ -6,6 +6,7 @@ import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AppointmentDetailsDTO;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface AppointmentService {
@@ -24,4 +25,6 @@ public interface AppointmentService {
     AppointmentDTO updateAppointmentDetails(AppointmentDetailsDTO appointmentDetails);
 
     void updateAppointment(AppointmentDTO appointmentDTO);
+
+   int getAllAppointmentCount();
 }

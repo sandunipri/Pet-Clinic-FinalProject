@@ -55,9 +55,12 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     }
 
-/*    @Override
-    public List<VeterinarianDTO> getAllVeterinary() {
-        return modelMapper.map(veterinarianRepo.findAll(),new TypeToken<List<VeterinarianDTO>>(){}.getType());
-    }*/
+    @Override
+    public int getAllVetsCount() {
+        String query = "SELECT COUNT(v) FROM Veterinarian v";
+        TypedQuery <Long> typedQuery = entityManager.createQuery(query, Long.class);
+        Long count = typedQuery.getSingleResult();
+        return count.intValue();
+    }
 
 }

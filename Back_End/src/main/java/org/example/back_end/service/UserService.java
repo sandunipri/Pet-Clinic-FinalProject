@@ -18,4 +18,7 @@ public interface UserService {
     boolean deleteUser(String token);
 
     List<UserTableModalDTO> getAllUsers(UserDTO userDTO);
+
+    int getAllUsersCount();
+
 }

@@ -218,11 +218,83 @@ $(document).ready(function () {
         })
     }
 
+    function loadAllUsersCount(){
+        console.log("loadAllUsersCount")
+        $.ajax({
+            url:"http://localhost:8080/api/v1/user/getAllUsersCount",
+            type: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            success: function (response) {
+                $('#userCount').text(response.data);
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+        });
+    }
+
+    function loadAllVetCount(){
+        console.log("loadAllVetCount")
+        $.ajax({
+            url:"http://localhost:8080/api/v1/veterinarian/getAllVetsCount",
+            type: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            success: function (response) {
+                $('#vetCount').text(response.data);
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+        });
+    }
+
+    function loadAllPetsCount(){
+        console.log("loadAllPetsCount")
+        $.ajax({
+            url:"http://localhost:8080/api/v1/pet/getAllPetsCount",
+            type: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            success: function (response) {
+                $('#petCount').text(response.data);
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+        });
+    }
+
+    function loadAllAppointmentsCount(){
+        console.log("loadAllAppointmentsCount")
+        $.ajax({
+            url:"http://localhost:8080/api/v1/appointment/getAppointmentsCount",
+            type: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            success: function (response) {
+                $('#appointmentCount').text(response.data);
+            },
+            error: function (error) {
+                console.error('Error fetching users:', error);
+            }
+        });
+    }
+
     loadProfile();
     allUsers();
     allVets();
     allPets();
     allAppointments();
+    loadAllUsersCount();
+    loadAllVetCount();
+    loadAllPetsCount();
+    loadAllAppointmentsCount();
 
 
 });

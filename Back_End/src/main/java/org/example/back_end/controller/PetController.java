@@ -129,4 +129,12 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Deleted success", isDeleted));
 
     }
+
+    @GetMapping("/getAllPetsCount")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> getAllPetsCount() {
+        System.out.println("getAllPetsCount");
+        int count = petService.getAllPetsCount();
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Pet Count", count));
+    }
 }
