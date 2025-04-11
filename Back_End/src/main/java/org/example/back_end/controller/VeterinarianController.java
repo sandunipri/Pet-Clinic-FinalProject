@@ -50,7 +50,6 @@ public class VeterinarianController {
     }
 
     @GetMapping("getAllVeterinary")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllVeterinary() {
         List<VeterinarianDTO> veterinarianDTOList = veterinarianService.getAllVeterinarian();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinary List", veterinarianDTOList));

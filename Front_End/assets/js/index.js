@@ -61,7 +61,7 @@ $(document).ready(function () {
     function getAllVetsDisplay() {
 
         $.ajax({
-            url: "http://localhost:8080/api/v1/veterinarian/getAll",
+            url: "http://localhost:8080/api/v1/veterinarian/getAllVeterinary",
             type: 'GET',
 
             success: function (response) {

@@ -38,8 +38,9 @@ $(document).ready(function () {
         console.log("getAllVetsDispaly");
 
         $.ajax({
-            url: "http://localhost:8080/api/v1/veterinarian/getAll",
+            url: "http://localhost:8080/api/v1/veterinarian/getAllVeterinary",
             type: 'GET',
+
 
             success: function (response) {
 
@@ -167,6 +168,25 @@ $(document).ready(function () {
                 $("#vetEmail").text(response.data.email);
                 $("#vetTelNo").text(response.data.phone);
                 $("#vetAddress").text(response.data.address + " " + response.data.city);
+
+
+                /*update model data set for the */
+                $("#profilePreview").attr("src", "../" + response.data.profileImage);
+                $("#fullName").val(response.data.firstName + " " + response.data.lastName);
+                $("#title").val(response.data.title);
+                $("#license").val(response.data.licenseNo)
+                $("#email").val(response.data.email);
+                $("#phone").val(response.data.phone);
+                $("#address").val(response.data.address + " " + response.data.city);
+
+                $("#experience").val(response.data.YOEeperience);
+
+
+
+
+
+
+
 
             },
             error: function (error) {
