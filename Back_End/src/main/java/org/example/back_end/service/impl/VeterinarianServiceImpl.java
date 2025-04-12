@@ -63,4 +63,31 @@ public class VeterinarianServiceImpl implements VeterinarianService {
         return count.intValue();
     }
 
+    @Override
+    public VeterinarianDTO updateVeterinarianDetails(AddVeterinarianFormDTO addVeterinarianFormDTO) {
+
+        Veterinarian veterinarian = veterinarianRepo.getReferenceById(addVeterinarianFormDTO.getId());
+
+        veterinarian.setTitle(addVeterinarianFormDTO.getTitle());
+        veterinarian.setFirstName(addVeterinarianFormDTO.getFirstName());
+        veterinarian.setLastName(addVeterinarianFormDTO.getLastName());
+        veterinarian.setAddress(addVeterinarianFormDTO.getAddress());
+        veterinarian.setPhone(addVeterinarianFormDTO.getPhone());
+        veterinarian.setEmail(addVeterinarianFormDTO.getEmail());
+        veterinarian.setLicenseNo(addVeterinarianFormDTO.getLicenseNo());
+        veterinarian.setSpecialty(addVeterinarianFormDTO.getSpecialty());
+        veterinarian.setYOEeperience(addVeterinarianFormDTO.getYOEeperience());
+
+        return modelMapper.map(veterinarian, VeterinarianDTO.class);
+    }
+
+    @Override
+    public void updateVeterinarian(VeterinarianDTO veterinarianDTO) {
+        if (veterinarianRepo.existsById(veterinarianDTO.getId())) {
+            veterinarianRepo.save(modelMapper.map(veterinarianDTO, Veterinarian.class));
+        }else {
+            throw new RuntimeException("Veterinarian not found");
+        }
+    }
+
 }

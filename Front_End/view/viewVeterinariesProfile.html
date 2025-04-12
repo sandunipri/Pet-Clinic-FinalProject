@@ -48,8 +48,13 @@
         <div class="col-lg-10">
             <div class="profile-card p-4 p-md-5">
                 <div class="profile-header d-flex flex-column flex-md-row align-items-center mb-5">
+<!--                    <div class="profile-avatar me-md-4 mb-4 mb-md-0">-->
+<!--                        <img src="../assets/images/Doney-logo_color.png" alt="Dr. Sarah Johnson" id="imagePreview " class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">-->
+<!--                    </div>-->
+
                     <div class="profile-avatar me-md-4 mb-4 mb-md-0">
-                        <img src="../assets/images/Doney-logo_color.png" alt="Dr. Sarah Johnson" id="imagePreview " class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg"  alt="Current Profile"
+                             class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" id="currentProfilePic">
                     </div>
                     <div class="profile-info">
                         <h2 id="vetName" class="mb-2">Dr. Sarah Johnson</h2>
@@ -189,8 +194,13 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="fullName" value="Sarah Elizabeth Johnson">
-                                <label for="fullName">Full Name</label>
+                                <input type="text" class="form-control" id="firstName" value="Sarah Elizabeth Johnson">
+                                <label for="firstName">First Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="lastName" value="Sarah Elizabeth Johnson">
+                                <label for="lastName">Last Name</label>
                             </div>
 <!--                            <div class="form-floating mb-3">-->
 <!--                                <input type="date" class="form-control" id="dob" value="1985-05-15">-->
@@ -273,6 +283,19 @@
 <script src="../assets/js/admin.js"></script>
 <script src="../assets/js/vet.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
+
+<script>
+    document.getElementById('profileImage').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                document.getElementById('currentProfilePic').src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 <script>
     document.getElementById('profileUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];

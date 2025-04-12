@@ -2,15 +2,14 @@ package org.example.back_end.controller;
 
 import jakarta.servlet.annotation.MultipartConfig;
 import org.example.back_end.dto.ResponseDTO;
+import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
 import org.example.back_end.dto.formDTO.AddVeterinarianFormDTO;
 import org.example.back_end.service.FileStorageService;
+import org.example.back_end.service.UserService;
 import org.example.back_end.service.VeterinarianService;
-import org.example.back_end.service.impl.VeterinarianServiceImpl;
 import org.example.back_end.util.VarList;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,10 +27,12 @@ import java.util.List;
 public class VeterinarianController {
     private final VeterinarianService veterinarianService;
     private final FileStorageService fileStorageService;
+    private final UserService userService;
 
-    public VeterinarianController(VeterinarianService veterinarianService, FileStorageService fileStorageService) {
+    public VeterinarianController(VeterinarianService veterinarianService, FileStorageService fileStorageService, UserService userService) {
         this.veterinarianService = veterinarianService;
         this.fileStorageService = fileStorageService;
+        this.userService = userService;
     }
 
     @PostMapping( value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -73,4 +74,31 @@ public class VeterinarianController {
         }
     }
 
+    @PutMapping(path = "/updateVeterinarian", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> updateVeterinarian(@RequestHeader ("Authorization") String Authorization,   @ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
+        VeterinarianDTO existVet = veterinarianService.searchVeterinarian(addVeterinarianFormDTO.getId());
+        String image = existVet.getProfileImage();
+
+        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
+        System.out.println(userDTO);
+
+        if (addVeterinarianFormDTO.getProfileImage() != null && !addVeterinarianFormDTO.getProfileImage().isEmpty()) {
+            String imagePath = fileStorageService.saveVetProfileImage(addVeterinarianFormDTO.getProfileImage());
+            existVet.setProfileImage(imagePath);
+
+        }else {
+            existVet.setProfileImage(image);
+        }
+
+        //convert the form for the vetDTO
+        VeterinarianDTO veterinarianDTO = veterinarianService.updateVeterinarianDetails(addVeterinarianFormDTO);
+        veterinarianDTO.setProfileImage(existVet.getProfileImage());
+
+        veterinarianService.updateVeterinarian(veterinarianDTO);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinarian Updated", veterinarianDTO));
+
+
+    }
 }

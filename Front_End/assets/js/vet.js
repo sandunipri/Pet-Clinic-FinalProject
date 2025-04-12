@@ -152,7 +152,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 console.log("response")
-                $("#imagePreview").attr("src", "../" + response.data.profileImage);
+                $("#currentProfilePic").attr("src", "../" + response.data.profileImage);
                 $("#vetName").text(response.data.title + ". " + response.data.firstName + " " + response.data.lastName);
                 $("#licenseNo").text(response.data.licenseNo);
                 $("#specialty").text(response.data.specialty);
@@ -172,7 +172,8 @@ $(document).ready(function () {
 
                 /*update model data set for the */
                 $("#profilePreview").attr("src", "../" + response.data.profileImage);
-                $("#fullName").val(response.data.firstName + " " + response.data.lastName);
+                $("#firstName").val(response.data.firstName);
+                $("#lastName").val(response.data.lastName);
                 $("#title").val(response.data.title);
                 $("#license").val(response.data.licenseNo)
                 $("#email").val(response.data.email);
@@ -180,13 +181,6 @@ $(document).ready(function () {
                 $("#address").val(response.data.address + " " + response.data.city);
 
                 $("#experience").val(response.data.YOEeperience);
-
-
-
-
-
-
-
 
             },
             error: function (error) {
