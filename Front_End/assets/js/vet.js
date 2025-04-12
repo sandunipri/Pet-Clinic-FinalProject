@@ -174,13 +174,17 @@ $(document).ready(function () {
                 $("#profilePreview").attr("src", "../" + response.data.profileImage);
                 $("#firstName").val(response.data.firstName);
                 $("#lastName").val(response.data.lastName);
+                $("#gender").val(response.data.gender)
                 $("#title").val(response.data.title);
                 $("#license").val(response.data.licenseNo)
                 $("#email").val(response.data.email);
                 $("#phone").val(response.data.phone);
-                $("#address").val(response.data.address + " " + response.data.city);
+                $("#address").val(response.data.address);
+                $("#city").val(response.data.city);
 
                 $("#experience").val(response.data.YOEeperience);
+                $("#specialty").val(response.data.specialty);
+                $("#bio").val(response.data.bio);
 
             },
             error: function (error) {
@@ -188,6 +192,61 @@ $(document).ready(function () {
             }
         });
     }
+
+   $("#saveProfileChanges").click(function (e) {
+       e.preventDefault(); // Prevent default form submission
+
+       let token = localStorage.getItem("token")
+
+       // 1. Get the vet ID from sessionStorage
+       const vetId = sessionStorage.getItem("selectedVetId");
+       if (!vetId) {
+           Swal.fire("Error!", "Veterinarian ID not found. Please reload the page.", "error");
+           return;
+       }
+
+       // 2. Prepare FormData
+       let formData = new FormData($('#vetProfileForm')[0]);
+
+       // 3. Manually append the ID if not already in the form
+       if (!formData.has('id')) {
+           formData.append('id', vetId);
+       }
+
+
+       $.ajax({
+            url : "http://localhost:8080/api/v1/veterinarian/updateVeterinarian",
+            type : "PUT",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    text: "Vet Profile Updated Successfully!"
+                }).then(() => {
+                    window.location.href = 'viewVeterinariesProfile.html';
+                });
+            },
+            error: function (response) {
+                Swal.fire({
+                    title: "Error!",
+                    icon: "error",
+                    text: "Vet Profile Update Failed!"
+                }).then(() => {
+                    window.location.href = 'viewVeterinariesProfile.html';
+                });
+            }
+
+        })
+
+    });
+
 
     getAllVetsDisplay();
     loadDoctors();

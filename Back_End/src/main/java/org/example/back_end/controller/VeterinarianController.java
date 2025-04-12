@@ -76,29 +76,26 @@ public class VeterinarianController {
 
     @PutMapping(path = "/updateVeterinarian", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<ResponseDTO> updateVeterinarian(@RequestHeader ("Authorization") String Authorization,   @ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
-        VeterinarianDTO existVet = veterinarianService.searchVeterinarian(addVeterinarianFormDTO.getId());
-        String image = existVet.getProfileImage();
+    public ResponseEntity<ResponseDTO> updateVeterinarian(@RequestHeader ("Authorization") String Authorization,@ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
 
-        UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
-        System.out.println(userDTO);
+            VeterinarianDTO existVet = veterinarianService.searchVeterinarian(addVeterinarianFormDTO.getId());
+            String imagePath = existVet.getProfileImage();
 
-        if (addVeterinarianFormDTO.getProfileImage() != null && !addVeterinarianFormDTO.getProfileImage().isEmpty()) {
-            String imagePath = fileStorageService.saveVetProfileImage(addVeterinarianFormDTO.getProfileImage());
-            existVet.setProfileImage(imagePath);
+            if (addVeterinarianFormDTO.getProfileImage() != null && !addVeterinarianFormDTO.getProfileImage().isEmpty()) {
+                imagePath = fileStorageService.saveVetProfileImage(addVeterinarianFormDTO.getProfileImage());
+            }
 
-        }else {
-            existVet.setProfileImage(image);
-        }
+            UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
+            System.out.println(userDTO);
 
-        //convert the form for the vetDTO
-        VeterinarianDTO veterinarianDTO = veterinarianService.updateVeterinarianDetails(addVeterinarianFormDTO);
-        veterinarianDTO.setProfileImage(existVet.getProfileImage());
 
-        veterinarianService.updateVeterinarian(veterinarianDTO);
+            VeterinarianDTO veterinarianDTO = veterinarianService.updateVeterinarianDetails(addVeterinarianFormDTO);
+            veterinarianDTO.setProfileImage(imagePath);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinarian Updated", veterinarianDTO));
+            veterinarianService.updateVeterinarian(veterinarianDTO);
 
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDTO(VarList.OK, "Veterinarian Updated", veterinarianDTO));
 
     }
 }

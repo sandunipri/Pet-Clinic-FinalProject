@@ -14,5 +14,5 @@ public interface VeterinarianService {
 
     VeterinarianDTO updateVeterinarianDetails(AddVeterinarianFormDTO addVeterinarianFormDTO);
 
-    void updateVeterinarian(VeterinarianDTO veterinarianDTO);
+    void updateVeterinarian(VeterinarianDTO addVeterinarianFormDTO);
 }

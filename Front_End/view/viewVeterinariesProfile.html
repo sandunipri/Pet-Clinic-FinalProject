@@ -176,7 +176,7 @@
                                     <img id="profilePreview" src="../assets/images/logo.jpg" class="rounded-circle shadow-sm border border-3 border-white" width="120" height="120" style="object-fit: cover;">
                                     <label for="profileUpload" class="btn btn-sm btn-primary rounded-pill position-absolute bottom-0 end-0 shadow-sm" style="width: 36px; height: 36px;">
                                         <i class="fas fa-camera"></i>
-                                        <input  type="file" id="profileUpload" accept="image/*" class="d-none">
+                                        <input  type="file" id="profileUpload"  name="profileImage" accept="image/*" class="d-none">
                                     </label>
                                 </div>
                                 <small class="text-muted d-block mt-2">Max 2MB (JPG, PNG)</small>
@@ -184,7 +184,7 @@
 
                             <!-- Personal Info -->
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="title">id="title"
+                                <select class="form-select" id="title" name="title">id="title"
                                     <option value="Dr." >Dr.</option>
                                     <option value="Prof.">Prof.</option>
                                     <option value="Mr.">Mr.</option>
@@ -194,21 +194,23 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="firstName" value="Sarah Elizabeth Johnson">
+                                <input type="text" class="form-control" id="firstName" name="firstName"  >
                                 <label for="firstName">First Name</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="lastName" value="Sarah Elizabeth Johnson">
+                                <input type="text" class="form-control" id="lastName" name="lastName" >
                                 <label for="lastName">Last Name</label>
                             </div>
-<!--                            <div class="form-floating mb-3">-->
-<!--                                <input type="date" class="form-control" id="dob" value="1985-05-15">-->
-<!--                                <label for="dob">Date of Birth</label>-->
-<!--                            </div>-->
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="license" value="VET-789456-SL">
+                                <input type="text" class="form-control" id="gender" name="gender" >
+                                <label for="gender">Gender </label>
+                            </div>
+
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="license" name="licenseNo">
                                 <label for="license">License Number</label>
                             </div>
                         </div>
@@ -217,18 +219,23 @@
                         <div class="col-md-6">
                             <!-- Contact Info -->
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" value="sarah.j@happyhearts.com">
+                                <input type="email" class="form-control" id="email" name="email">
                                 <label for="email">Email Address</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="phone" value="+94771234567">
+                                <input type="tel" class="form-control" id="phone" name="phone">
                                 <label for="phone">Phone Number</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="address" style="height: 100px">123 Pet Street, Colombo 05, Sri Lanka</textarea>
+                                <textarea class="form-control" id="address" name="address" style="height: 60px">123 Pet Street, Colombo 05, Sri Lanka</textarea>
                                 <label for="address">Clinic Address</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="city" name="city" style="height: 60px">123 Pet Street, Colombo 05, Sri Lanka</textarea>
+                                <label for="city">Clinic City</label>
                             </div>
 
                             <!-- Specialties -->
@@ -236,19 +243,19 @@
                                 <label class="form-label">Specialties</label>
                                 <div class="d-flex flex-wrap gap-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="surgery" >
+                                        <input class="form-check-input" type="checkbox" id="surgery" name="specialty" value="surgery" >
                                         <label class="form-check-label badge bg-primary-light text-dark" for="surgery">Surgeon</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dentistry" >
+                                        <input class="form-check-input" type="checkbox" id="dentistry" name="specialty" value="Dentistry" >
                                         <label class="form-check-label badge bg-primary-light text-dark" for="dentistry">Dentistry</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="medicine" >
+                                        <input class="form-check-input" type="checkbox" id="medicine" name="specialty" value="Cardiologist" >
                                         <label class="form-check-label badge bg-primary-light text-dark" for="medicine"> Cardiologist</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dermatology">
+                                        <input class="form-check-input" type="checkbox" id="dermatology" name="specialty" value="Neurologist">
                                         <label class="form-check-label badge bg-primary-light text-dark" for="dermatology"> Neurologist</label>
                                     </div>
                                 </div>
@@ -256,9 +263,15 @@
 
                             <!-- Experience -->
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="experience" value="12">
+                                <input type="number" class="form-control" id="experience" name="YOEeperience" value="12">
                                 <label for="experience">Years of Experience</label>
                             </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="bio" name="bio" style="height: 60px">123 Pet Street, Colombo 05, Sri Lanka</textarea>
+                                <label for="bio">Bio </label>
+                            </div>
+
                         </div>
                     </div>
                 </form>

@@ -78,13 +78,14 @@ public class VeterinarianServiceImpl implements VeterinarianService {
         veterinarian.setSpecialty(addVeterinarianFormDTO.getSpecialty());
         veterinarian.setYOEeperience(addVeterinarianFormDTO.getYOEeperience());
 
+
         return modelMapper.map(veterinarian, VeterinarianDTO.class);
     }
 
     @Override
-    public void updateVeterinarian(VeterinarianDTO veterinarianDTO) {
-        if (veterinarianRepo.existsById(veterinarianDTO.getId())) {
-            veterinarianRepo.save(modelMapper.map(veterinarianDTO, Veterinarian.class));
+    public void updateVeterinarian(VeterinarianDTO addVeterinarianFormDTO) {
+        if (veterinarianRepo.existsById(addVeterinarianFormDTO.getId())) {
+            veterinarianRepo.save(modelMapper.map(addVeterinarianFormDTO, Veterinarian.class));
         }else {
             throw new RuntimeException("Veterinarian not found");
         }
