@@ -15,4 +15,6 @@ public interface VeterinarianService {
     VeterinarianDTO updateVeterinarianDetails(AddVeterinarianFormDTO addVeterinarianFormDTO);
 
     void updateVeterinarian(VeterinarianDTO addVeterinarianFormDTO);
+
+    boolean deleteVeterinarian(int id);
 }

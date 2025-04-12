@@ -91,4 +91,14 @@ public class VeterinarianServiceImpl implements VeterinarianService {
         }
     }
 
+    @Override
+    public boolean deleteVeterinarian(int id) {
+        if (veterinarianRepo.existsById(id)) {
+            veterinarianRepo.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

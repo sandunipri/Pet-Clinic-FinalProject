@@ -193,27 +193,20 @@ $(document).ready(function () {
         });
     }
 
-   $("#saveProfileChanges").click(function (e) {
+    $("#saveProfileChanges").click(function (e) {
        e.preventDefault(); // Prevent default form submission
 
        let token = localStorage.getItem("token")
-
-       // 1. Get the vet ID from sessionStorage
        const vetId = sessionStorage.getItem("selectedVetId");
        if (!vetId) {
            Swal.fire("Error!", "Veterinarian ID not found. Please reload the page.", "error");
            return;
        }
 
-       // 2. Prepare FormData
        let formData = new FormData($('#vetProfileForm')[0]);
-
-       // 3. Manually append the ID if not already in the form
        if (!formData.has('id')) {
            formData.append('id', vetId);
        }
-
-
        $.ajax({
             url : "http://localhost:8080/api/v1/veterinarian/updateVeterinarian",
             type : "PUT",
@@ -247,6 +240,42 @@ $(document).ready(function () {
 
     });
 
+    $(document).on("click", "#deleteVet", function () {
+        let token = localStorage.getItem("token")
+
+        const vetId = sessionStorage.getItem("selectedVetId");
+
+        console.log(token)
+        console.log(vetId)
+        $.ajax({
+            url : `http://localhost:8080/api/v1/veterinarian/deleteVeterinarian?id=${vetId}`,
+            type : "DELETE",
+            contentType: "application/json",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    text: "Vet Profile Deleted Successfully!"
+                }).then(() => {
+                    window.location.href = 'viewVeterinariesProfile.html';
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error("Error details:", xhr.responseText, status, error);
+                Swal.fire({
+                    title: "Error!",
+                    icon: "error",
+                    text: "Vet Profile Deletion Failed! " + (xhr.responseJSON?.message || xhr.statusText)
+                }).then(() => {
+                    window.location.href = 'viewVeterinariesProfile.html';
+                });
+            }
+
+        })
+    })
 
     getAllVetsDisplay();
     loadDoctors();

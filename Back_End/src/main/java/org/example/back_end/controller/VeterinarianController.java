@@ -98,4 +98,16 @@ public class VeterinarianController {
                     .body(new ResponseDTO(VarList.OK, "Veterinarian Updated", veterinarianDTO));
 
     }
+
+    @DeleteMapping("/deleteVeterinarian")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<ResponseDTO> deleteVeterinarian(@RequestParam int id) {
+        boolean isDeleted = veterinarianService.deleteVeterinarian(id);
+        if (!isDeleted) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDTO(VarList.Not_Found, "Veterinarian Not Found", null));
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "Veterinarian Deleted", isDeleted));
+
+        }
+    }
 }
