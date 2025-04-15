@@ -102,3 +102,7 @@ body {
     padding-bottom: 8px;
     border-bottom: 1px dashed var(--accent-light);
 }
+
+.input-error {
+    border: 1px solid red !important;
+}

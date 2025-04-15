@@ -16,6 +16,7 @@ function loadProfile() {
         success: function (response) {
             //load side profile
             $('#userName').text(response.data.name);
+            $('#CurrentEmail').text(response.data.email);
             
             $("#photoPreview").attr("src", "../" + response.data.profileImage);
             $('#Useremail').text(response.data.email);
@@ -50,31 +51,109 @@ function loadProfile() {
     })
 }
 
-$('#updateProfileBtn').click(function () {
-    let formData = new FormData($('#updateForm')[0]);
+    $('#updateProfileBtn').click(function (e) {
+        e.preventDefault(); // prevent form submission if inside a form
 
-    console.log("updateProfileBtn");
+        let name = $('#name').val().trim();
+        let email = $('#email').val().trim();
+        let address = $('#address').val().trim();
+        let telNo = $('#telNo').val().trim();
+        let gender = $('#gender').val().trim();
+        let nic = $('#nic').val().trim();
+        let emergencyContact = $('#emergencyContact').val().trim();
+        let emergencyContactName = $('#emergencyContactName').val().trim();
 
-    let  token = localStorage.getItem('token');
-    $.ajax({
-        url: "http://localhost:8080/api/v1/user/updateProfile",
-        type: "PUT",
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: formData,
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        success: function (response) {
-            alert("Profile Updated Successfully");
-            loadProfile();
-        },
-        error: function (response) {
-            alert("Error");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[0-9]{10}$/;
+
+        let errorMessages = [];
+
+        // Remove previous error highlights
+        $('input, select').removeClass('input-error');
+
+        if (!name) {
+            errorMessages.push("Name is required.");
+            $('#name').addClass('input-error');
         }
-    })
-});
+
+        if (!email || !emailRegex.test(email)) {
+            errorMessages.push("Valid email is required.");
+            $('#email').addClass('input-error');
+        }
+
+        if (!address) {
+            errorMessages.push("Address is required.");
+            $('#address').addClass('input-error');
+        }
+
+        if (!telNo || !phoneRegex.test(telNo)) {
+            errorMessages.push("Valid phone number is required (10 digits).");
+            $('#telNo').addClass('input-error');
+        }
+
+        if (!gender) {
+            errorMessages.push("Gender is required.");
+            $('#gender').addClass('input-error');
+        }
+
+        if (!nic) {
+            errorMessages.push("NIC is required.");
+            $('#nic').addClass('input-error');
+        }
+
+        if (!emergencyContact || !phoneRegex.test(emergencyContact)) {
+            errorMessages.push("Valid emergency contact number is required.");
+            $('#emergencyContact').addClass('input-error');
+        }
+
+        if (!emergencyContactName) {
+            errorMessages.push("Emergency contact name is required.");
+            $('#emergencyContactName').addClass('input-error');
+        }
+
+        if (errorMessages.length > 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Validation Errors',
+                html: `<ul style="text-align:left;">${errorMessages.map(e => `<li>${e}</li>`).join('')}</ul>`
+            });
+            return;
+        }
+
+
+        let formData = new FormData($('#updateForm')[0]);
+        let token = localStorage.getItem('token');
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/user/updateProfile",
+            type: "PUT",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function (response) {
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    text: "Profile Updated Successfully"
+                }).then(() => {
+                    loadProfile();
+                    $('#editProfileModal').modal('hide');
+                });
+            },
+            error: function (response) {
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "Something went wrong"
+                });
+            }
+        });
+    });
+
 
 $('#deleteBtn').click(function () {
     let token = localStorage.getItem('token');
