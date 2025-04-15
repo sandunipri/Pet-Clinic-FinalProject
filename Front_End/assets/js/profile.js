@@ -113,7 +113,7 @@ $(document).ready(function () {
         if (errorMessages.length > 0) {
             Swal.fire({
                 icon: 'warning',
-                title: 'Validation Errors',
+                title: 'Errors',
                 html: `<ul style="text-align:left;">${errorMessages.map(e => `<li>${e}</li>`).join('')}</ul>`
             });
             return;
