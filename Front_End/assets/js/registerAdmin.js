@@ -10,12 +10,20 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                alert("Admin Register Success");
-                window.location.href = 'admin.html';
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    text: "Register Success!"
+                }).then(() => {
+                    window.location.href = 'admin.html';
+                });
             },
             error: function (data) {
-                alert("Admin Register Failed");
-
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "Register Failed"
+                });
             }
         })
     })

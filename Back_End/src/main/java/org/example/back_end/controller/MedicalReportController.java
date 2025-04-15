@@ -49,9 +49,4 @@ public class MedicalReportController {
     }
 
 
-
-    //todo
-    //get all medical report
-    //edit medical report
-    //delete medical report
 }

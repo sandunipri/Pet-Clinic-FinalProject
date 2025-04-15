@@ -287,7 +287,6 @@ $(document).ready(function () {
                 "Authorization": 'Bearer ' + token
             },
             success: function (data) {
-                alert("Appointment Deleted Success");
                 loadAppointmentFromUser();
             },
             error: function (data) {
