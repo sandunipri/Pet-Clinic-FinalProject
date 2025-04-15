@@ -1,6 +1,7 @@
 package org.example.back_end.controller;
 
 import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.validation.Valid;
 import org.example.back_end.dto.ResponseDTO;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.VeterinarianDTO;
@@ -37,7 +38,7 @@ public class VeterinarianController {
 
     @PostMapping( value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<ResponseDTO> saveVeterinarian(@ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
+    public ResponseEntity<ResponseDTO> saveVeterinarian(@Valid @ModelAttribute AddVeterinarianFormDTO addVeterinarianFormDTO) {
         System.out.println(addVeterinarianFormDTO);
 
         //saved Image

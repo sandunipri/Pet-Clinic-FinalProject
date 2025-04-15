@@ -1,37 +1,56 @@
 $(document).ready(function () {
 
-    $('#saveVet').click(function () {
-        let token = localStorage.getItem('token');
-        let formData = new FormData($('#addVetForm')[0]);
-        console.log("saveVet");
+        $('#saveVet').click(function (e) {
+            e.preventDefault();
 
-        console.log(token)
-        console.log(formData)
+            let token = localStorage.getItem('token');
+            let formData = new FormData($('#addVetForm')[0]);
 
-        $.ajax({
-            url: "http://localhost:8080/api/v1/veterinarian/save",
-            type: "POST",
-            data: formData,
-            headers: {
-                "Authorization": 'Bearer ' + token
-            },
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                Swal.fire({
-                    title: "Success!",
-                    icon: "success",
-                    text: "Vet Added Successfully!"
-                }).then(() => {
-                    window.location.href = 'vet.html';
-                });
-            },
-            error: function (data) {
-                alert("Vet Adding Failed");
-            }
-        })
-    })
+            $.ajax({
+                url: "http://localhost:8080/api/v1/veterinarian/save",
+                type: "POST",
+                data: formData,
+                headers: {
+                    "Authorization": 'Bearer ' + token
+                },
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    Swal.fire({
+                        title: "Success!",
+                        icon: "success",
+                        text: "Vet Added Successfully!"
+                    }).then(() => {
+                        window.location.href = 'admin.html';
+                    });
+                },
+                error: function (xhr) {
+                    if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.content) {
+                        const errors = xhr.responseJSON.content;
+
+                        // Create an HTML list of validation messages
+                        let errorList = '<ul style="text-align: left;">';
+                        for (const message of Object.values(errors)) {
+                            errorList += `<li>${message}</li>`;
+                        }
+                        errorList += '</ul>';
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Validation Failed',
+                            html: errorList
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: xhr.responseJSON?.message || "Failed to add veterinarian. Please try again."
+                        });
+                    }
+                }
+            });
+        });
 
     function getAllVetsDisplay() {
         let token = localStorage.getItem('token');

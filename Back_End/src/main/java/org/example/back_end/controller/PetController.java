@@ -1,6 +1,7 @@
 package org.example.back_end.controller;
 
 import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.validation.Valid;
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.back_end.dto.UserDTO;
 import org.example.back_end.dto.formDTO.AddPetFormDTO;
@@ -42,7 +43,7 @@ public class PetController {
 
     @PostMapping(path = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    public ResponseEntity<ResponseDTO> addPet(@RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
+    public ResponseEntity<ResponseDTO> addPet(@Valid @RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {
         //Extract the user’s email from the token.
         UserDTO userDTO = userService.getUserByToken(Authorization.substring(7));
         System.out.println("userDTO" + userDTO);
