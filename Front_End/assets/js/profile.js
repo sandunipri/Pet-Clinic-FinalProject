@@ -4,7 +4,7 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     });
 // load to data for the profile
-function loadProfile() {
+    function loadProfile() {
     let token = localStorage.getItem('token');
 
     $.ajax({
@@ -68,7 +68,6 @@ function loadProfile() {
 
         let errorMessages = [];
 
-        // Remove previous error highlights
         $('input, select').removeClass('input-error');
 
         if (!name) {
@@ -154,8 +153,7 @@ function loadProfile() {
         });
     });
 
-
-$('#deleteBtn').click(function () {
+    $('#deleteBtn').click(function () {
     let token = localStorage.getItem('token');
     $.ajax({
         url: "http://localhost:8080/api/v1/user/delete",
@@ -165,12 +163,22 @@ $('#deleteBtn').click(function () {
             'Authorization': 'Bearer ' + token
         },
         success: function (response) {
-            alert("Profile Deleted Successfully");
-            localStorage.removeItem('token');
-            window.location.href = 'index.html';
+            Swal.fire({
+                title: "Success!",
+                icon: "success",
+                text: "Account Deleted Successfully"
+            }).then(() => {
+                localStorage.removeItem('token');
+                window.location.href = 'index.html';
+            });
+
         },
         error: function (response) {
-            alert("Error");
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Something went wrong"
+            });
         }
     })
 });
