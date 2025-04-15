@@ -12,7 +12,6 @@ import java.sql.Date;
 public class PetDTO {
     private int petId;
     private String petName;
-    private Date birthDate;
     private String species;
     private double weight;
     private String breed;

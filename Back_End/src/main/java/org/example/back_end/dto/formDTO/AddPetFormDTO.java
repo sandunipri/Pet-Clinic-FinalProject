@@ -15,7 +15,6 @@ public class AddPetFormDTO {
     private int petId;
     private MultipartFile petImage;
     private String petName;
-    private Date birthDate;
     private String species;
     private double weight;
     private String breed;

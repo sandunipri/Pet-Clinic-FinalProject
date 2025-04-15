@@ -153,35 +153,54 @@ $(document).ready(function () {
         });
     });
 
-    $('#deleteBtn').click(function () {
-    let token = localStorage.getItem('token');
-    $.ajax({
-        url: "http://localhost:8080/api/v1/user/delete",
-        type: "DELETE",
-        contentType: "application/json",
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        success: function (response) {
-            Swal.fire({
-                title: "Success!",
+    $('#deleteBtn').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        return Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return deleteAccount();
+            }
+            return false;
+        });
+    });
+
+    function deleteAccount() {
+        let token = localStorage.getItem('token');
+        return $.ajax({
+            url: "http://localhost:8080/api/v1/user/delete",
+            type: "DELETE",
+            contentType: "application/json",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(function(response) {
+            return Swal.fire({
+                title: "Deleted!",
                 icon: "success",
-                text: "Account Deleted Successfully"
+                text: "Your account has been deleted."
             }).then(() => {
                 localStorage.removeItem('token');
                 window.location.href = 'index.html';
             });
-
-        },
-        error: function (response) {
-            Swal.fire({
+        }).catch(function(xhr) {
+            let errorMsg = xhr.responseJSON?.message || "Something went wrong";
+            return Swal.fire({
                 title: "Error",
                 icon: "error",
-                text: "Something went wrong"
+                text: errorMsg
             });
-        }
-    })
-});
+        });
+    }
 
 loadProfile();
 });

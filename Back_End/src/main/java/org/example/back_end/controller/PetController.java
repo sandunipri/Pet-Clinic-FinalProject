@@ -40,13 +40,6 @@ public class PetController {
         this.fileStorageService = fileStorageService;
     }
 
-/*    @PostMapping("/save")
-    public ResponseEntity<ResponseDTO> addPet(@RequestBody PetDTO petDTO) {
-        System.out.println(petDTO);
-        petService.savePet(petDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDTO(VarList.OK, "pet Added success", petDTO));
-    }*/
-
     @PostMapping(path = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<ResponseDTO> addPet(@RequestHeader("Authorization") String Authorization, @ModelAttribute AddPetFormDTO addPetFormDTO) {

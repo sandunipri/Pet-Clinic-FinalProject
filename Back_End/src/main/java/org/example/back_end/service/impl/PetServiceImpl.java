@@ -99,7 +99,7 @@ public class PetServiceImpl implements PetService {
     public PetDTO updatePetDetails(AddPetFormDTO addPetFormDTO) {
         Pet pet = petRepo.getReferenceById(addPetFormDTO.getPetId());
         pet.setPetName(addPetFormDTO.getPetName());
-        pet.setBirthDate(addPetFormDTO.getBirthDate());
+        pet.setAge(addPetFormDTO.getAge());
         pet.setSpecies(addPetFormDTO.getSpecies());
         pet.setBreed(addPetFormDTO.getBreed());
         pet.setAge(addPetFormDTO.getAge());

@@ -81,7 +81,7 @@ $(document).ready(function () {
                                                     data-pettype = "${response.data[i].species}"
                                                     data-petbreed = "${response.data[i].breed}"
                                                     data-petage = "${response.data[i].age}"
-                                                    data-petbod = "${response.data[i].birthDate}"
+                                                    data-petweigth = "${response.data[i].weight}"
                                                     
                                             >
                                                 Edit
@@ -109,7 +109,7 @@ $(document).ready(function () {
             species: $(this).data("pettype"),
             breed: $(this).data("petbreed"),
             age: $(this).data("petage"),
-            birthDate: $(this).data("petbod")
+            weight: $(this).data("petweigth")
 
 
         };
@@ -126,7 +126,7 @@ $(document).ready(function () {
         $('#species').val(pet.species);
         $('#breed').val(pet.breed);
         $('#age').val(pet.age);
-        $('#birthDate').val(pet.birthDate);
+        $('#weight').val(pet.weight);
 
         $('#editPetModal').modal('show');
 
