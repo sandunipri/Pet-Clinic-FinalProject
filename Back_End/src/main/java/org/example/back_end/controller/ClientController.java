@@ -40,7 +40,7 @@ public class ClientController {
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //    @PreAuthorize("hasAuthority('USER')")
-    public ResponseEntity<ResponseDTO> registerUser(@ModelAttribute RegisterFormDTO registerFormDTO) {
+    public ResponseEntity<ResponseDTO> registerUser(@Valid @ModelAttribute RegisterFormDTO registerFormDTO) {
         UserDTO userDTO = userService.convertFormToUserDTO(registerFormDTO, null);
 
         try {

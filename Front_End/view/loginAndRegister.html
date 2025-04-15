@@ -4,100 +4,113 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LOGIN PAGE</title>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link rel="stylesheet" href="../assets/css/login.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Montserrat", sans-serif;
+            height: 100vh;
+            margin: -20px 0 50px;
+        }
+
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            width: 100%;
+            padding-right: 40px;
+        }
+
+        .password-container i {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+
+        button, .google-btn {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            border: 1px solid #3c2b82;
+            background-color: #11166d;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #0d1257;
+        }
+
+        .google-btn {
+            background-color: #ffffff;
+            color: #757575;
+            border: 1px solid #dcdcdc;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .google-btn:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .google-btn img {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .divider-text {
+            padding: 0 10px;
+            color: #777;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
-<style>
-    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        background: #f6f5f7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-family: "Montserrat", sans-serif;
-        height: 100vh;
-        margin: -20px 0 50px;
-    }
-
-    /* ... (keep all your existing styles) ... */
-
-    /* Updated Button Styles to match input size */
-    button, .google-btn {
-        width: 100%;
-        padding: 12px 15px;
-        margin: 8px 0;
-        border-radius: 4px;
-        font-size: 14px;
-        text-align: center;
-        height: 42px; /* Match input height */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    button {
-        border: 1px solid #3c2b82;
-        background-color: #11166d;
-        color: #ffffff;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    button:hover {
-        background-color: #0d1257;
-    }
-
-    .google-btn {
-        background-color: #ffffff;
-        color: #757575;
-        border: 1px solid #dcdcdc;
-        text-decoration: none;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .google-btn:hover {
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    }
-
-    .google-btn img {
-        width: 18px;
-        height: 18px;
-        margin-right: 10px;
-    }
-
-    .divider {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .divider::before, .divider::after {
-        content: "";
-        flex: 1;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .divider-text {
-        padding: 0 10px;
-        color: #777;
-        font-size: 12px;
-        text-transform: uppercase;
-    }
-</style>
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -106,7 +119,10 @@
             <span>or use your email for registration</span>
             <input id="email" name="email" type="email" placeholder="Email"/>
             <input id="name" name="name" type="text" placeholder="Name"/>
-            <input id="password" name="password" type="password" placeholder="Password"/>
+            <div class="password-container">
+                <input id="password" name="password" type="password" placeholder="Password"/>
+                <i class="fa-solid fa-eye toggle-password" data-toggle="password"></i>
+            </div>
             <button type="button" id="regBtn">Sign Up</button>
 
             <div class="divider">
@@ -115,18 +131,20 @@
 
             <a class="google-btn"
                href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:8080/api/v1/auth/googleLogin&response_type=code&client_id=239666846117-tfg6urmk5563ovtqau5qg274c8hbq68i.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&access_type=offline">
-                <img src="https://developers.google.com/identity/images/g-logo.png"
-                     alt="Google Logo">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
                 Login in with Google
             </a>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="">
+        <form>
             <h1>Sign in</h1>
             <span>or use your account</span>
             <input id="exampleInputEmail1" type="email" placeholder="Email"/>
-            <input id="exampleInputPassword1" type="password" placeholder="Password"/>
+            <div class="password-container">
+                <input id="exampleInputPassword1" type="password" placeholder="Password"/>
+                <i class="fa-solid fa-eye toggle-password" data-toggle="exampleInputPassword1"></i>
+            </div>
             <a href="#">Forgot your password?</a>
             <button type="button" id="loginBtn">Sign In</button>
 
@@ -136,8 +154,7 @@
 
             <a class="google-btn"
                href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:8080/api/v1/auth/googleLogin&response_type=code&client_id=239666846117-tfg6urmk5563ovtqau5qg274c8hbq68i.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&access_type=offline">
-                <img src="https://developers.google.com/identity/images/g-logo.png"
-                     alt="Google Logo">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
                 Login in with Google
             </a>
         </form>
@@ -146,9 +163,7 @@
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
-                <p>
-                    To keep connected with us please login with your personal info
-                </p>
+                <p>To keep connected with us please login with your personal info</p>
                 <button class="ghost" id="signIn">Sign In</button>
             </div>
             <div class="overlay-panel overlay-right">
@@ -165,19 +180,19 @@
         Created with <i class="fa fa-heart"></i> by
         <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
         - Read how I created this and how you can join the challenge
-        <a
-                target="_blank"
-                href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/"
-        >here</a
-        >.
+        <a target="_blank"
+           href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
     </p>
 </footer>
+
+<!-- Scripts -->
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/login.js"></script>
 <script src="../assets/js/register.js"></script>
 <script src="../js/sweetalert2@11.js"></script>
 
+<!-- 2 panel show-->
 <script>
     const signUpButton = document.getElementById("signUp");
     const signInButton = document.getElementById("signIn");
@@ -191,5 +206,18 @@
         container.classList.remove("right-panel-active");
     });
 </script>
+
+<!-- Password see option -->
+<script>
+    document.querySelectorAll('.toggle-password').forEach(function (eyeIcon) {
+        eyeIcon.addEventListener('click', function () {
+            const input = this.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    });
+</script>
+
 </body>
 </html>
