@@ -1,9 +1,36 @@
 $(document).ready(function () {
     $('#loginBtn').click(function () {
 
-        let Email = $('#exampleInputEmail1').val();
-        let Password = $('#exampleInputPassword1').val();
+        let Email = $('#exampleInputEmail1').val().trim();
+        let Password = $('#exampleInputPassword1').val().trim();
 
+        //regex apply for filed
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        //delete error msg
+        $('.error-msg').remove();
+
+        let isValid = true;
+
+        // Email validation
+        if (Email === "" || !emailRegex.test(Email)) {
+            $('#exampleInputEmail1').after('<span class="error-msg" style="color:red;font-size:12px;">Valid Gmail address is required</span>');
+            isValid = false;
+        }
+
+        // Password validation
+        if (!passwordRegex.test(Password)) {
+            $('#exampleInputPassword1').after('<span class="error-msg" style="color:red;font-size:12px;">Password is incorrect </span>');
+            isValid = false;
+        }
+
+        // Stop if validation fails
+        if (!isValid) {
+            return;
+        }
+
+        // Prepare form and send AJAX request
         $.ajax({
             url: "http://localhost:8080/api/v1/auth/authenticate",
             type: "POST",
@@ -24,29 +51,48 @@ $(document).ready(function () {
                 console.log("Token:", token); // Logs user role
 
                 if (user && token) {
-                    alert(`Successfully logged in as ${user.role || "Unknown"}`);
-                    window.localStorage.setItem("token", token);
-                    window.localStorage.setItem("user", JSON.stringify(user));
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Welcome, ${user.name || "User"}!`,
+                        text: `Successfully logged in as ${user.role || "Unknown"}`,
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.localStorage.setItem("token", token);
+                        window.localStorage.setItem("user", JSON.stringify(user));
 
-                    if (user.role === "USER") {
-                        window.location.href = 'client.html';
-                    } else if (user.role === "ADMIN") {
-                        window.location.href = 'admin.html';
-                    } else if (user.role === "VET") {
-                        window.location.href = 'vet.html';
-                    }
-
+                        if (user.role === "USER") {
+                            window.location.href = 'client.html';
+                        } else if (user.role === "ADMIN") {
+                            window.location.href = 'admin.html';
+                        } else if (user.role === "VET") {
+                            window.location.href = 'vet.html';
+                        }
+                    });
                 } else {
-                    alert("Invalid login response. Please check the console for details.");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Login',
+                        text: 'Invalid login response. Please check the again your  details.'
+                    });
                     console.error("Unexpected API response structure:", res);
                 }
+
             },
             error: function (res) {
                 console.log(res);
-                alert('Login Failed');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Please check your credentials and try again.'
+                });
             }
         });
     });
 
+
+    $('input').on('input', function () {
+        $(this).next('.error-msg').remove();
+    });
 
 });
