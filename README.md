@@ -16,12 +16,17 @@ VET MED Pet Clinic is a comprehensive Spring Boot web application designed to st
    ##  Key Features
   </h4>
 </div>
-- **Sign up/login with email or Google**
-- **Online Appointment Scheduling**
-- **Pet Health Records Management**
-- **Instant messaging with clinic staff**
-- **Veterinary Staff Dashboard**
-- **Patient Management System**
+<div class="vetmed-features">
+  <h2>## Key Features</h2>
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li style="margin-bottom: 8px;"> Sign up/login with email or Google</li>
+    <li style="margin-bottom: 8px;"> Online Appointment Scheduling</li>
+    <li style="margin-bottom: 8px;"> Pet Health Records Management</li>
+    <li style="margin-bottom: 8px;"> Instant messaging with clinic staff</li>
+    <li style="margin-bottom: 8px;"> Veterinary Staff Dashboard</li>
+    <li> Patient Management System</li>
+  </ul>
+</div>
 <div>
   <h4>
  ## Technologies Used
@@ -35,6 +40,16 @@ VET MED Pet Clinic is a comprehensive Spring Boot web application designed to st
 | Frontend      | HTML5, CSS3, JavaScript               |
 | Security      | Spring Security                       |
 | Build Tool    | Maven                                 |
+
+
+## Screenshots
+
+![Login Page]("C:\Users\priya\Pictures\final project\loginRegister.png")
+
+![Appointment Scheduling]()
+
+
+![Patient Dashboard]("C:\Users\priya\Pictures\final project\appointment.png")
 
 
 
