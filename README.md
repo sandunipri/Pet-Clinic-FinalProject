@@ -42,9 +42,9 @@ VET MED Pet Clinic is a comprehensive Spring Boot web application designed to st
 | Build Tool    | Maven                                 |
 
 
-## 🎥 Video Demonstration
-<a href="[https://www.youtube.com/watch?v=your-video-id](https://youtu.be/Dz52BY3kcn0)">
-</a>
+## Video Demonstration
+
+Watch the demo video: https://youtu.be/Dz52BY3kcn0
 
 ## Screenshots
 Index html
