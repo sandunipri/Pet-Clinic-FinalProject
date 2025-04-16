@@ -46,7 +46,7 @@ VET MED Pet Clinic is a comprehensive Spring Boot web application designed to st
 Index html
 ![index](https://github.com/user-attachments/assets/4719059e-40d1-47a7-8df2-fc1174d1f738)
 Login and Register html
-[loginRe![profile](https://github.com/user-attachments/assets/01890af3-89da-40fe-9e55-c6b1133b6ec7)
+![profile](https://github.com/user-attachments/assets/01890af3-89da-40fe-9e55-c6b1133b6ec7)
 Client html
 ![client](https://github.com/user-attachments/assets/50f7c617-cf10-4db3-85ed-5525369ea591)
 Add pet html
