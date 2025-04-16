@@ -51,8 +51,7 @@ Watch the you tube video: https://youtu.be/Dz52BY3kcn0
 Follow these steps to set up the project locally:
 
 1. Clone the repository:
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+                                                                  git clone https://github.com/sandunipri/Pet-Clinic-FinalProject
 
 ## Screenshots
 Index html
