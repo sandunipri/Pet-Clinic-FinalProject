@@ -45,6 +45,14 @@ VET MED Pet Clinic is a comprehensive Spring Boot web application designed to st
 ## 🎥 Video Demonstration
 
 Watch the you tube video: https://youtu.be/Dz52BY3kcn0
+                                                           
+## Setup Instructions
+
+Follow these steps to set up the project locally:
+
+1. Clone the repository:
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
 
 ## Screenshots
 Index html
