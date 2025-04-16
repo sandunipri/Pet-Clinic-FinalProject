@@ -69,7 +69,6 @@ public class AdminController {
                     .body(new ResponseDTO(VarList.Internal_Server_Error, e.getMessage(), null));
         }
     }
-
     @GetMapping("/getAllUsers")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseDTO> getAllUsers(@RequestHeader("Authorization") String Authorization) {
